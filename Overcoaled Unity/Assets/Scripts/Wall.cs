@@ -4,17 +4,20 @@ using UnityEngine;
 
 public class Wall : MonoBehaviour
 {
-    public float health = 3f;    
+    public float health = 3f;
+    private TextMesh healthText;
+
+    private void Awake()
+    {
+        healthText = GetComponentInChildren<TextMesh>();
+        healthText.text = "HP: " + health;
+    }
 
     public void TakeDamage(float dmg)
     {
         health -= dmg;
     }
 
-    // JUST FOR TESTING
-    private void OnMouseDown()
-    {
-        Debug.Log("hit!");
-        TakeDamage(1f);
-    }
+   
+
 }
