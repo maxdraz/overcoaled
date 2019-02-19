@@ -15,7 +15,7 @@ public class PlayerInteraction : MonoBehaviour
         if(other.tag == "Plank Box" && !isCarrying)
         {
             PickUpPlank();
-        }
+        } 
 
 
     }
