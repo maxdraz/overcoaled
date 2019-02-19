@@ -32,13 +32,21 @@ public class PlayerInteraction : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        // if colliding with plank box and not carrying anything
+        // if colliding with boxes and not carrying anything
         if(other.tag == "Plank Box" && !isCarrying)
         {
                                                                                //CHANGE THIS INPUT
             if (Input.GetMouseButtonDown(0))
             {
                 PickUpPlank();
+            }
+        }
+        if (other.tag == "Coal Box" && !isCarrying)
+        {
+            
+            if (Input.GetMouseButtonDown(0))
+            {
+                PickUpCoal();
             }
         }
 
@@ -72,12 +80,29 @@ public class PlayerInteraction : MonoBehaviour
             }
         }
 
+        //Furnace 
+        if (other.tag == "Furnace" && carryingCoal)
+        {
+           Furnace fur = other.GetComponent<Furnace>();
+            //CHANGE THIS INPUT
+
+            if (Input.GetMouseButtonDown(0))
+            {
+                if (fur.CheckIfCanAdd())
+                {
+                    fur.AddCoal(1);
+                    Drop();
+                }
+                else return;
+            }
+        }
+
 
     }
 
     void PickUpPlank()
     {
-        print("picked up plank");
+       
         plankGO.SetActive(true);
         isCarrying = true;
         carryingPlank = true;

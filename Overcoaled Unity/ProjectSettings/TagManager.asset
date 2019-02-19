@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Plank Box
   - Repair Pad
+  - Coal Box
+  - Ammo Box
+  - Furnace
   layers:
   - Default
   - TransparentFX
