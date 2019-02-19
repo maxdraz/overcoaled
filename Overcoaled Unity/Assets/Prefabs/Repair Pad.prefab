@@ -319,5 +319,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d4a5edf7e3b37c46b1e899529ee3c94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isFar: 0
   plankCount: 0
   maxPlanks: 3
+  wallFarPrefab: {fileID: 259128298123287316, guid: c76b8accd8698d54fbf7a4811730f75a,
+    type: 3}
+  wallNearPrefab: {fileID: 5159682584538758099, guid: c78efcd3f3995744e8479194c226c7ab,
+    type: 3}
+  repairCD: 4
+  repairCDRemaining: 0
