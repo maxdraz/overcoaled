@@ -5,72 +5,107 @@ using UnityEngine;
 public class RepairPad : MonoBehaviour
 {
     private TextMesh plankText;
+    private TextMesh repairText;
     public bool isFar;
-    [SerializeField]
-    private float plankCount, maxPlanks;
+    public float plankCount;
+   [SerializeField]
+    private float maxPlanks = 3 ;
     [SerializeField]
     private GameObject wallFarPrefab;
     [SerializeField]
     private GameObject wallNearPrefab;
+    private Vector3 wallSpawnOffset = new Vector3(0,0.5f,0);
     [SerializeField]
     private float repairCD = 4f;
     [SerializeField]
     private float repairCDRemaining;
-
+    private TextMesh[] texts;
 
     private void Awake()
     {
-        plankText = GetComponentInChildren<TextMesh>();
+
+        texts = GetComponentsInChildren<TextMesh>();
+        plankText = texts[0];
+        repairText = texts[1];
+
+        repairText.gameObject.SetActive(false);
 
     }
 
     private void OnEnable()
     {
-        
+        repairCDRemaining = repairCD;
     }
 
     // Start is called before the first frame update
     void Start()
     {
         plankText.text = "Planks: " + plankCount + "/" + maxPlanks;
+
         
 
     }
 
-   public void AddPlank(float amount)
+    private void Update()
     {
-        if (plankCount > maxPlanks)
+        
+    }
+
+    public void AddPlank(float amount)
+    {
+                                                                        //PURELY COSMETIC  ---v
+        if (plankCount == maxPlanks -1)
         {
-            Debug.Log("Can't add any more planks");
+            plankText.gameObject.SetActive(false);
+            repairText.gameObject.SetActive(true);
+        }
+                                                                       // ---^
+        if (!CheckIfCanAdd())
+        {
+            Debug.Log("Can't add any more planks");            
+
             return;
         }
         else
         {
             plankCount += amount;
+            plankText.text = "Planks: " + plankCount + "/" + maxPlanks;
         }
         
     }
 
-    void Repair()
+    public bool CheckIfCanAdd()
     {
-        if(plankCount == maxPlanks)
+        if (plankCount >= maxPlanks)
         {
+            return false;
+        }
+        else return true;
+    }
+
+    public void Repair()
+    {
+        
+        if (plankCount == maxPlanks)
+        {
+            print(repairCDRemaining);
             repairCDRemaining -= Time.deltaTime;
-            if(repairCDRemaining <= 0)
+            if (repairCDRemaining <= 0)
             {
                 // We've built the wall!
                 if (isFar)
                 {
-                    GameObject wallGO = (GameObject)Instantiate(wallFarPrefab, transform.position, transform.rotation);
+                    GameObject wallGO = (GameObject)Instantiate(wallFarPrefab, transform.position + wallSpawnOffset, transform.rotation);
                     Destroy(gameObject);
                 }
                 else
                 {
-                    GameObject wallGO = (GameObject)Instantiate(wallNearPrefab, transform.position, transform.rotation);
+                    GameObject wallGO = (GameObject)Instantiate(wallNearPrefab, transform.position + wallSpawnOffset, transform.rotation);
                     Destroy(gameObject);
                 }
             }
         }
+        else return;
     }
 
     void OnMouseDown()

@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2322737007564730835}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.18, z: 0}
   m_LocalScale: {x: 4, y: 0.25, z: 1}
   m_Children: []
   m_Father: {fileID: 573647286908027622}
@@ -103,11 +103,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4465682374499566950}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.25, z: 0.11}
+  m_LocalPosition: {x: 0, y: 0.43000007, z: 0.11}
   m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_Children: []
   m_Father: {fileID: 573647286908027622}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!23 &4572609358200366913
 MeshRenderer:
@@ -194,11 +194,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6143951310800947565}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.26, z: 0.11}
+  m_LocalPosition: {x: 0, y: 1.44, z: 0.11}
   m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_Children: []
   m_Father: {fileID: 573647286908027622}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &4707243956402641238
 MeshRenderer:
@@ -252,7 +252,7 @@ TextMesh:
   m_Anchor: 4
   m_Alignment: 1
   m_TabSize: 4
-  m_FontSize: 100
+  m_FontSize: 60
   m_FontStyle: 0
   m_RichText: 1
   m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
@@ -272,7 +272,7 @@ GameObject:
   - component: {fileID: 3684653910424363477}
   m_Layer: 0
   m_Name: Repair Pad
-  m_TagString: Untagged
+  m_TagString: Repair Pad
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -289,8 +289,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2339156770879760355}
-  - {fileID: 7453049141433236094}
   - {fileID: 5501314560382027153}
+  - {fileID: 7453049141433236094}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -302,11 +302,11 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6983315175861478071}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 4, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 4, y: 1, z: 3}
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!114 &3684653910424363477
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -326,5 +326,5 @@ MonoBehaviour:
     type: 3}
   wallNearPrefab: {fileID: 5159682584538758099, guid: c78efcd3f3995744e8479194c226c7ab,
     type: 3}
-  repairCD: 4
+  repairCD: 2
   repairCDRemaining: 0
