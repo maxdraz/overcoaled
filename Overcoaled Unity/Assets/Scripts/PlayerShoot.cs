@@ -8,8 +8,14 @@ public class PlayerShoot : MonoBehaviour
     [SerializeField] private Transform spawnLocation;
     public int playerNumber;
     public int ammo;
+    public int maxAmmo;
     private bool canShoot = true;
     [SerializeField] private float shootDelayTime;
+
+    private void Start()
+    {
+        ammo = maxAmmo;
+    }
 
     // Update is called once per frame
     void Update()
@@ -34,5 +40,10 @@ public class PlayerShoot : MonoBehaviour
     private void shotDelay()
     {
         canShoot = true;
+    }
+
+    public void Reload()
+    {
+        ammo = maxAmmo;
     }
 }

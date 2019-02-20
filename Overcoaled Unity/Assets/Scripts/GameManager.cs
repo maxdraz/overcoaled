@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     List<Player> players = new List<Player>();
     [SerializeField] private int playerHealth = 0;
     [SerializeField] private float playerSpeed = 0;
+    [SerializeField] private float playerSlowSpeed = 0;
     [Tooltip("0 = player 1, etc")][SerializeField] private Vector3[] playerSpawnLocations;
     [SerializeField] private GameObject playerCharacter;
     [Tooltip("0 = player 1, etc")][SerializeField] private Color[] playerColours;
@@ -40,6 +41,8 @@ public class GameManager : MonoBehaviour
         players[players.Count - 1].playerObject = (GameObject)Instantiate(playerCharacter, playerSpawnLocations[players.Count - 1], Quaternion.identity);
         players[players.Count - 1].playerObject.GetComponent<PlayerMove>().playerNumber = playerNum;
         players[players.Count - 1].playerObject.GetComponent<PlayerMove>().SetSpeed(playerSpeed);
+        players[players.Count - 1].playerObject.GetComponent<PlayerMove>().slowMoveSpeed = playerSlowSpeed;
+        players[players.Count - 1].playerObject.GetComponent<PlayerMove>().normalMoveSpeed = playerSpeed;
         players[players.Count - 1].playerObject.GetComponent<PlayerShoot>().playerNumber = playerNum;
         players[players.Count - 1].playerObject.GetComponent<PlayerInteraction>().playerNumber = playerNum;
     }

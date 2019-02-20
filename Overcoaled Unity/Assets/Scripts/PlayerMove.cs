@@ -6,6 +6,8 @@ public class PlayerMove : MonoBehaviour
 {
     public int playerNumber;
     public float moveSpeed;
+    public float normalMoveSpeed;
+    public float slowMoveSpeed;
 
     // Update is called once per frame
     void Update()

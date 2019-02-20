@@ -11,6 +11,8 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField] private bool carryingAmmo = false;
     private GameObject plankGO;
     private GameObject coalGO;
+    private GameObject ammoGO;
+    private PlayerMove pm;
 
     public enum item { nothing, plank, coal, ammo };
     public item holding = item.nothing;
@@ -19,16 +21,28 @@ public class PlayerInteraction : MonoBehaviour
     {
         plankGO = transform.Find("Plank").gameObject;
         coalGO = transform.Find("Coal").gameObject;
+        ammoGO = transform.Find("Ammo").gameObject;
+
+        pm = gameObject.GetComponent<PlayerMove>();
     }
 
     private void Update()
     {
-
-        print(Input.GetButtonDown("joystick " + 1 + " A") + ", " + Input.GetButtonDown("joystick " + 2 + " A"));                                                              
+                                                              
         if (isCarrying)
         {
+            //slow player move speed (reset in Drop())
+            
+            pm.SetSpeed(pm.slowMoveSpeed);
+
             if (Input.GetButtonDown("joystick " + playerNumber + " B"))
             {
+                Drop();
+            }
+
+            if(carryingAmmo && Input.GetButtonDown("joystick " + playerNumber + " X"))
+            {
+                gameObject.GetComponent<PlayerShoot>().Reload();
                 Drop();
             }
         }
@@ -58,6 +72,17 @@ public class PlayerInteraction : MonoBehaviour
             if (Input.GetButton("joystick " + playerNumber + " A"))
             {
                 PickUpCoal();
+                other.transform.GetComponentInChildren<SpriteRenderer>().enabled = false;
+            }
+        }
+
+        if (other.tag == "Ammo Box" && !isCarrying)
+        {
+            //display button sprite
+            other.transform.GetComponentInChildren<SpriteRenderer>().enabled = true;
+            if (Input.GetButton("joystick " + playerNumber + " A"))
+            {
+                PickUpAmmo();
                 other.transform.GetComponentInChildren<SpriteRenderer>().enabled = false;
             }
         }
@@ -136,6 +161,13 @@ public class PlayerInteraction : MonoBehaviour
         carryingCoal = true;
     }
 
+    void PickUpAmmo()
+    {
+        ammoGO.SetActive(true);
+        isCarrying = true;
+        carryingAmmo = true;
+    }
+
     void Drop()
     {
         // if carrying any of these items
@@ -145,9 +177,13 @@ public class PlayerInteraction : MonoBehaviour
             carryingPlank = false;
             carryingCoal = false;
             carryingAmmo = false;
+            carryingCoal = false;
             plankGO.SetActive(false);
             coalGO.SetActive(false);
+            ammoGO.SetActive(false);
             isCarrying = false;
+
+            pm.SetSpeed(pm.normalMoveSpeed);
         }
     }
 }
