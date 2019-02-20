@@ -10,13 +10,16 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float posX = Input.GetAxis("joystick " + playerNumber + " horizontal") * moveSpeed;
-        float posY = Input.GetAxis("joystick " + playerNumber + " vertical") * -moveSpeed;
+        float posX = Input.GetAxis("joystick L " + playerNumber + " horizontal") * moveSpeed;
+        float posY = Input.GetAxis("joystick L " + playerNumber + " vertical") * -moveSpeed;
 
-        if ((Input.GetAxis("joystick " + playerNumber + " horizontal") > 0.2 || Input.GetAxis("joystick " + playerNumber + " horizontal") < -0.2)
-            || (Input.GetAxis("joystick " + playerNumber + " vertical") > 0.2 || Input.GetAxis("joystick " + playerNumber + " vertical") < -0.2))
+        if ((Input.GetAxis("joystick R " + playerNumber + " horizontal") > 0.2 || Input.GetAxis("joystick R " + playerNumber + " horizontal") < -0.2)
+            || (Input.GetAxis("joystick R " + playerNumber + " vertical") > 0.2 || Input.GetAxis("joystick R " + playerNumber + " vertical") < -0.2))
         {
-            Vector3 direction = new Vector3(posX, 0.0f, posY);
+            float dirX = Input.GetAxis("joystick R " + playerNumber + " horizontal");
+            float dirY = Input.GetAxis("joystick R " + playerNumber + " vertical");
+
+            Vector3 direction = new Vector3(dirX, 0.0f, -dirY);
             transform.rotation = Quaternion.LookRotation(direction);
         }
 
