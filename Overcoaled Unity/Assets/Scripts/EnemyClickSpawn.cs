@@ -10,9 +10,9 @@ public class EnemyClickSpawn : MonoBehaviour
     void Update()
     {
         Vector3 mouseposition = Input.mousePosition;
-        mouseposition.z = 20;
+        mouseposition.z = 5;
         mouseposition = Camera.main.ScreenToWorldPoint(mouseposition);
-        mouseposition.y = 0.2f;
+        mouseposition.y = 2f;
 
         if (Input.GetMouseButtonDown(0))
         {

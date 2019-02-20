@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour
         players[players.Count - 1].playerObject.GetComponent<PlayerMove>().playerNumber = playerNum;
         players[players.Count - 1].playerObject.GetComponent<PlayerMove>().SetSpeed(playerSpeed);
         players[players.Count - 1].playerObject.GetComponent<PlayerShoot>().playerNumber = playerNum;
+        players[players.Count - 1].playerObject.GetComponent<PlayerInteraction>().playerNumber = playerNum;
     }
 
 }

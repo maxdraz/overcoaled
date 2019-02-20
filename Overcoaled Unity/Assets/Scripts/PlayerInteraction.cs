@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerInteraction : MonoBehaviour
 {
+    public int playerNumber;
     [SerializeField] private bool isCarrying = false;
     [SerializeField] private bool carryingPlank = false;
     [SerializeField] private bool carryingCoal = false;
@@ -23,10 +24,10 @@ public class PlayerInteraction : MonoBehaviour
     private void Update()
     {
 
-                                                                                // ONLY FOR TESTING
+        print(Input.GetButtonDown("joystick " + 1 + " A") + ", " + Input.GetButtonDown("joystick " + 2 + " A"));                                                              
         if (isCarrying)
         {
-            if (Input.GetMouseButtonDown(1))
+            if (Input.GetButtonDown("joystick " + playerNumber + " B"))
             {
                 Drop();
             }
@@ -35,11 +36,12 @@ public class PlayerInteraction : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
+
         // if colliding with boxes and not carrying anything
-        if(other.tag == "Plank Box" && !isCarrying)
+        if (other.tag == "Plank Box" && !isCarrying)
         {
-                                                                               //CHANGE THIS INPUT
-            if (Input.GetMouseButtonDown(0))
+            
+            if (Input.GetButtonDown("joystick " + playerNumber + " A"))
             {
                 PickUpPlank();
             }
@@ -59,8 +61,8 @@ public class PlayerInteraction : MonoBehaviour
         {
             RepairPad pad = other.GetComponent<RepairPad>();
 
-                                                                                   // CHANGE THIS INPUT
-                if (Input.GetMouseButton(1))
+                                                                                   
+                if (Input.GetButton("joystick " + playerNumber + " X"))
                 {
                     pad.Repair();
                 }
@@ -70,9 +72,9 @@ public class PlayerInteraction : MonoBehaviour
             if (other.tag == "Repair Pad" && carryingPlank)
         {
             RepairPad pad = other.GetComponent<RepairPad>();
-                                                                                   //CHANGE THIS INPUT
+                                                                                 
            
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetButtonDown("joystick " + playerNumber + " A"))
             {
                 if (pad.CheckIfCanAdd())
                 {
@@ -87,9 +89,9 @@ public class PlayerInteraction : MonoBehaviour
         if (other.tag == "Furnace" && carryingCoal)
         {
            Furnace fur = other.GetComponent<Furnace>();
-            //CHANGE THIS INPUT
+   
 
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetButtonDown("joystick " + playerNumber + " A"))
             {
                 if (fur.CheckIfCanAdd())
                 {

@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38d77c1211515424d8fd1f64b899392c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerNumber: 0
   isCarrying: 0
   carryingPlank: 0
   carryingCoal: 0
@@ -114,8 +115,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 2.2490282, z: 1}
-  m_Center: {x: 0, y: 1.1245141, z: -0}
+  m_Size: {x: 1, y: 2.3067737, z: 1}
+  m_Center: {x: 0, y: -0.65338683, z: 0}
 --- !u!1 &7318781720324790921
 GameObject:
   m_ObjectHideFlags: 0
@@ -307,6 +308,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4508218064148416290}
     m_Modifications:
+    - target: {fileID: 6404265901258740993, guid: 4581400c15046c541b188e3f55339800,
+        type: 3}
+      propertyPath: m_Name
+      value: Model
+      objectReference: {fileID: 0}
     - target: {fileID: 9173335350491841359, guid: 4581400c15046c541b188e3f55339800,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -376,11 +382,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6404265901258740993, guid: 4581400c15046c541b188e3f55339800,
-        type: 3}
-      propertyPath: m_Name
-      value: Model
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4581400c15046c541b188e3f55339800, type: 3}
