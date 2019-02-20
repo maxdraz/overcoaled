@@ -40,18 +40,25 @@ public class PlayerInteraction : MonoBehaviour
         // if colliding with boxes and not carrying anything
         if (other.tag == "Plank Box" && !isCarrying)
         {
-            
+
+            //display button sprite
+            other.transform.GetComponentInChildren<SpriteRenderer>().enabled = true;
+
             if (Input.GetButtonDown("joystick " + playerNumber + " A"))
             {
                 PickUpPlank();
+                other.transform.GetComponentInChildren<SpriteRenderer>().enabled = false;
             }
         }
+        
         if (other.tag == "Coal Box" && !isCarrying)
         {
-            
+            //display button sprite
+            other.transform.GetComponentInChildren<SpriteRenderer>().enabled = true;
             if (Input.GetButton("joystick " + playerNumber + " A"))
             {
                 PickUpCoal();
+                other.transform.GetComponentInChildren<SpriteRenderer>().enabled = false;
             }
         }
 
@@ -103,6 +110,15 @@ public class PlayerInteraction : MonoBehaviour
         }
 
 
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if(other.tag == "Plank Box" || other.tag == "Coal Box" || other.tag == "Ammo Box")
+        {
+            //turn off button sprite
+            other.transform.GetComponentInChildren<SpriteRenderer>().enabled = false;
+        }
     }
 
     void PickUpPlank()
