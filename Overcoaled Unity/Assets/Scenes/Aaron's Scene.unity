@@ -230,7 +230,7 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
-  playerCharacter: {fileID: 2297279767162362453, guid: 391d3ee86c37dc74d8eebec7df987a20,
+  playerCharacter: {fileID: 4517062281766628258, guid: 391d3ee86c37dc74d8eebec7df987a20,
     type: 3}
   playerColours:
   - {r: 0.4009434, g: 0.53559995, b: 1, a: 1}
