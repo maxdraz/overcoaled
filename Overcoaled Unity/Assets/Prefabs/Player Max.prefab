@@ -116,13 +116,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2359180859810126144}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.56, z: 0.55}
+  m_LocalRotation: {x: -0.16484442, y: -0, z: 0.0000000027939677, w: 0.98631966}
+  m_LocalPosition: {x: 0.000000007450581, y: -0.55999994, z: 0.55000085}
   m_LocalScale: {x: 1, y: 0.3, z: 0.3}
   m_Children: []
   m_Father: {fileID: 7925655978254833728}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -18.976002, y: 0, z: 0}
 --- !u!33 &5332498438611903559
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -591,6 +591,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerNumber: 0
   moveSpeed: 0
+  normalMoveSpeed: 0
+  slowMoveSpeed: 0
 --- !u!114 &2018592703854157477
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -626,6 +628,8 @@ MonoBehaviour:
   carryingPlank: 0
   carryingCoal: 0
   carryingAmmo: 0
+  plankPrefab: {fileID: 8176001787170122386, guid: 74056aec36045a541b6810f3cf22a738,
+    type: 3}
   holding: 0
 --- !u!65 &9057819044887395562
 BoxCollider:

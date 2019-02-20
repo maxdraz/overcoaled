@@ -9,20 +9,22 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField] private bool carryingPlank = false;
     [SerializeField] private bool carryingCoal = false;
     [SerializeField] private bool carryingAmmo = false;
-    private GameObject plankGO;
-    private GameObject coalGO;
-    private GameObject ammoGO;
+    private GameObject plankHolder;
+    private GameObject coalHolder;
+    private GameObject ammoHolder;
     private PlayerMove pm;
     private PlayerShoot ps;
+
+    [SerializeField] private GameObject plankPrefab;
 
     public enum item { nothing, plank, coal, ammo };
     public item holding = item.nothing;
 
     private void Awake()
     {
-        plankGO = transform.Find("Plank").gameObject;
-        coalGO = transform.Find("Coal").gameObject;
-        ammoGO = transform.Find("Ammo").gameObject;
+        plankHolder = transform.Find("Plank").gameObject;
+        coalHolder = transform.Find("Coal").gameObject;
+        ammoHolder = transform.Find("Ammo").gameObject;
 
         pm = GetComponent<PlayerMove>();
         ps = GetComponent<PlayerShoot>();
@@ -49,6 +51,13 @@ public class PlayerInteraction : MonoBehaviour
             {
                 gameObject.GetComponent<PlayerShoot>().Reload();
                 Drop();
+            }
+
+            //Throwing
+            if(Input.GetButtonDown("joystick " + playerNumber + " RTrigger"))
+            {
+               
+                Throw();
             }
         }
     }
@@ -154,21 +163,21 @@ public class PlayerInteraction : MonoBehaviour
     void PickUpPlank()
     {
        
-        plankGO.SetActive(true);
+        plankHolder.SetActive(true);
         isCarrying = true;
         carryingPlank = true;
     }
 
     void PickUpCoal()
     {
-        coalGO.SetActive(true);
+        coalHolder.SetActive(true);
         isCarrying = true;
         carryingCoal = true;
     }
 
     void PickUpAmmo()
     {
-        ammoGO.SetActive(true);
+        ammoHolder.SetActive(true);
         isCarrying = true;
         carryingAmmo = true;
     }
@@ -183,13 +192,23 @@ public class PlayerInteraction : MonoBehaviour
             carryingCoal = false;
             carryingAmmo = false;
             carryingCoal = false;
-            plankGO.SetActive(false);
-            coalGO.SetActive(false);
-            ammoGO.SetActive(false);
+            plankHolder.SetActive(false);
+            coalHolder.SetActive(false);
+            ammoHolder.SetActive(false);
             isCarrying = false;
 
             pm.SetSpeed(pm.normalMoveSpeed);
             ps.enabled = true;
+        }
+    }
+
+    void Throw()
+    {
+        if (carryingPlank)
+        {
+            
+            GameObject plankGO = (GameObject)Instantiate(plankPrefab, plankHolder.transform.position, plankHolder.transform.rotation);
+            Drop();
         }
     }
 }
