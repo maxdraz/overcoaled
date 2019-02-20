@@ -9,6 +9,8 @@ TagManager:
   - Coal Box
   - Ammo Box
   - Furnace
+  - Bullet
+  - Ground
   layers:
   - Default
   - TransparentFX

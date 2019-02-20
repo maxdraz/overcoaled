@@ -13,6 +13,7 @@ public class PlayerInteraction : MonoBehaviour
     private GameObject coalGO;
     private GameObject ammoGO;
     private PlayerMove pm;
+    private PlayerShoot ps;
 
     public enum item { nothing, plank, coal, ammo };
     public item holding = item.nothing;
@@ -23,7 +24,8 @@ public class PlayerInteraction : MonoBehaviour
         coalGO = transform.Find("Coal").gameObject;
         ammoGO = transform.Find("Ammo").gameObject;
 
-        pm = gameObject.GetComponent<PlayerMove>();
+        pm = GetComponent<PlayerMove>();
+        ps = GetComponent<PlayerShoot>();
     }
 
     private void Update()
@@ -34,6 +36,9 @@ public class PlayerInteraction : MonoBehaviour
             //slow player move speed (reset in Drop())
             
             pm.SetSpeed(pm.slowMoveSpeed);
+
+            //disable shooting
+            ps.enabled= false;
 
             if (Input.GetButtonDown("joystick " + playerNumber + " B"))
             {
@@ -184,6 +189,7 @@ public class PlayerInteraction : MonoBehaviour
             isCarrying = false;
 
             pm.SetSpeed(pm.normalMoveSpeed);
+            ps.enabled = true;
         }
     }
 }
