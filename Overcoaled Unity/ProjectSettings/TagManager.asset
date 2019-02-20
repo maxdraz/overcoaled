@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Plank Box
+  - Repair Pad
+  - Coal Box
+  - Ammo Box
+  - Furnace
   layers:
   - Default
   - TransparentFX
