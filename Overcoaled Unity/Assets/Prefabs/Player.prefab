@@ -102,6 +102,7 @@ MonoBehaviour:
   carryingPlank: 0
   carryingCoal: 0
   carryingAmmo: 0
+  holding: 0
 --- !u!65 &3377180755368321928
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -306,11 +307,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4508218064148416290}
     m_Modifications:
-    - target: {fileID: 6404265901258740993, guid: 4581400c15046c541b188e3f55339800,
-        type: 3}
-      propertyPath: m_Name
-      value: Model
-      objectReference: {fileID: 0}
     - target: {fileID: 9173335350491841359, guid: 4581400c15046c541b188e3f55339800,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -380,6 +376,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6404265901258740993, guid: 4581400c15046c541b188e3f55339800,
+        type: 3}
+      propertyPath: m_Name
+      value: Model
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4581400c15046c541b188e3f55339800, type: 3}

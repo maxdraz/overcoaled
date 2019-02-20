@@ -11,6 +11,9 @@ public class PlayerInteraction : MonoBehaviour
     private GameObject plankGO;
     private GameObject coalGO;
 
+    public enum item { nothing, plank, coal, ammo };
+    public item holding = item.nothing;
+
     private void Awake()
     {
         plankGO = transform.Find("Plank").gameObject;
