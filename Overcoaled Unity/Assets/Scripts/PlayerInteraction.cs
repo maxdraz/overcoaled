@@ -49,7 +49,7 @@ public class PlayerInteraction : MonoBehaviour
         if (other.tag == "Coal Box" && !isCarrying)
         {
             
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetButton("joystick " + playerNumber + " A"))
             {
                 PickUpCoal();
             }
