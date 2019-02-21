@@ -7,6 +7,8 @@ public class WaveManager : MonoBehaviour
     [SerializeField] private EnemyWave[] enemyWaves;
     private TravelManager travelManager;
     [SerializeField] private GameObject enemy;
+    [SerializeField] private WallManager wallManager;
+    [SerializeField] private PassengerManager passengerManager;
     [Space(10)]
     [Header("Upper Spawn 1")]
     [SerializeField] private Vector2 topLeftOfUpperSpawn;
@@ -54,7 +56,7 @@ public class WaveManager : MonoBehaviour
         {
             int x = 0;
             int z = 0;
-            int spawn = Random.Range(0, 1);
+            int spawn = Random.Range(0, 2);
             if (i % 2 == 0)
             {
                 if (spawn == 0)
@@ -94,6 +96,8 @@ public class WaveManager : MonoBehaviour
                 z = (int)Random.Range(topLeftOfLowerDestination.y, bottomRightOfLowerDestination.y);
             }
             wave.enemyBody.GetComponent<EnemyBehavior>().SetDestination(x, vectorY, z);
+            wave.enemyBody.GetComponent<EnemyBehavior>().wallManager = wallManager;
+            wave.enemyBody.GetComponent<EnemyBehavior>().passengerManager = passengerManager;
         }
     }
 

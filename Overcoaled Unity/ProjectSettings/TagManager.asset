@@ -12,6 +12,8 @@ TagManager:
   - Bullet
   - Ground
   - Plank
+  - Wall
+  - Enemy Bullet
   layers:
   - Default
   - TransparentFX

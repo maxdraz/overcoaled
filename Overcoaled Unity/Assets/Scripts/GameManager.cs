@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager GM = null;              //Static instance of GameManager which allows it to be accessed by any other script.
 
-    List<Player> players = new List<Player>();
+    public List<Player> players = new List<Player>();
     [SerializeField] private int playerHealth = 0;
     [SerializeField] private float playerSpeed = 0;
     [SerializeField] private float playerSlowSpeed = 0;

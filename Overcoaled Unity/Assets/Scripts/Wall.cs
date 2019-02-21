@@ -32,9 +32,10 @@ public class Wall : MonoBehaviour
 
 
     }
-                                                                                   // REMOVE AFTER TESTING
-    private void OnMouseDown()
+
+    private void OnTriggerEnter(Collider other)
     {
+        if (other.tag == "Enemy Bullet")
         TakeDamage(1);
     }
 
