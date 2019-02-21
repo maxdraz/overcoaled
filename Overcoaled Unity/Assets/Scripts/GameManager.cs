@@ -12,7 +12,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float playerSlowSpeed = 0;
     [Tooltip("0 = player 1, etc")][SerializeField] private Vector3[] playerSpawnLocations;
     [SerializeField] private GameObject playerCharacter;
-    [Tooltip("0 = player 1, etc")][SerializeField] private Color[] playerColours;
+    [Tooltip("0 = player 1, etc")] [SerializeField] private Color[] playerColours;
+
+    [SerializeField] TravelManager travelManager;
 
     //Awake is always called before any Start functions
     void Awake()
@@ -45,6 +47,9 @@ public class GameManager : MonoBehaviour
         players[players.Count - 1].playerObject.GetComponent<PlayerMove>().normalMoveSpeed = playerSpeed;
         players[players.Count - 1].playerObject.GetComponent<PlayerShoot>().playerNumber = playerNum;
         players[players.Count - 1].playerObject.GetComponent<PlayerInteraction>().playerNumber = playerNum;
+
+        //////////////move this
+        travelManager.StartTimer();
     }
 
 }
