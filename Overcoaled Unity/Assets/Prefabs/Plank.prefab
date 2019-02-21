@@ -16,10 +16,9 @@ GameObject:
   - component: {fileID: 155221924405194421}
   - component: {fileID: 8176001787170122377}
   - component: {fileID: 593809077105834274}
-  - component: {fileID: 9135783433861349296}
   m_Layer: 0
   m_Name: Plank
-  m_TagString: Untagged
+  m_TagString: Plank
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -229,6 +228,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceScale: 8.5
+  grounded: 0
+  groundLayerIndex: 0
 --- !u!114 &593809077105834274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -242,17 +243,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   time: 3
---- !u!114 &9135783433861349296
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8176001787170122386}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc0ba927ad13cc64fa8f0b6cb4b18006, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  grounded: 0
-  groundLayerIndex: 9

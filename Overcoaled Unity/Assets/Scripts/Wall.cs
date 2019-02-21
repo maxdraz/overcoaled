@@ -8,12 +8,12 @@ public class Wall : MonoBehaviour
     public float health = 3f;
     [SerializeField] private GameObject repairPadPrefab;
     private Vector3 repairPadOffset = new Vector3(0, -0.5f, 0);
-    private TextMesh healthText;
+    //private TextMesh healthText;
 
     private void Awake()
     {
-        healthText = GetComponentInChildren<TextMesh>();
-        healthText.text = "HP: " + health;
+        //healthText = GetComponentInChildren<TextMesh>();
+        //healthText.text = "HP: " + health;
     }
 
     public void TakeDamage(float dmg)
@@ -21,7 +21,7 @@ public class Wall : MonoBehaviour
       
 
         health -= dmg;
-        healthText.text = "HP: " + health;
+       // healthText.text = "HP: " + health;
 
         if (health <= 0)
         {

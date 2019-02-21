@@ -14,6 +14,7 @@ public class PlayerInteraction : MonoBehaviour
     private GameObject ammoHolder;
     private PlayerMove pm;
     private PlayerShoot ps;
+    private ParticleSystem particle;
 
     [SerializeField] private GameObject plankPrefab;
 
@@ -25,6 +26,7 @@ public class PlayerInteraction : MonoBehaviour
         plankHolder = transform.Find("Plank").gameObject;
         coalHolder = transform.Find("Coal").gameObject;
         ammoHolder = transform.Find("Ammo").gameObject;
+        particle = transform.GetComponentInChildren<ParticleSystem>();
 
         pm = GetComponent<PlayerMove>();
         ps = GetComponent<PlayerShoot>();
@@ -41,6 +43,8 @@ public class PlayerInteraction : MonoBehaviour
 
             //disable shooting
             ps.enabled= false;
+            // pause particle system
+            particle.Stop();
 
             if (Input.GetButtonDown("joystick " + playerNumber + " B"))
             {
@@ -78,7 +82,9 @@ public class PlayerInteraction : MonoBehaviour
                 other.transform.GetComponentInChildren<SpriteRenderer>().enabled = false;
             }
         }
-        
+
+       
+
         if (other.tag == "Coal Box" && !isCarrying)
         {
             //display button sprite
@@ -151,6 +157,19 @@ public class PlayerInteraction : MonoBehaviour
 
     }
 
+    private void OnCollisionStay(Collision collision)
+    {
+        if(collision.gameObject.tag == "Plank" && !isCarrying)
+        {
+               if (Input.GetButtonDown("joystick " + playerNumber + " A"))
+                {
+                    PickUpPlank();
+                Destroy(collision.gameObject);
+                }
+            
+        }
+    }
+
     private void OnTriggerExit(Collider other)
     {
         if(other.tag == "Plank Box" || other.tag == "Coal Box" || other.tag == "Ammo Box")
@@ -199,6 +218,7 @@ public class PlayerInteraction : MonoBehaviour
 
             pm.SetSpeed(pm.normalMoveSpeed);
             ps.enabled = true;
+            particle.Play();
         }
     }
 
