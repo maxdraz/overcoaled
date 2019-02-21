@@ -5,9 +5,13 @@ using UnityEngine;
 public class BulletMove : MonoBehaviour
 {
     [SerializeField] private float bulletSpeed;
+    [SerializeField] private int wallLayerIndex = 10;
+    
     // Update is called once per frame
-    void Update()
+    void  FixedUpdate()
     {
         transform.Translate(Vector3.forward * bulletSpeed * Time.deltaTime);
     }
+
+   
 }

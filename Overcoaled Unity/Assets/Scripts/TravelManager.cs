@@ -7,8 +7,8 @@ public class TravelManager : MonoBehaviour
 
     [SerializeField] private int fullTravelLength;
     [SerializeField] private int fullTimeLength;
-   [SerializeField] public float travelDistance = 0;
-   [SerializeField] private float timeSinceStart = 0;
+    [SerializeField] public float travelDistance = 0;
+    [SerializeField] private float timeSinceStart = 0;
     private bool travelBegun;
     private int currentSpeed;
     // Update is called once per frame
