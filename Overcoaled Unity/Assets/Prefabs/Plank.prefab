@@ -229,7 +229,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   forceScale: 8.5
   grounded: 0
-  groundLayerIndex: 0
+  groundLayerIndex: 9
+  groundHitPS: {fileID: 4242870348423495881, guid: 0efe82cf0044c894ab7f97346afe58a5,
+    type: 3}
 --- !u!114 &593809077105834274
 MonoBehaviour:
   m_ObjectHideFlags: 0

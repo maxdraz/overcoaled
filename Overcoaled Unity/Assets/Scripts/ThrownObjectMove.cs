@@ -8,6 +8,7 @@ public class ThrownObjectMove : MonoBehaviour
     public float forceScale = 8f;
     [SerializeField] private bool grounded = false;
     public int groundLayerIndex;
+    public GameObject groundHitPS;
 
     // Start is called before the first frame update
     void Start()
@@ -21,10 +22,11 @@ public class ThrownObjectMove : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.layer == groundLayerIndex)
+        if (collision.gameObject.layer == groundLayerIndex && !grounded)
         {
-
+            print(collision.gameObject.name);
             grounded = true;
+            GameObject ps = (GameObject)Instantiate(groundHitPS, transform.position, Quaternion.identity);
         }
     }
 
