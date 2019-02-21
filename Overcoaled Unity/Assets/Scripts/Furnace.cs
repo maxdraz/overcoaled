@@ -9,6 +9,7 @@ public class Furnace : MonoBehaviour
     private TextMesh coalText;
     [SerializeField] private float burnCD = 3f;
     [SerializeField] private float burnCDRemaining;
+    [SerializeField] private TravelManager travelManager;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +29,7 @@ public class Furnace : MonoBehaviour
             if(burnCDRemaining <= 0)
             {
                 coalCount -= 1;
+                travelManager.AddDistance(coalCount);
                 coalText.text = "Coal: " + coalCount.ToString() + "/" + maxCoal.ToString();
                 burnCDRemaining = burnCD;
             }
@@ -43,6 +45,7 @@ public class Furnace : MonoBehaviour
         else
         {
             coalCount += amount;
+            travelManager.AddDistance(coalCount);
             coalText.text = "Coal: " + coalCount.ToString() + "/" + maxCoal.ToString();
         }
     }

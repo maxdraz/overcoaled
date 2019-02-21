@@ -114,18 +114,22 @@ public class EnemyBehavior : MonoBehaviour
 
             foreach (WallClass wall in wallManager.Walls)
             {
+                if (wall.wall != null)
                 if (wall.position == targetAreaToIndex(target))
                 {
                     if (shootTarget != null)
                     {
+                        if (wall.wall != null)
                         if (Vector3.Distance(wall.wall.transform.position, transform.position)
                             < Vector3.Distance(shootTarget.position, transform.position))
                         {
+                            if (wall.wall != null)
                             shootTarget = wall.wall.transform;
                         }
                     }
                     else
                     {
+                        if (wall.wall != null)
                         shootTarget = wall.wall.transform;
                     }
                 }
