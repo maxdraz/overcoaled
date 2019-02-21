@@ -31,7 +31,7 @@ public class PlayerShoot : MonoBehaviour
 
     private void Shoot()
     {
-        print(Input.GetAxisRaw("joystick " + playerNumber + " RTrigger"));
+
         GameObject projectile = Instantiate(bullet, spawnLocation.position, spawnLocation.rotation);
         
         Invoke("shotDelay", shootDelayTime);
