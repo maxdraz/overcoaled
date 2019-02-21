@@ -54,7 +54,7 @@ public class PlayerInteraction : MonoBehaviour
             }
 
             //Throwing
-            if(Input.GetButtonDown("joystick " + playerNumber + " RTrigger"))
+            if(Input.GetButtonDown("joystick " + playerNumber + " X"))
             {
                
                 Throw();
