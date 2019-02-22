@@ -38,18 +38,24 @@ public class Wall : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Enemy Bullet")
-        TakeDamage(1);
+        {
+            TakeDamage(1);
+
+            GameObject ps = (GameObject)Instantiate(bulletDeathParticle, other.gameObject.transform.position, Quaternion.identity);
+            Destroy(other.gameObject);
+        }
     }
 
-    private void OnCollisionStay(Collision collision)
+    private void OnCollisionEnter(Collision collision)
     {
         
         if (collision.gameObject.tag == "Bullet")
         {
             print("colliding");
             //GameObject ps = (GameObject)Instantiate(bulletDeathParticle, collision.GetContact(0).point, Quaternion.identity);
-            Destroy(collision.gameObject);
+
             GameObject ps = (GameObject)Instantiate(bulletDeathParticle, collision.gameObject.transform.position, Quaternion.identity);
+            Destroy(collision.gameObject);
         }
     }
 

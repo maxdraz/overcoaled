@@ -1,0 +1,105 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1348415263003903578
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1348415263003903580}
+  - component: {fileID: 1348415263003903581}
+  - component: {fileID: 1348415263003903582}
+  - component: {fileID: 1348415263003903583}
+  m_Layer: 0
+  m_Name: Move & Enemy Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1348415263003903580
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1348415263003903578}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 6.104114, y: 5.334529, z: -1.0763035}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1348415263003903581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1348415263003903578}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c501dbc749be91b48a7e47a7c4f81a94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 8152852712019485955, guid: 9166fc2e06102f74dbaec75e09a06b68, type: 3}
+--- !u!114 &1348415263003903582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1348415263003903578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aee513b4e906f1418fde19da65f5343, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fullTravelLength: 100
+  fullTimeLength: 180
+  travelDistance: 0
+  timeSinceStart: 0
+--- !u!114 &1348415263003903583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1348415263003903578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68f87b2fa80fd3c4e9ef2df81f43f6d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyWaves:
+  - enterDistance: 5
+    amount: 3
+    activated: 0
+    enemyBody: {fileID: 0}
+  - enterDistance: 30
+    amount: 6
+    activated: 0
+    enemyBody: {fileID: 0}
+  - enterDistance: 60
+    amount: 10
+    activated: 0
+    enemyBody: {fileID: 0}
+  enemy: {fileID: 8152852712019485955, guid: 9166fc2e06102f74dbaec75e09a06b68, type: 3}
+  wallManager: {fileID: 0}
+  passengerManager: {fileID: 0}
+  topLeftOfUpperSpawn: {x: -20, y: 10}
+  bottomRighttOfUpperSpawn: {x: -10, y: 3}
+  topLeftOfUpperSpawn2: {x: -10, y: 15}
+  bottomRighttOfUpperSpawn2: {x: 0, y: 10}
+  topLeftOfLowerSpawn: {x: -20, y: -3}
+  bottomRightOfLowerSpawn: {x: -10, y: -10}
+  topLeftOfLowerSpawn2: {x: -10, y: -10}
+  bottomRightOfLowerSpawn2: {x: 0, y: -15}
+  topLeftOfUpperDestination: {x: -10, y: 10}
+  bottomRightOfUpperDestination: {x: 20, y: 6}
+  topLeftOfLowerDestination: {x: -10, y: -6}
+  bottomRightOfLowerDestination: {x: 20, y: -10}
+  vectorY: 1.5
