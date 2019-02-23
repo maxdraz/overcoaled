@@ -2434,8 +2434,48 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8603679328106671958, guid: 98319f8a6cf62434aa1df54c54dd1079,
         type: 3}
+      propertyPath: playerSpawnLocations.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8603679328106671958, guid: 98319f8a6cf62434aa1df54c54dd1079,
+        type: 3}
       propertyPath: travelManager
       value: 
       objectReference: {fileID: 429302316}
+    - target: {fileID: 8603679328106671958, guid: 98319f8a6cf62434aa1df54c54dd1079,
+        type: 3}
+      propertyPath: playerSpawnLocations.Array.data[0].x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8603679328106671958, guid: 98319f8a6cf62434aa1df54c54dd1079,
+        type: 3}
+      propertyPath: playerSpawnLocations.Array.data[0].z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8603679328106671958, guid: 98319f8a6cf62434aa1df54c54dd1079,
+        type: 3}
+      propertyPath: playerSpawnLocations.Array.data[1].y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8603679328106671958, guid: 98319f8a6cf62434aa1df54c54dd1079,
+        type: 3}
+      propertyPath: playerSpawnLocations.Array.data[2].x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8603679328106671958, guid: 98319f8a6cf62434aa1df54c54dd1079,
+        type: 3}
+      propertyPath: playerSpawnLocations.Array.data[2].z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8603679328106671958, guid: 98319f8a6cf62434aa1df54c54dd1079,
+        type: 3}
+      propertyPath: playerSpawnLocations.Array.data[3].y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8603679328106671958, guid: 98319f8a6cf62434aa1df54c54dd1079,
+        type: 3}
+      propertyPath: playerSpawnLocations.Array.data[0].y
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 98319f8a6cf62434aa1df54c54dd1079, type: 3}
