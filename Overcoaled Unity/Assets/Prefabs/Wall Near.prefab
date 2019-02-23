@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8d9d7c5273f695489a8244ab225e42a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isFar: 0
+  typeOfWall: 2
   health: 3
   repairPadPrefab: {fileID: 6983315175861478071, guid: eddb7331eaa78e940a91f8afa2e02635,
     type: 3}
