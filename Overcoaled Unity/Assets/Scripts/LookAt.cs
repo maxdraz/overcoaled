@@ -6,6 +6,7 @@ public class LookAt : MonoBehaviour
 {
 
     public Transform target;
+    public bool updateEachFrame;
 
     private void Start()
     {
@@ -21,5 +22,21 @@ public class LookAt : MonoBehaviour
     void OnEnable()
     {
         transform.LookAt(target);
+
+       
+    }
+
+    private void Update()
+    {
+        if (updateEachFrame)
+        {
+            StartCoroutine(LookAtEachFrame());
+        }
+    }
+
+    IEnumerator LookAtEachFrame()
+    {
+        transform.LookAt(target);
+        yield return null;
     }
 }

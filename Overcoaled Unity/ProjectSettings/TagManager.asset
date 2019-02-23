@@ -14,6 +14,7 @@ TagManager:
   - Plank
   - Wall
   - Enemy Bullet
+  - Coal
   layers:
   - Default
   - TransparentFX

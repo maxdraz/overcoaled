@@ -52,9 +52,9 @@ public class Wall : MonoBehaviour
         if (collision.gameObject.tag == "Bullet")
         {
             print("colliding");
-            //GameObject ps = (GameObject)Instantiate(bulletDeathParticle, collision.GetContact(0).point, Quaternion.identity);
-
-            GameObject ps = (GameObject)Instantiate(bulletDeathParticle, collision.gameObject.transform.position, Quaternion.identity);
+            //GameObject ps = (GameObject)Instantiate(bulletDeathParticle, collision.GetContact(0).point, Quaternion.identity);            
+            
+            GameObject ps = (GameObject)Instantiate(bulletDeathParticle, collision.GetContact(0).point,Quaternion.identity);
             Destroy(collision.gameObject);
         }
     }

@@ -16,10 +16,22 @@ public class PlayerInteraction : MonoBehaviour
     private PlayerShoot ps;
     private ParticleSystem particle;
 
+    [SerializeField] private float level1ThrowTime;
+    
+    [SerializeField] private float level3ThrowTime;
+    [SerializeField] private float maxThrowTime;
+    private bool countUp = true;
+
     [SerializeField] private GameObject plankPrefab;
+    [SerializeField] private GameObject coalPrefab;
 
     public enum item { nothing, plank, coal, ammo };
     public item holding = item.nothing;
+
+    public float throwTimer = 0;
+
+    private Transform throwChargesHolder;
+   
 
     private void Awake()
     {
@@ -27,7 +39,8 @@ public class PlayerInteraction : MonoBehaviour
         coalHolder = transform.Find("Coal").gameObject;
         ammoHolder = transform.Find("Ammo").gameObject;
         particle = transform.GetComponentInChildren<ParticleSystem>();
-
+        throwChargesHolder = transform.Find("ThrowCharges");
+        
         pm = GetComponent<PlayerMove>();
         ps = GetComponent<PlayerShoot>();
     }
@@ -58,11 +71,86 @@ public class PlayerInteraction : MonoBehaviour
             }
 
             //Throwing
-            if(Input.GetButtonDown("joystick " + playerNumber + " X"))
+            if(Input.GetButton("joystick " + playerNumber + " X"))
             {
-               
-                Throw();
+
+                if (countUp)
+                {
+                    throwTimer += Time.deltaTime;
+
+                    if(throwTimer >= maxThrowTime)
+                    {
+                        countUp = false;
+                    }
+
+                }
+
+                if (!countUp)
+                {
+                    throwTimer -= Time.deltaTime;
+                    
+                    if(throwTimer <= 0)
+                    {
+                        countUp = true;
+                    }
+                }
+                
+                if(throwTimer <= level1ThrowTime)
+                {
+                    throwChargesHolder.transform.GetChild(0).gameObject.SetActive(true);
+                }
+                
+                if (throwTimer >level1ThrowTime)
+                {
+                    throwChargesHolder.transform.GetChild(1).gameObject.SetActive(true);
+                }
+                else
+                {
+                    throwChargesHolder.transform.GetChild(1).gameObject.SetActive(false);
+                }
+                if (throwTimer >= level3ThrowTime)
+                {
+                    throwChargesHolder.transform.GetChild(2).gameObject.SetActive(true);
+                }
+
+                else
+                {                    
+                    throwChargesHolder.transform.GetChild(2).gameObject.SetActive(false);
+                }
+
+                
+
             }
+
+
+            else
+            {
+                
+                if (Input.GetButtonUp("joystick " + playerNumber + " X"))
+                {
+                    print("let go after " + throwTimer);
+                    
+                    if(throwTimer >= level3ThrowTime)
+                    {
+                        Throw(3);
+                    } else if(throwTimer > level1ThrowTime)
+                    {
+                        Throw(2);
+                    }
+                    else if (throwTimer <= level1ThrowTime)
+                    {
+                        Throw(1);
+                    }
+
+                    throwTimer = 0;
+                    throwChargesHolder.transform.GetChild(0).gameObject.SetActive(false);
+                    throwChargesHolder.transform.GetChild(1).gameObject.SetActive(false);
+                    throwChargesHolder.transform.GetChild(2).gameObject.SetActive(false);
+                }
+                
+                
+            }
+            
         }
     }
 
@@ -159,6 +247,7 @@ public class PlayerInteraction : MonoBehaviour
 
     private void OnCollisionStay(Collision collision)
     {
+        // Picking stuff off ground
         if(collision.gameObject.tag == "Plank" && !isCarrying)
         {
                if (Input.GetButtonDown("joystick " + playerNumber + " A"))
@@ -167,6 +256,16 @@ public class PlayerInteraction : MonoBehaviour
                 Destroy(collision.gameObject);
                 }
             
+        }
+
+        if (collision.gameObject.tag == "Coal" && !isCarrying)
+        {
+            if (Input.GetButtonDown("joystick " + playerNumber + " A"))
+            {
+                PickUpCoal();
+                Destroy(collision.gameObject);
+            }
+
         }
     }
 
@@ -222,12 +321,24 @@ public class PlayerInteraction : MonoBehaviour
         }
     }
 
-    void Throw()
+    void Throw(int forceLevel)
     {
         if (carryingPlank)
         {
             
             GameObject plankGO = (GameObject)Instantiate(plankPrefab, plankHolder.transform.position, plankHolder.transform.rotation);
+            ThrownObjectMove move = plankGO.GetComponent<ThrownObjectMove>();
+            move.setForceLevel(forceLevel);
+            move.Move();
+            Drop();
+        }
+
+        if (carryingCoal)
+        {
+            GameObject coalGO = (GameObject)Instantiate(coalPrefab, plankHolder.transform.position, plankHolder.transform.rotation);
+            ThrownObjectMove move = coalGO.GetComponent<ThrownObjectMove>();
+            move.setForceLevel(forceLevel);
+            move.Move();
             Drop();
         }
     }
