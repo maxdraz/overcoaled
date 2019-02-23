@@ -15,6 +15,7 @@ TagManager:
   - Wall
   - Enemy Bullet
   - Coal
+  - Death
   layers:
   - Default
   - TransparentFX

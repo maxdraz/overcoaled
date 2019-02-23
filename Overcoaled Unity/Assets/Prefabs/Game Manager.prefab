@@ -44,21 +44,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28b4da6c2528d6a4d95dd470bee5f8d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  players: []
   playerHealth: 5
   playerSpeed: 6
   playerSlowSpeed: 3
   playerSpawnLocations:
-  - {x: 0, y: 3, z: 0}
-  - {x: 0, y: 3, z: 0}
-  - {x: 0, y: 3, z: 0}
-  - {x: 0, y: 3, z: 0}
-  playerCharacter: {fileID: 7908930458116142272, guid: 7274ca952e4a6354fac7df0f1f9bf8a0,
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  playerCharacter: {fileID: 4614903107362945743, guid: d7f8a248fef42b043948588a93da6238,
     type: 3}
   playerColours:
   - {r: 0.4198113, g: 0.6774122, b: 1, a: 1}
   - {r: 1, g: 0.28773582, b: 0.28773582, a: 1}
   - {r: 0, g: 0, b: 0, a: 0}
   - {r: 0, g: 0, b: 0, a: 0}
+  travelManager: {fileID: 0}
 --- !u!114 &8603679328106671959
 MonoBehaviour:
   m_ObjectHideFlags: 0
