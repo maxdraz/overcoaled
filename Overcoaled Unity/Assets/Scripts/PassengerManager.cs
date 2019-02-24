@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PassengerManager : MonoBehaviour
 {
-    [SerializeField] private Vector3 topLeftPassenger;
+    [SerializeField] private float passengerY;
     [SerializeField] private int rowLength;
     [SerializeField] private int rowAmount;
     [SerializeField] private GameObject passenger;
@@ -12,17 +12,28 @@ public class PassengerManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        int z = (int)topLeftPassenger.z;
-        int x = (int)topLeftPassenger.x;
-        for (int a = z; a > -(z+rowAmount); a--)
+        Vector3 topLeftPassenger = transform.position;
+        topLeftPassenger.y = passengerY;
+        for (int a = 0; a < rowAmount; a++)
         {
-            for (int l = x; l < x+rowLength; l++)
+            topLeftPassenger.z += 1;
+            for (int l = 0; l < rowLength; l++)
             {
-                topLeftPassenger.x = l;
+                topLeftPassenger.x += 1;
                 passengers.Add(Instantiate(passenger, topLeftPassenger, Quaternion.identity));
                 passengers[passengers.Count - 1].GetComponent<Renderer>().material.color = Random.ColorHSV();
+                passengers[passengers.Count - 1].GetComponent<Passenger>().passengerManager = this;
             }
-            topLeftPassenger.z = a;
+            topLeftPassenger.x = transform.position.x;
         }
+
+        GameManager.GM.passengerCount = passengers.Count;
     }
+
+    public void PassengerDead(GameObject passenger)
+    {
+        passengers.Remove(passenger);
+    }
+
+
 }
