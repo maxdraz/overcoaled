@@ -44,6 +44,7 @@ public class PlayerInteraction : MonoBehaviour
         
         pm = GetComponent<PlayerMove>();
         ps = GetComponent<PlayerShoot>();
+       // ps.enabled = false;
     }
 
     private void Update()
@@ -56,7 +57,10 @@ public class PlayerInteraction : MonoBehaviour
             pm.SetSpeed(pm.slowMoveSpeed);
 
             //disable shooting
-            ps.enabled= false;
+            if (!carryingGun)
+            {
+                ps.enabled = false;
+            }
             // pause particle system
             particle.Stop();
 
@@ -193,6 +197,7 @@ public class PlayerInteraction : MonoBehaviour
             if (Input.GetButton("joystick " + playerNumber + " A"))
             {
                 PickUpGun();
+                ps.Reload();
                 other.transform.GetComponentInChildren<SpriteRenderer>().enabled = false;
             }
         }
@@ -275,6 +280,7 @@ public class PlayerInteraction : MonoBehaviour
             if (Input.GetButtonDown("joystick " + playerNumber + " A"))
             {
                 PickUpGun();
+                ps.ammo = collision.gameObject.GetComponent<Gun>().ammoInGun;
                 Destroy(collision.gameObject);
             }
 
@@ -310,6 +316,7 @@ public class PlayerInteraction : MonoBehaviour
         gunHolder.SetActive(true);
         isCarrying = true;
         carryingGun = true;
+        ps.enabled = true;
     }
 
     void Drop()
@@ -328,7 +335,7 @@ public class PlayerInteraction : MonoBehaviour
             isCarrying = false;
 
             pm.SetSpeed(pm.normalMoveSpeed);
-            ps.enabled = true;
+            ps.enabled = false;
             particle.Play();
         }
     }
@@ -356,6 +363,7 @@ public class PlayerInteraction : MonoBehaviour
         if (carryingGun)
         {
             GameObject gunGO = (GameObject)Instantiate(gunPrefab, plankHolder.transform.position, plankHolder.transform.rotation);
+            gunGO.GetComponent<Gun>().SetAmmo(ps.ammo);
             ThrownObjectMove move = gunGO.GetComponent<ThrownObjectMove>();
             move.setForceLevel(forceLevel);
             move.Move();
