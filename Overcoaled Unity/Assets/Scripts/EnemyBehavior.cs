@@ -21,6 +21,10 @@ public class EnemyBehavior : MonoBehaviour
 
     private List<Player> players = new List<Player>();
 
+    private float throwDynamiteTimer;
+    [SerializeField] public SpawnDynamite spawnDynamite;
+    private bool dynamiteThrown = false;
+
     public void SetDestination(float setX, float setY, float setZ)
     {
         destination = new Vector3(setX, setY, setZ);
@@ -29,6 +33,8 @@ public class EnemyBehavior : MonoBehaviour
         gun.rotateSpeed = rotateSpeed;
         gun.shootDelay = fireRateDelay;
         gun.bullet = enemyBullet;
+
+        throwDynamiteTimer = Random.Range(20.0f, 30.0f);
     }
 
     public void SetTarget()
@@ -115,31 +121,33 @@ public class EnemyBehavior : MonoBehaviour
             foreach (WallClass wall in wallManager.Walls)
             {
                 if (wall.wall != null)
-                if (wall.position == targetAreaToIndex(target))
-                {
-                    if (shootTarget != null)
+                    if (wall.position == targetAreaToIndex(target))
                     {
-                        if (wall.wall != null)
-                        if (Vector3.Distance(wall.wall.transform.position, transform.position)
-                            < Vector3.Distance(shootTarget.position, transform.position))
+                        if (shootTarget != null)
                         {
                             if (wall.wall != null)
-                            shootTarget = wall.wall.transform;
+                                if (Vector3.Distance(wall.wall.transform.position, transform.position)
+                                    < Vector3.Distance(shootTarget.position, transform.position))
+                                {
+                                    if (wall.wall != null)
+                                        shootTarget = wall.wall.transform;
+                                }
+                        }
+                        else
+                        {
+                            if (wall.wall != null)
+                                shootTarget = wall.wall.transform;
                         }
                     }
-                    else
-                    {
-                        if (wall.wall != null)
-                        shootTarget = wall.wall.transform;
-                    }
-                }
             }
 
-            
+
             if (target == carriage.back)
             {
-                print(Random.Range(0, passengerManager.passengers.Count));
-                shootTarget = passengerManager.passengers[Random.Range(0, passengerManager.passengers.Count)].transform;
+                if (passengerManager.passengers.Count > 0)
+                {
+                    shootTarget = passengerManager.passengers[Random.Range(0, passengerManager.passengers.Count)].transform;
+                }
             }
 
             bool playerPriority = false;
@@ -148,7 +156,7 @@ public class EnemyBehavior : MonoBehaviour
                 if (player.playerObject.transform.position.x < targetDistanceMax(target)
                     && player.playerObject.transform.position.x > targetDistanceMin(target))
                 {
-                    
+
                     if (shootTarget != null)
                     {
                         if (playerPriority)
@@ -179,6 +187,13 @@ public class EnemyBehavior : MonoBehaviour
                 gun.AimAndShoot(shootTarget);
             }
 
+        }
+
+        throwDynamiteTimer -= Time.deltaTime;
+        if (throwDynamiteTimer <= 0 && !dynamiteThrown)
+        {
+            spawnDynamite.AddDynamite();
+            dynamiteThrown = true;
         }
     }
 

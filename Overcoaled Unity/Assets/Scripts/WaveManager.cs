@@ -9,6 +9,7 @@ public class WaveManager : MonoBehaviour
     [SerializeField] private GameObject enemy;
     [SerializeField] private WallManager wallManager;
     [SerializeField] private PassengerManager passengerManager;
+    [SerializeField] private SpawnDynamite dynamiteSpawner;
     [Space(10)]
     [Header("Upper Spawn 1")]
     [SerializeField] private Vector2 topLeftOfUpperSpawn;
@@ -98,6 +99,7 @@ public class WaveManager : MonoBehaviour
             wave.enemyBody.GetComponent<EnemyBehavior>().SetDestination(x, vectorY, z);
             wave.enemyBody.GetComponent<EnemyBehavior>().wallManager = wallManager;
             wave.enemyBody.GetComponent<EnemyBehavior>().passengerManager = passengerManager;
+            wave.enemyBody.GetComponent<EnemyBehavior>().spawnDynamite = dynamiteSpawner;
         }
     }
 

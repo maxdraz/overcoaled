@@ -16,10 +16,10 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] TravelManager travelManager;
 
-
     public int passengerCount;
 
-  
+    //Awake is always called before any Start functions
+
     void Awake()
     {
         //Check if instance already exists
@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
         players[players.Count - 1].playerObject.GetComponent<PlayerShoot>().playerNumber = playerNum;
         players[players.Count - 1].playerObject.GetComponent<PlayerInteraction>().playerNumber = playerNum;
 
-        
+
 
         //////////////move this
         travelManager.StartTimer();
