@@ -8,8 +8,16 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private float respawnCD;
     private float maxHealth;
      public Transform respawn;
+    Rigidbody rb;
+    PlayerMove move;
 
-    
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+        move = GetComponent<PlayerMove>();
+        respawn = GameObject.Find("Respawn").transform;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -18,12 +26,16 @@ public class PlayerHealth : MonoBehaviour
 
     IEnumerator Respawn(float t)
     {
-        gameObject.SetActive(false);
-        yield return new WaitForSeconds(t);
-        
-        health = maxHealth;
         transform.position = respawn.position;
         transform.rotation = respawn.rotation;
+        health = maxHealth;
+
+        rb.isKinematic = true;
+        move.enabled = false;
+        yield return new WaitForSeconds(t);
+        rb.isKinematic = false;
+        move.enabled = true;
+
 
     }
 
