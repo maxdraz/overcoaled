@@ -11,7 +11,8 @@ public class ThrownObjectMove : MonoBehaviour
     [SerializeField] private float level3Force;
     public float forceScale = 8f;
     [SerializeField] private bool grounded = false;
-    public int groundLayerIndex;
+    public int groundLayer;
+    public int noPlayerCollisionLayer;
     public GameObject groundHitPS;
 
     // Start is called before the first frame update
@@ -26,7 +27,7 @@ public class ThrownObjectMove : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.layer == groundLayerIndex && !grounded)
+        if (collision.gameObject.layer == groundLayer && !grounded)
         {
             print(collision.gameObject.name);
             grounded = true;
@@ -65,7 +66,7 @@ public class ThrownObjectMove : MonoBehaviour
 
     IEnumerator changePhysicsLayer()
     {
-        gameObject.layer = 11;
+        gameObject.layer = noPlayerCollisionLayer;
         yield return new WaitForSeconds(0.2f);
         gameObject.layer = 0;
     }

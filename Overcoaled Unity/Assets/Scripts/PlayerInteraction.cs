@@ -44,7 +44,7 @@ public class PlayerInteraction : MonoBehaviour
         
         pm = GetComponent<PlayerMove>();
         ps = GetComponent<PlayerShoot>();
-       // ps.enabled = false;
+        ps.enabled = false;
     }
 
     private void Update()
@@ -289,7 +289,7 @@ public class PlayerInteraction : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if(other.tag == "Plank Box" || other.tag == "Coal Box" || other.tag == "Ammo Box")
+        if(other.tag == "Plank Box" || other.tag == "Coal Box" || other.tag == "Gun Box")
         {
             //turn off button sprite
             other.transform.GetComponentInChildren<SpriteRenderer>().enabled = false;

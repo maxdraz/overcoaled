@@ -136,8 +136,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 2.0912497}
-  m_Center: {x: 0, y: 0, z: -0.54562485}
+  m_Size: {x: 1, y: 1, z: 1.2}
+  m_Center: {x: 0, y: 0, z: -0.11}
 --- !u!1 &6767267691402886094
 GameObject:
   m_ObjectHideFlags: 0
@@ -231,6 +231,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  updateEachFrame: 0
 --- !u!1 &7753513438119793192
 GameObject:
   m_ObjectHideFlags: 0
