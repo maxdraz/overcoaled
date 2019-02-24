@@ -15,10 +15,11 @@ public class PlayerInteraction : MonoBehaviour
     private GameObject coalHolder;
     private GameObject gunHolder;
     private GameObject playerHolder;
-    
+    private GameObject playerCarriedGO;
+
     private PlayerMove pm;
     private PlayerShoot ps;
-    private ParticleSystem particle;
+    private ParticleSystem movementParticle;
 
     [SerializeField] private float level1ThrowTime;
 
@@ -45,7 +46,7 @@ public class PlayerInteraction : MonoBehaviour
         plankHolder = transform.Find("Plank").gameObject;
         coalHolder = transform.Find("Coal").gameObject;
         gunHolder = transform.Find("Gun").gameObject;
-        particle = transform.GetComponentInChildren<ParticleSystem>();
+        movementParticle = transform.GetComponentInChildren<ParticleSystem>();
         throwChargesHolder = transform.Find("ThrowCharges");
 
         playerHolder = transform.Find("PlayerHolder").gameObject;
@@ -77,7 +78,7 @@ public class PlayerInteraction : MonoBehaviour
                 ps.enabled = false;
             }
             // pause particle system
-            particle.Stop();
+            movementParticle.Stop();
 
             if (Input.GetButtonDown("joystick " + playerNumber + " B"))
             {
@@ -380,14 +381,15 @@ public class PlayerInteraction : MonoBehaviour
 
     void PickUpPlayer(Collision col)
     {
-        col.gameObject.GetComponent<PlayerMove>().enabled = false;
-        col.gameObject.layer = noPlayerCollisionLayer;
-        col.gameObject.GetComponentInChildren<ParticleSystem>().Stop();
-        col.gameObject.GetComponent<Rigidbody>().isKinematic = true;
-        col.collider.enabled = false;
-        col.transform.position = playerHolder.transform.position;
-        col.transform.rotation = playerHolder.transform.rotation;
-        col.transform.parent = playerHolder.transform;
+        playerCarriedGO = col.gameObject;
+        playerCarriedGO.GetComponent<PlayerMove>().enabled = false;
+        playerCarriedGO.layer = noPlayerCollisionLayer;
+        playerCarriedGO.GetComponentInChildren<ParticleSystem>().Stop();
+        playerCarriedGO.GetComponent<Rigidbody>().isKinematic = true;
+        playerCarriedGO.GetComponent<Collider>().enabled = false;
+        playerCarriedGO.transform.position = playerHolder.transform.position;
+        playerCarriedGO.transform.rotation = playerHolder.transform.rotation;
+        playerCarriedGO.transform.parent = playerHolder.transform;
         
 
 
@@ -399,13 +401,14 @@ public class PlayerInteraction : MonoBehaviour
     void Drop()
     {
         // if carrying any of these items
-        if (carryingPlank || carryingCoal || carryingGun)
+        if (carryingPlank || carryingCoal || carryingGun || carryingPlayer)
         {
 
             carryingPlank = false;
             carryingCoal = false;
             carryingGun = false;
             carryingCoal = false;
+            carryingPlayer = false;
             plankHolder.SetActive(false);
             coalHolder.SetActive(false);
             gunHolder.SetActive(false);
@@ -413,7 +416,7 @@ public class PlayerInteraction : MonoBehaviour
 
             pm.SetSpeed(pm.normalMoveSpeed);
             ps.enabled = false;
-            particle.Play();
+            movementParticle.Play();
         }
     }
 
@@ -453,6 +456,22 @@ public class PlayerInteraction : MonoBehaviour
             // undo all the stuff and unparent
             // only setactive scripts when grounded (do this in thrown objects move script)
             // Add force
+
+            
+           // !!! playerCarriedGO.GetComponent<PlayerMove>().enabled = false;
+           // !!! playerCarriedGO.layer = 0;
+            // !!! playerCarriedGO.GetComponentInChildren<ParticleSystem>().Stop();
+            playerCarriedGO.GetComponent<Rigidbody>().isKinematic = false;
+            playerCarriedGO.GetComponent<Collider>().enabled = true;
+            playerCarriedGO.transform.parent = null;
+
+            ThrownObjectMove move =playerCarriedGO.GetComponent<ThrownObjectMove>();
+            move.enabled = true;
+            move.setForceLevel(forceLevel);
+            move.Move();
+            Drop();
+
+            playerCarriedGO = null;
         }
     }
 }

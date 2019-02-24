@@ -1555,7 +1555,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 20
+      scalar: 5
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -6271,7 +6271,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 20
+      scalar: 5
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -10176,6 +10176,7 @@ MonoBehaviour:
   enemyBullet: {fileID: 2757231935624062680, guid: d0ef63fc222ea334fb74abb230c73ed7,
     type: 3}
   shootTarget: {fileID: 0}
+  spawnDynamite: {fileID: 0}
 --- !u!54 &8251870819751588248
 Rigidbody:
   m_ObjectHideFlags: 0

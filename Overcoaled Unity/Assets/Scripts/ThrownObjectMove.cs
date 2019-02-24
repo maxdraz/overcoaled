@@ -19,17 +19,32 @@ public class ThrownObjectMove : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        StartCoroutine(changePhysicsLayer());
+        
         //rb.AddForce(transform.forward * forceScale, ForceMode.Impulse);
     }
 
-    
+    private void OnEnable()
+    {
+        StartCoroutine(changePhysicsLayer());
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
+        if(gameObject.tag == "Player" && collision.gameObject.layer == groundLayer && !grounded)
+        {
+            //ps
+            grounded = true;
+            GameObject ps = (GameObject)Instantiate(groundHitPS, transform.position, Quaternion.identity);
+
+            gameObject.GetComponent<PlayerMove>().enabled = true;
+            gameObject.layer = 0;
+            gameObject.GetComponentInChildren<ParticleSystem>().Play();
+            this.enabled = false;
+        }
+
         if (collision.gameObject.layer == groundLayer && !grounded)
         {
-            print(collision.gameObject.name);
+            
             grounded = true;
             GameObject ps = (GameObject)Instantiate(groundHitPS, transform.position, Quaternion.identity);
         }

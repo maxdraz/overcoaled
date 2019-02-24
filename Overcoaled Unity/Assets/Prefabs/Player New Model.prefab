@@ -400,7 +400,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4614903107362945743}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 98a651290e6f17644be42db5cf262ad5, type: 3}
   m_Name: 
@@ -5602,6 +5602,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4089362571806735507}
     m_Modifications:
+    - target: {fileID: 100000, guid: fa46f7db9106340479271624fa475451, type: 3}
+      propertyPath: m_Name
+      value: Right Hand
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: fa46f7db9106340479271624fa475451, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.49
@@ -5658,10 +5662,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: fa46f7db9106340479271624fa475451, type: 3}
-      propertyPath: m_Name
-      value: Right Hand
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa46f7db9106340479271624fa475451, type: 3}
 --- !u!4 &1003771509160939952 stripped
@@ -5677,6 +5677,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4548652451185551778}
     m_Modifications:
+    - target: {fileID: 100000, guid: 79a316a122e811047a6884c5f04d5f1d, type: 3}
+      propertyPath: m_Name
+      value: Revolver
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 79a316a122e811047a6884c5f04d5f1d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 79a316a122e811047a6884c5f04d5f1d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -5731,14 +5739,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 79a316a122e811047a6884c5f04d5f1d, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 79a316a122e811047a6884c5f04d5f1d, type: 3}
-      propertyPath: m_Name
-      value: Revolver
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 79a316a122e811047a6884c5f04d5f1d, type: 3}
-      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
