@@ -5,13 +5,17 @@ using UnityEngine;
 public class PlayerInteraction : MonoBehaviour
 {
     public int playerNumber;
+    [SerializeField] private int noPlayerCollisionLayer;
     [SerializeField] private bool isCarrying = false;
     [SerializeField] private bool carryingPlank = false;
     [SerializeField] private bool carryingCoal = false;
     [SerializeField] private bool carryingGun = false;
+    [SerializeField] private bool carryingPlayer = false;
     private GameObject plankHolder;
     private GameObject coalHolder;
     private GameObject gunHolder;
+    private GameObject playerHolder;
+    
     private PlayerMove pm;
     private PlayerShoot ps;
     private ParticleSystem particle;
@@ -32,6 +36,7 @@ public class PlayerInteraction : MonoBehaviour
     public float throwTimer = 0;
 
     private Transform throwChargesHolder;
+    ThrownObjectMove myPlayerThrow;
    
 
     private void Awake()
@@ -41,10 +46,18 @@ public class PlayerInteraction : MonoBehaviour
         gunHolder = transform.Find("Gun").gameObject;
         particle = transform.GetComponentInChildren<ParticleSystem>();
         throwChargesHolder = transform.Find("ThrowCharges");
+        playerHolder = transform.Find("PlayerHolder").gameObject;
         
         pm = GetComponent<PlayerMove>();
         ps = GetComponent<PlayerShoot>();
         ps.enabled = false;
+        myPlayerThrow = GetComponent<ThrownObjectMove>();
+        
+    }
+
+    private void OnEnable()
+    {
+        myPlayerThrow.enabled = false;
     }
 
     private void Update()
@@ -285,6 +298,16 @@ public class PlayerInteraction : MonoBehaviour
             }
 
         }
+
+        if (collision.gameObject.tag == "Player" && !isCarrying)
+        {
+            if (Input.GetButtonDown("joystick " + playerNumber + " A"))
+            {
+                PickUpPlayer(collision);
+                
+            }
+
+        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -317,6 +340,24 @@ public class PlayerInteraction : MonoBehaviour
         isCarrying = true;
         carryingGun = true;
         ps.enabled = true;
+    }
+
+    void PickUpPlayer(Collision col)
+    {
+        col.gameObject.GetComponent<PlayerMove>().enabled = false;
+        col.gameObject.layer = noPlayerCollisionLayer;
+        col.gameObject.GetComponentInChildren<ParticleSystem>().Stop();
+        col.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+        col.collider.enabled = false;
+        col.transform.position = playerHolder.transform.position;
+        col.transform.rotation = playerHolder.transform.rotation;
+        col.transform.parent = playerHolder.transform;
+        
+
+
+        isCarrying = true;
+        carryingPlayer = true;
+        
     }
 
     void Drop()
@@ -369,6 +410,13 @@ public class PlayerInteraction : MonoBehaviour
             move.Move();
             Drop();
 
+        }
+
+        if (carryingPlayer)
+        {
+            // undo all the stuff and unparent
+            // only setactive scripts when grounded (do this in thrown objects move script)
+            // Add force
         }
     }
 }
