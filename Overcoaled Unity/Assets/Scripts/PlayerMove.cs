@@ -8,7 +8,12 @@ public class PlayerMove : MonoBehaviour
     public float moveSpeed;
     public float normalMoveSpeed;
     public float slowMoveSpeed;
+    private Animator anim;
 
+    private void Start()
+    {
+        anim = GetComponent<Animator>();
+    }
     // Update is called once per frame
     void Update()
     {
@@ -20,6 +25,12 @@ public class PlayerMove : MonoBehaviour
         {
             direction = new Vector3(posX, 0.0f, posY);
             transform.rotation = Quaternion.LookRotation(direction);
+
+            anim.SetBool("moving", true);
+        }
+        else
+        {
+            anim.SetBool("moving", false);
         }
 
         if ((Input.GetAxis("joystick R " + playerNumber + " horizontal") > 0.2 || Input.GetAxis("joystick R " + playerNumber + " horizontal") < -0.2)

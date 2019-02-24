@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Wall : MonoBehaviour
 {
-    public bool isFar;
+    public enum Item { far, farWindow, near, nearWindow }
+    public Item typeOfWall;
     public float health = 3f;
     [SerializeField] private GameObject repairPadPrefab;
     [SerializeField] private GameObject bulletDeathParticle;
@@ -28,7 +29,7 @@ public class Wall : MonoBehaviour
         if (health <= 0)
         {
             GameObject repairPadGO = (GameObject)Instantiate(repairPadPrefab, transform.position + repairPadOffset, transform.rotation);
-            repairPadGO.GetComponent<RepairPad>().isFar = isFar;
+            repairPadGO.GetComponent<RepairPad>().wallType =(RepairPad.Item) typeOfWall;
             Destroy(gameObject);
         }
 
@@ -51,10 +52,10 @@ public class Wall : MonoBehaviour
         
         if (collision.gameObject.tag == "Bullet")
         {
-            print("colliding");
-            //GameObject ps = (GameObject)Instantiate(bulletDeathParticle, collision.GetContact(0).point, Quaternion.identity);
-
-            GameObject ps = (GameObject)Instantiate(bulletDeathParticle, collision.gameObject.transform.position, Quaternion.identity);
+            
+            //GameObject ps = (GameObject)Instantiate(bulletDeathParticle, collision.GetContact(0).point, Quaternion.identity);            
+            
+            GameObject ps = (GameObject)Instantiate(bulletDeathParticle, collision.GetContact(0).point,Quaternion.identity);
             Destroy(collision.gameObject);
         }
     }

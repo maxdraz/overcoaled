@@ -6,14 +6,19 @@ public class RepairPad : MonoBehaviour
 {
     private TextMesh plankText;
     private TextMesh repairText;
-    public bool isFar;
+    public enum Item { far, farWindow, near, nearWindow}
+    public Item wallType;
     public float plankCount;
    [SerializeField]
     private float maxPlanks = 3 ;
     [SerializeField]
     private GameObject wallFarPrefab;
     [SerializeField]
+    private GameObject wallFarWindowPrefab;
+    [SerializeField]
     private GameObject wallNearPrefab;
+    [SerializeField]
+    private GameObject wallNearWindowPrefab;
     private Vector3 wallSpawnOffset = new Vector3(0,0.5f,0);
     [SerializeField]
     private float repairCD = 4f;
@@ -62,7 +67,7 @@ public class RepairPad : MonoBehaviour
                                                                        // ---^
         if (!CheckIfCanAdd())
         {
-            Debug.Log("Can't add any more planks");            
+                       
 
             return;
         }
@@ -93,14 +98,23 @@ public class RepairPad : MonoBehaviour
             if (repairCDRemaining <= 0)
             {
                 // We've built the wall!
-                if (isFar)
+                if (wallType == Item.far)
                 {
                     GameObject wallGO = (GameObject)Instantiate(wallFarPrefab, transform.position + wallSpawnOffset, transform.rotation);
                     Destroy(gameObject);
                 }
-                else
+                else if(wallType == Item.near)
                 {
                     GameObject wallGO = (GameObject)Instantiate(wallNearPrefab, transform.position + wallSpawnOffset, transform.rotation);
+                    Destroy(gameObject);
+                } else if(wallType == Item.farWindow)
+                {
+                    GameObject wallGO = (GameObject)Instantiate(wallFarWindowPrefab, transform.position + wallSpawnOffset, transform.rotation);
+                    Destroy(gameObject);
+                }
+                else if (wallType == Item.nearWindow)
+                {
+                    GameObject wallGO = (GameObject)Instantiate(wallNearWindowPrefab, transform.position + wallSpawnOffset, transform.rotation);
                     Destroy(gameObject);
                 }
             }

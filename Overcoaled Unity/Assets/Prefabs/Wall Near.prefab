@@ -137,8 +137,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 4, y: 2, z: 1}
-  m_Center: {x: 0, y: 0.5, z: 0}
+  m_Size: {x: 4, y: 2.1, z: 1}
+  m_Center: {x: 0, y: 0.4, z: 0}
 --- !u!54 &9213446159556695625
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -151,7 +151,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8d9d7c5273f695489a8244ab225e42a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isFar: 0
+  typeOfWall: 2
   health: 3
   repairPadPrefab: {fileID: 6983315175861478071, guid: eddb7331eaa78e940a91f8afa2e02635,
     type: 3}
