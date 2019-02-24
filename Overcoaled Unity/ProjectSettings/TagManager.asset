@@ -14,7 +14,14 @@ TagManager:
   - Plank
   - Wall
   - Enemy Bullet
+<<<<<<< HEAD
   - Gatling Gun
+=======
+  - Coal
+  - Death
+  - Gun Box
+  - Gun
+>>>>>>> 0084461da2276926cc6d7c58f25ad69bebc8c734
   layers:
   - Default
   - TransparentFX
@@ -27,7 +34,7 @@ TagManager:
   - PostProcessing
   - Ground
   - Wall
-  - 
+  - NoCollisionWithPlayer
   - 
   - 
   - 
