@@ -224,8 +224,8 @@ GameObject:
   - component: {fileID: 5074510462958240942}
   - component: {fileID: 7767101358906774892}
   m_Layer: 0
-  m_Name: Ammo Box
-  m_TagString: Ammo Box
+  m_Name: Gun Box
+  m_TagString: Gun Box
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -353,3 +353,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  updateEachFrame: 0

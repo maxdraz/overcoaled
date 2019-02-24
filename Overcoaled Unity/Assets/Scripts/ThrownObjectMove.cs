@@ -37,6 +37,11 @@ public class ThrownObjectMove : MonoBehaviour
     public void Move()
     {
         rb.AddForce(transform.forward * forceScale, ForceMode.Impulse);
+
+        if(gameObject.tag == "Gun")
+        {
+            rb.AddTorque(transform.right * forceScale, ForceMode.Impulse);
+        }
     }
 
     public void setForceLevel(int level)

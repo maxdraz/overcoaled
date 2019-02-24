@@ -16,6 +16,8 @@ TagManager:
   - Enemy Bullet
   - Coal
   - Death
+  - Gun Box
+  - Gun
   layers:
   - Default
   - TransparentFX
