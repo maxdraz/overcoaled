@@ -244,6 +244,23 @@ public class PlayerInteraction : MonoBehaviour
             }
         }
 
+        if (other.tag == "Gatling Gun" && !isCarrying)
+        {
+            //display button sprite
+            //other.transform.GetComponentInChildren<SpriteRenderer>().enabled = true;
+
+            if (Input.GetButtonDown("joystick " + playerNumber + " A"))
+            {
+                UseGatlingGun(other.gameObject);
+                //other.transform.GetComponentInChildren<SpriteRenderer>().enabled = false;
+            }
+            else if (Input.GetButtonDown("joystick " + playerNumber + " B"))
+            {
+                ExitGatlingGun(other.gameObject);
+
+            }
+        }
+
 
     }
 
@@ -283,11 +300,28 @@ public class PlayerInteraction : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if(other.tag == "Plank Box" || other.tag == "Coal Box" || other.tag == "Ammo Box")
+        if (other.tag == "Plank Box" || other.tag == "Coal Box" || other.tag == "Ammo Box" || other.tag == "Ammo Box")
         {
             //turn off button sprite
             other.transform.GetComponentInChildren<SpriteRenderer>().enabled = false;
         }
+    }
+
+    void UseGatlingGun(GameObject gatlingGun)
+    {
+        GetComponent<PlayerMove>().enabled = false;
+        GetComponent<PlayerShoot>().enabled = false;
+
+        gatlingGun.GetComponentInChildren<GatlingGun>().enabled = true;
+        gatlingGun.GetComponentInChildren<GatlingGun>().SetPlayer(playerNumber);
+    }
+
+    void ExitGatlingGun(GameObject gatlingGun)
+    {
+        GetComponent<PlayerMove>().enabled = true;
+        GetComponent<PlayerShoot>().enabled = true;
+
+        gatlingGun.GetComponentInChildren<GatlingGun>().enabled = false;
     }
 
     void PickUpPlank()

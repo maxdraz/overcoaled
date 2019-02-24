@@ -108,6 +108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletSpeed: 8
+  wallLayerIndex: 10
 --- !u!114 &69180094913645813
 MonoBehaviour:
   m_ObjectHideFlags: 0

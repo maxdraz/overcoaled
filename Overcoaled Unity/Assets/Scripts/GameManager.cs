@@ -16,13 +16,10 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] TravelManager travelManager;
 
-<<<<<<< HEAD
     public int passengerCount;
 
     //Awake is always called before any Start functions
-=======
-    
->>>>>>> 0084461da2276926cc6d7c58f25ad69bebc8c734
+
     void Awake()
     {
         //Check if instance already exists

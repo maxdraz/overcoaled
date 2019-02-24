@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TravelManager : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class TravelManager : MonoBehaviour
     private bool travelBegun;
     private int currentSpeed;
     private float offsetSpeed;
-    [SerializeField] private float offset;
+    public float offset;
     [SerializeField] private float lerpTime;
     [SerializeField] private int offsetMultiplier;
     [SerializeField] private float lerp = 0;
@@ -20,6 +21,8 @@ public class TravelManager : MonoBehaviour
     private float offsetLerp;
 
     [SerializeField] private Renderer ground;
+
+    [SerializeField] private Slider distanceUI;
     // Update is called once per frame
     void Update()
     {
@@ -28,6 +31,7 @@ public class TravelManager : MonoBehaviour
             timeSinceStart += Time.deltaTime;
             travelDistance += currentSpeed * Time.deltaTime;
             OffSetGround();
+            distanceUI.value = travelDistance / fullTravelLength;
             if (travelDistance >= fullTravelLength)
             {
                 //End game

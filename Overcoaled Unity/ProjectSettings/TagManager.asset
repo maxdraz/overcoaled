@@ -4,24 +4,17 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Plank Box
-  - Repair Pad
-  - Coal Box
-  - Ammo Box
-  - Furnace
-  - Bullet
-  - Ground
-  - Plank
-  - Wall
-  - Enemy Bullet
-<<<<<<< HEAD
-  - Gatling Gun
-=======
-  - Coal
   - Death
+  - Wall
+  - Coal Box
   - Gun Box
+  - Furnace
+  - Plank Box
+  - Plank
   - Gun
->>>>>>> 0084461da2276926cc6d7c58f25ad69bebc8c734
+  - Coal
+  - Repair Pad
+  - Gatling Gun
   layers:
   - Default
   - TransparentFX
@@ -31,10 +24,10 @@ TagManager:
   - UI
   - 
   - 
-  - PostProcessing
-  - Ground
-  - Wall
-  - NoCollisionWithPlayer
+  - 
+  - 
+  - 
+  - 
   - 
   - 
   - 

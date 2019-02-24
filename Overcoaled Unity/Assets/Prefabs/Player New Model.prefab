@@ -248,7 +248,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &5714201071715922695
 MonoBehaviour:
@@ -5547,10 +5547,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4089362571806735507}
     m_Modifications:
-    - target: {fileID: 100000, guid: fa46f7db9106340479271624fa475451, type: 3}
-      propertyPath: m_Name
-      value: Right Hand
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: fa46f7db9106340479271624fa475451, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.49
@@ -5607,6 +5603,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: fa46f7db9106340479271624fa475451, type: 3}
+      propertyPath: m_Name
+      value: Right Hand
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa46f7db9106340479271624fa475451, type: 3}
 --- !u!4 &1003771509160939952 stripped
@@ -5622,14 +5622,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4548652451185551778}
     m_Modifications:
-    - target: {fileID: 100000, guid: 79a316a122e811047a6884c5f04d5f1d, type: 3}
-      propertyPath: m_Name
-      value: Revolver
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 79a316a122e811047a6884c5f04d5f1d, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 79a316a122e811047a6884c5f04d5f1d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -5684,6 +5676,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 79a316a122e811047a6884c5f04d5f1d, type: 3}
       propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 79a316a122e811047a6884c5f04d5f1d, type: 3}
+      propertyPath: m_Name
+      value: Revolver
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 79a316a122e811047a6884c5f04d5f1d, type: 3}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

@@ -109,8 +109,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSpeed: 8
   wallLayerIndex: 10
-  deathParticle: {fileID: 1712736848808381798, guid: 8f993ca8e182e174981d5512017f6f09,
-    type: 3}
 --- !u!114 &6921809616921911301
 MonoBehaviour:
   m_ObjectHideFlags: 0
