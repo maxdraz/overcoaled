@@ -4,50 +4,51 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Death
-  - Wall
-  - Coal Box
-  - Gun Box
-  - Furnace
   - Plank Box
-  - Plank
+  - Wall
   - Gun
   - Coal
+  - Coal Box
+  - Enemy Bullet
+  - Furnace
+  - Gun Box
+  - Plank
   - Repair Pad
-  - Gatling Gun
+  - Death
+  - Bullet
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  -
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  -
+  -
+  - Ground
+  - Wall
+  - NoPlayerCollision
+  -
+  -
+  -
+  -
+  -
+  -
+  -
+  -
+  -
+  -
+  -
+  -
+  -
+  -
+  -
+  -
+  -
+  -
+  -
+  -
+  -
   m_SortingLayers:
   - name: Default
     uniqueID: 0

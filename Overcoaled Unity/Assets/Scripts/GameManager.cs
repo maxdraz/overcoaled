@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
         players[players.Count - 1].playerObject.GetComponent<PlayerShoot>().playerNumber = playerNum;
         players[players.Count - 1].playerObject.GetComponent<PlayerInteraction>().playerNumber = playerNum;
 
-        
+
 
         //////////////move this
         travelManager.StartTimer();

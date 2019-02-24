@@ -8,7 +8,7 @@ public class Wall : MonoBehaviour
     public Item typeOfWall;
     public float health = 3f;
     [SerializeField] private GameObject repairPadPrefab;
-    [SerializeField] private GameObject bulletDeathParticle;
+    
     
     private Vector3 repairPadOffset = new Vector3(0, -0.5f, 0);
     //private TextMesh healthText;
@@ -36,28 +36,8 @@ public class Wall : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "Enemy Bullet")
-        {
-            TakeDamage(1);
+   
 
-            GameObject ps = (GameObject)Instantiate(bulletDeathParticle, other.gameObject.transform.position, Quaternion.identity);
-            Destroy(other.gameObject);
-        }
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        
-        if (collision.gameObject.tag == "Bullet")
-        {
-            
-            //GameObject ps = (GameObject)Instantiate(bulletDeathParticle, collision.GetContact(0).point, Quaternion.identity);            
-            
-            GameObject ps = (GameObject)Instantiate(bulletDeathParticle, collision.GetContact(0).point,Quaternion.identity);
-            Destroy(collision.gameObject);
-        }
-    }
+   
 
 }

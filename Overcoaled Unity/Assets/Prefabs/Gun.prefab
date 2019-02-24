@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7262483272847318124}
   - component: {fileID: 9071237276238627218}
   - component: {fileID: 3901045016761260673}
+  - component: {fileID: 9179539128389839884}
   - component: {fileID: 7179104829331851008}
   m_Layer: 0
   m_Name: Gun
@@ -186,9 +187,23 @@ MonoBehaviour:
   level3Force: 8.5
   forceScale: 0
   grounded: 0
-  groundLayerIndex: 9
+  groundLayer: 8
+  noPlayerCollisionLayer: 10
   groundHitPS: {fileID: 4242870348423495881, guid: 0efe82cf0044c894ab7f97346afe58a5,
     type: 3}
+--- !u!114 &9179539128389839884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3232392532011336761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f30c1b5dcc11a94b908250dc26eb30e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ammoInGun: 15
 --- !u!114 &7179104829331851008
 MonoBehaviour:
   m_ObjectHideFlags: 0

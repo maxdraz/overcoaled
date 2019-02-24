@@ -17,7 +17,7 @@ public class PlayerInteraction : MonoBehaviour
     private ParticleSystem particle;
 
     [SerializeField] private float level1ThrowTime;
-    
+
     [SerializeField] private float level3ThrowTime;
     [SerializeField] private float maxThrowTime;
     private bool countUp = true;
@@ -32,7 +32,7 @@ public class PlayerInteraction : MonoBehaviour
     public float throwTimer = 0;
 
     private Transform throwChargesHolder;
-   
+
 
     private void Awake()
     {
@@ -41,22 +41,26 @@ public class PlayerInteraction : MonoBehaviour
         gunHolder = transform.Find("Gun").gameObject;
         particle = transform.GetComponentInChildren<ParticleSystem>();
         throwChargesHolder = transform.Find("ThrowCharges");
-        
+
         pm = GetComponent<PlayerMove>();
         ps = GetComponent<PlayerShoot>();
+        ps.enabled = false;
     }
 
     private void Update()
     {
-                                                              
+
         if (isCarrying)
         {
             //slow player move speed (reset in Drop())
-            
+
             pm.SetSpeed(pm.slowMoveSpeed);
 
             //disable shooting
-            ps.enabled= false;
+            if (!carryingGun)
+            {
+                ps.enabled = false;
+            }
             // pause particle system
             particle.Stop();
 
@@ -67,8 +71,8 @@ public class PlayerInteraction : MonoBehaviour
 
             //if(carryingGun && Input.GetButtonDown("joystick " + playerNumber + " X"))
             //{
-            //    //gameObject.GetComponent<PlayerShoot>().Reload(); 
-                
+            //    //gameObject.GetComponent<PlayerShoot>().Reload();
+
             //    Drop();
             //}
 
@@ -90,18 +94,18 @@ public class PlayerInteraction : MonoBehaviour
                 if (!countUp)
                 {
                     throwTimer -= Time.deltaTime;
-                    
+
                     if(throwTimer <= 0)
                     {
                         countUp = true;
                     }
                 }
-                
+
                 if(throwTimer <= level1ThrowTime)
                 {
                     throwChargesHolder.transform.GetChild(0).gameObject.SetActive(true);
                 }
-                
+
                 if (throwTimer >level1ThrowTime)
                 {
                     throwChargesHolder.transform.GetChild(1).gameObject.SetActive(true);
@@ -116,22 +120,22 @@ public class PlayerInteraction : MonoBehaviour
                 }
 
                 else
-                {                    
+                {
                     throwChargesHolder.transform.GetChild(2).gameObject.SetActive(false);
                 }
 
-                
+
 
             }
 
 
             else
             {
-                
+
                 if (Input.GetButtonUp("joystick " + playerNumber + " X"))
                 {
                     print("let go after " + throwTimer);
-                    
+
                     if(throwTimer >= level3ThrowTime)
                     {
                         Throw(3);
@@ -149,10 +153,10 @@ public class PlayerInteraction : MonoBehaviour
                     throwChargesHolder.transform.GetChild(1).gameObject.SetActive(false);
                     throwChargesHolder.transform.GetChild(2).gameObject.SetActive(false);
                 }
-                
-                
+
+
             }
-            
+
         }
     }
 
@@ -173,7 +177,7 @@ public class PlayerInteraction : MonoBehaviour
             }
         }
 
-       
+
 
         if (other.tag == "Coal Box" && !isCarrying)
         {
@@ -193,6 +197,7 @@ public class PlayerInteraction : MonoBehaviour
             if (Input.GetButton("joystick " + playerNumber + " A"))
             {
                 PickUpGun();
+                ps.Reload();
                 other.transform.GetComponentInChildren<SpriteRenderer>().enabled = false;
             }
         }
@@ -203,19 +208,19 @@ public class PlayerInteraction : MonoBehaviour
         {
             RepairPad pad = other.GetComponent<RepairPad>();
 
-                                                                                   
+
                 if (Input.GetButton("joystick " + playerNumber + " X"))
                 {
                     pad.Repair();
                 }
-            
+
         }
             //Placing planks
             if (other.tag == "Repair Pad" && carryingPlank)
         {
             RepairPad pad = other.GetComponent<RepairPad>();
-                                                                                 
-           
+
+
             if (Input.GetButtonDown("joystick " + playerNumber + " A"))
             {
                 if (pad.CheckIfCanAdd())
@@ -227,11 +232,11 @@ public class PlayerInteraction : MonoBehaviour
             }
         }
 
-        //Furnace 
+        //Furnace
         if (other.tag == "Furnace" && carryingCoal)
         {
            Furnace fur = other.GetComponent<Furnace>();
-   
+
 
             if (Input.GetButtonDown("joystick " + playerNumber + " A"))
             {
@@ -274,7 +279,7 @@ public class PlayerInteraction : MonoBehaviour
                     PickUpPlank();
                 Destroy(collision.gameObject);
                 }
-            
+
         }
 
         if (collision.gameObject.tag == "Coal" && !isCarrying)
@@ -292,6 +297,7 @@ public class PlayerInteraction : MonoBehaviour
             if (Input.GetButtonDown("joystick " + playerNumber + " A"))
             {
                 PickUpGun();
+                ps.ammo = collision.gameObject.GetComponent<Gun>().ammoInGun;
                 Destroy(collision.gameObject);
             }
 
@@ -300,7 +306,7 @@ public class PlayerInteraction : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Plank Box" || other.tag == "Coal Box" || other.tag == "Ammo Box" || other.tag == "Ammo Box")
+        if (other.tag == "Plank Box" || other.tag == "Coal Box" || other.tag == "Ammo Box" || other.tag == "Gun Box")
         {
             //turn off button sprite
             other.transform.GetComponentInChildren<SpriteRenderer>().enabled = false;
@@ -326,7 +332,7 @@ public class PlayerInteraction : MonoBehaviour
 
     void PickUpPlank()
     {
-       
+
         plankHolder.SetActive(true);
         isCarrying = true;
         carryingPlank = true;
@@ -344,6 +350,7 @@ public class PlayerInteraction : MonoBehaviour
         gunHolder.SetActive(true);
         isCarrying = true;
         carryingGun = true;
+        ps.enabled = true;
     }
 
     void Drop()
@@ -351,7 +358,7 @@ public class PlayerInteraction : MonoBehaviour
         // if carrying any of these items
         if (carryingPlank || carryingCoal || carryingGun)
         {
-            
+
             carryingPlank = false;
             carryingCoal = false;
             carryingGun = false;
@@ -362,7 +369,7 @@ public class PlayerInteraction : MonoBehaviour
             isCarrying = false;
 
             pm.SetSpeed(pm.normalMoveSpeed);
-            ps.enabled = true;
+            ps.enabled = false;
             particle.Play();
         }
     }
@@ -371,7 +378,7 @@ public class PlayerInteraction : MonoBehaviour
     {
         if (carryingPlank)
         {
-            
+
             GameObject plankGO = (GameObject)Instantiate(plankPrefab, plankHolder.transform.position, plankHolder.transform.rotation);
             ThrownObjectMove move = plankGO.GetComponent<ThrownObjectMove>();
             move.setForceLevel(forceLevel);
@@ -390,6 +397,7 @@ public class PlayerInteraction : MonoBehaviour
         if (carryingGun)
         {
             GameObject gunGO = (GameObject)Instantiate(gunPrefab, plankHolder.transform.position, plankHolder.transform.rotation);
+            gunGO.GetComponent<Gun>().SetAmmo(ps.ammo);
             ThrownObjectMove move = gunGO.GetComponent<ThrownObjectMove>();
             move.setForceLevel(forceLevel);
             move.Move();
