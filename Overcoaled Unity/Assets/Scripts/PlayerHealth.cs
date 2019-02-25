@@ -47,7 +47,8 @@ public class PlayerHealth : MonoBehaviour
         health -= 1;
         if (health <= 0)
         {
-            StartCoroutine(Respawn(respawnCD));
+            // StartCoroutine(Respawn(respawnCD));
+            DownPlayer();
         }
     }
 
@@ -62,5 +63,21 @@ public class PlayerHealth : MonoBehaviour
         {
             Invoke("KillPlayer", 2);
         }
+    }
+
+    private void DownPlayer()
+    {
+        gameObject.tag = "PlayerDown";
+        GetComponent<PlayerMove>().enabled = false;
+        GetComponent<PlayerInteraction>().Drop();
+        GetComponent<PlayerInteraction>().enabled = false;
+    }
+
+    public void RevivePlayer()
+    {
+        gameObject.tag = "Player";
+        SetHealth(maxHealth);
+        GetComponent<PlayerMove>().enabled = true;
+        GetComponent<PlayerInteraction>().enabled = true;
     }
 }
