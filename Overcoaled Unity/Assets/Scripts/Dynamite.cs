@@ -13,6 +13,7 @@ public class Dynamite : MonoBehaviour
 
         if (timer <= 0)
         {
+            gameObject.tag = "Death";
             GetComponent<Animator>().enabled = true;
             Destroy(gameObject, 1);
         }

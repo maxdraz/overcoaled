@@ -19,6 +19,7 @@ TagManager:
   - Gatling Gun
   - Gatling Load
   - Enemy
+  - Dynamite
   layers:
   - Default
   - TransparentFX
