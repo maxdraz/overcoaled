@@ -7,6 +7,7 @@ public class BulletMove : MonoBehaviour
 
     [SerializeField] private float bulletSpeed;
     [SerializeField] private GameObject bulletDeathParticle;
+    [SerializeField] private bool isPlayerBullet;
     
     // Update is called once per frame
     void  FixedUpdate()
@@ -16,7 +17,24 @@ public class BulletMove : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Wall")
+        if (isPlayerBullet && other.tag == "Enemy")
+        {
+            other.gameObject.transform.parent.GetComponent<EnemyBehavior>().TakeDamage();
+            Destroy(gameObject);
+        }
+
+        if(!isPlayerBullet && other.tag == "Player")
+        {
+            other.gameObject.GetComponent<PlayerHealth>().TakeDamage();
+            Destroy(gameObject);
+        }
+
+
+        if (gameObject.tag == "Enemy Bullet" && other.gameObject.tag == "Wall")
+        {
+            other.gameObject.GetComponent<Wall>().TakeDamage(1);
+        }
+        if (other.gameObject.tag == "Wall")
         {
             print("collided with bullet");
             //GameObject ps = (GameObject)Instantiate(bulletDeathParticle, collision.GetContact(0).point, Quaternion.identity);            
@@ -26,13 +44,7 @@ public class BulletMove : MonoBehaviour
         }
 
         
-            if (gameObject.tag == "Enemy Bullet" && other.gameObject.tag == "Wall")
-            {
-                other.gameObject.GetComponent<Wall>().TakeDamage(1);
-
-                GameObject ps = (GameObject)Instantiate(bulletDeathParticle, gameObject.transform.position, Quaternion.identity);
-                Destroy(gameObject);
-            }
+            
         }
     }
 

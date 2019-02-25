@@ -40,6 +40,15 @@ public class PlayerHealth : MonoBehaviour
         maxHealth = h;
     }
 
+    public void TakeDamage()
+    {
+        health -= 1;
+        if (health <= 0)
+        {
+            StartCoroutine(Respawn(respawnCD));
+        }
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.tag == "Death")
