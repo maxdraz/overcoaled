@@ -15,6 +15,7 @@ public class JoinGame : MonoBehaviour
         
         for(int i = 0; i < controllerAmount; i++)
         {
+            
             if (Input.GetButtonDown("joystick " + (int)(i + 1) + " start"))
             {
                 bool alreadyJoined = false;
@@ -34,6 +35,7 @@ public class JoinGame : MonoBehaviour
                 GameManager.GM.AddPlayer(i + 1);
                 playersJoined.Add(i + 1);
             }
+            
         }
     }
 }

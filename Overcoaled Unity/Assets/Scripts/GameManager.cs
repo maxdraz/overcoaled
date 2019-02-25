@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
 
     public void AddPlayer(int playerNum)
     {
-        print(playerNum);
+
         players.Add(new Player(playerNum, playerHealth, playerSpeed));
         players[players.Count - 1].playerObject = (GameObject)Instantiate(playerCharacter, playerSpawnLocations[players.Count - 1], Quaternion.identity);
         players[players.Count - 1].playerObject.GetComponent<PlayerMove>().playerNumber = playerNum;

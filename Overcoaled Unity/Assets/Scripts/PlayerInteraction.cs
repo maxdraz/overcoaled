@@ -69,13 +69,13 @@ public class PlayerInteraction : MonoBehaviour
         if (isCarrying)
         {
             //slow player move speed (reset in Drop())
-
-            pm.SetSpeed(pm.slowMoveSpeed);
+            
 
             //disable shooting
             if (!carryingGun)
             {
                 ps.enabled = false;
+                pm.SetSpeed(pm.slowMoveSpeed);
             }
             // pause particle system
             movementParticle.Stop();
@@ -323,7 +323,7 @@ public class PlayerInteraction : MonoBehaviour
         {
             if (Input.GetButtonDown("joystick " + playerNumber + " A"))
             {
-                PickUpPlayer(collision);
+               // PickUpPlayer(collision);
                 
             }
 
@@ -333,7 +333,7 @@ public class PlayerInteraction : MonoBehaviour
         {
             if (Input.GetButtonDown("joystick " + playerNumber + " X"))
             {
-                collision.gameObject.GetComponent<PlayerHealth>().Revive();
+                collision.gameObject.GetComponent<PlayerHealth>().RevivePlayer();
 
             }
 

@@ -321,7 +321,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wallType: 0
   plankCount: 0
-  maxPlanks: 3
+  maxPlanks: 2
   wallFarPrefab: {fileID: 259128298123287316, guid: c76b8accd8698d54fbf7a4811730f75a,
     type: 3}
   wallFarWindowPrefab: {fileID: 7771275949308474075, guid: 5aaff294f52d621489f12f6a63fe13df,
@@ -330,5 +330,5 @@ MonoBehaviour:
     type: 3}
   wallNearWindowPrefab: {fileID: 1473559119, guid: 1de92383ebfa86b488d8374d6b3f263c,
     type: 3}
-  repairCD: 2
+  repairCD: 1
   repairCDRemaining: 0

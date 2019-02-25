@@ -34,6 +34,7 @@ public class PlayerHealth : MonoBehaviour
         transform.GetComponentInChildren<ParticleSystem>().Play();
         rb.isKinematic = false;
         move.enabled = true;
+        health = maxHealth;
     }
 
     public void SetHealth(float h)

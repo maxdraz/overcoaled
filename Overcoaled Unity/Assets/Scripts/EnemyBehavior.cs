@@ -159,16 +159,24 @@ public class EnemyBehavior : MonoBehaviour
             bool playerPriority = false;
             foreach (Player player in players)
             {
-                if (player.playerObject.transform.position.x < targetDistanceMax(target)
-                    && player.playerObject.transform.position.x > targetDistanceMin(target))
+                if (player.playerObject)
                 {
-
-                    if (shootTarget != null)
+                    if (player.playerObject.transform.position.x < targetDistanceMax(target)
+                        && player.playerObject.transform.position.x > targetDistanceMin(target))
                     {
-                        if (playerPriority)
+
+                        if (shootTarget != null)
                         {
-                            if (Vector3.Distance(player.playerObject.transform.position, transform.position)
-                                < Vector3.Distance(shootTarget.position, transform.position))
+                            if (playerPriority)
+                            {
+                                if (Vector3.Distance(player.playerObject.transform.position, transform.position)
+                                    < Vector3.Distance(shootTarget.position, transform.position))
+                                {
+                                    shootTarget = player.playerObject.transform;
+                                    playerPriority = true;
+                                }
+                            }
+                            else
                             {
                                 shootTarget = player.playerObject.transform;
                                 playerPriority = true;
@@ -179,11 +187,6 @@ public class EnemyBehavior : MonoBehaviour
                             shootTarget = player.playerObject.transform;
                             playerPriority = true;
                         }
-                    }
-                    else
-                    {
-                        shootTarget = player.playerObject.transform;
-                        playerPriority = true;
                     }
                 }
             }
