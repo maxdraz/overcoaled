@@ -14,23 +14,23 @@ public class BulletMove : MonoBehaviour
         transform.Translate(Vector3.forward * bulletSpeed * Time.deltaTime);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if(collision.gameObject.tag == "Wall")
+        if(other.gameObject.tag == "Wall")
         {
             print("collided with bullet");
             //GameObject ps = (GameObject)Instantiate(bulletDeathParticle, collision.GetContact(0).point, Quaternion.identity);            
 
-            GameObject ps = (GameObject)Instantiate(bulletDeathParticle, collision.GetContact(0).point, Quaternion.identity);
+            GameObject ps = (GameObject)Instantiate(bulletDeathParticle, gameObject.transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
 
         
-            if (gameObject.tag == "Enemy Bullet" && collision.gameObject.tag == "Wall")
+            if (gameObject.tag == "Enemy Bullet" && other.gameObject.tag == "Wall")
             {
-                collision.gameObject.GetComponent<Wall>().TakeDamage(1);
+                other.gameObject.GetComponent<Wall>().TakeDamage(1);
 
-                GameObject ps = (GameObject)Instantiate(bulletDeathParticle, collision.GetContact(0).point, Quaternion.identity);
+                GameObject ps = (GameObject)Instantiate(bulletDeathParticle, gameObject.transform.position, Quaternion.identity);
                 Destroy(gameObject);
             }
         }
