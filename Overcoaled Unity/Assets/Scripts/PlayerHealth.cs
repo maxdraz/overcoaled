@@ -30,8 +30,6 @@ public class PlayerHealth : MonoBehaviour
         yield return new WaitForSeconds(t);
         rb.isKinematic = false;
         move.enabled = true;
-
-
     }
 
     public void SetHealth(float h)
@@ -49,11 +47,16 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
+    private void KillPlayer()
+    {
+        StartCoroutine(Respawn(respawnCD));
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.tag == "Death")
         {
-            StartCoroutine(Respawn(respawnCD));
+            Invoke("KillPlayer", 2);
         }
     }
 }

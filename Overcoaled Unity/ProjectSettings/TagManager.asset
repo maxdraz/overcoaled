@@ -18,6 +18,7 @@ TagManager:
   - Bullet
   - Gatling Gun
   - Gatling Load
+  - Enemy
   layers:
   - Default
   - TransparentFX
