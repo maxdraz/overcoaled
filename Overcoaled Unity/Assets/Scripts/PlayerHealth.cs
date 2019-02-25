@@ -18,12 +18,7 @@ public class PlayerHealth : MonoBehaviour
         respawn = GameObject.Find("Respawn").transform;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    
     IEnumerator Respawn(float t)
     {
         transform.position = respawn.position;
@@ -43,6 +38,15 @@ public class PlayerHealth : MonoBehaviour
     {
         health = h;
         maxHealth = h;
+    }
+
+    public void TakeDamage()
+    {
+        health -= 1;
+        if (health <= 0)
+        {
+            StartCoroutine(Respawn(respawnCD));
+        }
     }
 
     private void OnCollisionEnter(Collision collision)

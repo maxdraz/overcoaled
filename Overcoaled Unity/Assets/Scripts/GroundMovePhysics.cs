@@ -15,6 +15,10 @@ public class GroundMovePhysics : MonoBehaviour
     {
         if(other.gameObject.GetComponent<Rigidbody>())
         {
+            if (other.tag != "Player")
+            {
+                Destroy(other.gameObject);
+            }
             float speed = travelManager.offset * groundSpeedMultiplier * Time.deltaTime;
             other.transform.Translate(Vector3.left * speed, Space.World);
         }

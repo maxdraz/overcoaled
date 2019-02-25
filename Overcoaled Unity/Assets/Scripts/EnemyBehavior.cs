@@ -25,6 +25,8 @@ public class EnemyBehavior : MonoBehaviour
     [SerializeField] public SpawnDynamite spawnDynamite;
     private bool dynamiteThrown = false;
 
+    private int enemyHealth = 3;
+
     public void SetDestination(float setX, float setY, float setZ)
     {
         destination = new Vector3(setX, setY, setZ);
@@ -146,7 +148,11 @@ public class EnemyBehavior : MonoBehaviour
             {
                 if (passengerManager.passengers.Count > 0)
                 {
-                    shootTarget = passengerManager.passengers[Random.Range(0, passengerManager.passengers.Count)].transform;
+                    int passengerNumber = Random.Range(0, passengerManager.passengers.Count);
+                    if (passengerManager.passengers[passengerNumber])
+                    {
+                        shootTarget = passengerManager.passengers[passengerNumber].transform;
+                    }
                 }
             }
 
@@ -197,9 +203,10 @@ public class EnemyBehavior : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    public void TakeDamage()
     {
-        if (collision.gameObject.tag == "Bullet")
+        enemyHealth -= 1;
+        if (enemyHealth <= 0)
         {
             Destroy(gameObject);
         }
