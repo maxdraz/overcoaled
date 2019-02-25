@@ -15,4 +15,13 @@ public class Passenger : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Death")
+        {
+            passengerManager.PassengerDead(gameObject);
+            Destroy(gameObject, 1f);
+        }
+    }
 }

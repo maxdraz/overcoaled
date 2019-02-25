@@ -33,6 +33,9 @@ public class WaveManager : MonoBehaviour
     [SerializeField] private Vector2 bottomRightOfLowerDestination;
     [SerializeField] private float vectorY = 0;
 
+    private int topLeft, topMiddle, topRight, bottomLeft, bottomMiddle, bottomRight;
+    [SerializeField] private int zoneEnemyLimit;
+
     private void Start()
     {
         travelManager = GetComponent<TravelManager>();

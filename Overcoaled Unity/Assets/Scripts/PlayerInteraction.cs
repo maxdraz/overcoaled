@@ -10,12 +10,14 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField] private bool carryingPlank = false;
     [SerializeField] private bool carryingCoal = false;
     [SerializeField] private bool carryingGun = false;
+    [SerializeField] private bool usingGatling;
     [SerializeField] private bool carryingPlayer = false;
     private GameObject plankHolder;
     private GameObject coalHolder;
     private GameObject gunHolder;
     private GameObject playerHolder;
     private GameObject playerCarriedGO;
+    private GameObject gatlingGunInUse;
 
     private PlayerMove pm;
     private PlayerShoot ps;
@@ -83,6 +85,10 @@ public class PlayerInteraction : MonoBehaviour
             if (Input.GetButtonDown("joystick " + playerNumber + " B"))
             {
                 Drop();
+                if (usingGatling)
+                {
+                    ExitGatlingGun(gatlingGunInUse);
+                }
             }
 
             //if(carryingGun && Input.GetButtonDown("joystick " + playerNumber + " X"))
@@ -275,11 +281,6 @@ public class PlayerInteraction : MonoBehaviour
                 UseGatlingGun(other.gameObject);
                 //other.transform.GetComponentInChildren<SpriteRenderer>().enabled = false;
             }
-            else if (Input.GetButtonDown("joystick " + playerNumber + " B"))
-            {
-                ExitGatlingGun(other.gameObject);
-
-            }
         }
 
 
@@ -353,7 +354,9 @@ public class PlayerInteraction : MonoBehaviour
     {
         GetComponent<PlayerMove>().enabled = false;
         GetComponent<PlayerShoot>().enabled = false;
-
+        isCarrying = true;
+        usingGatling = true;
+        gatlingGunInUse = gatlingGun;
         gatlingGun.GetComponentInChildren<GatlingGun>().SetPlayer(playerNumber);
     }
 
@@ -361,7 +364,9 @@ public class PlayerInteraction : MonoBehaviour
     {
         GetComponent<PlayerMove>().enabled = true;
         GetComponent<PlayerShoot>().enabled = true;
-
+        isCarrying = false;
+        usingGatling = false;
+        pm.SetSpeed(pm.normalMoveSpeed);
         gatlingGun.GetComponentInChildren<GatlingGun>().ExitGun();
     }
 

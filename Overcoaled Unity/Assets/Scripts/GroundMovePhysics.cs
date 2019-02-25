@@ -6,6 +6,7 @@ public class GroundMovePhysics : MonoBehaviour
 {
     private TravelManager travelManager;
     [SerializeField] private int groundSpeedMultiplier;
+    [SerializeField] private PassengerManager passengerManager;
     private void Start()
     {
         travelManager = GetComponentInParent<TravelManager>();
@@ -15,9 +16,9 @@ public class GroundMovePhysics : MonoBehaviour
     {
         if(other.gameObject.GetComponent<Rigidbody>())
         {
-            if (other.tag != "Player")
+            if (other.tag != "Player" && other.tag != "PlayerDown")
             {
-                Destroy(other.gameObject);
+                Destroy(other.gameObject, 1.0f);
             }
             float speed = travelManager.offset * groundSpeedMultiplier * Time.deltaTime;
             other.transform.Translate(Vector3.left * speed, Space.World);

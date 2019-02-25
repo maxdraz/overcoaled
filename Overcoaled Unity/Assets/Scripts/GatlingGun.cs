@@ -46,13 +46,15 @@ public class GatlingGun : MonoBehaviour
 
                 if (southFacing)
                 {
-                    dirX = Mathf.Clamp(dirX, -0.6f, 0.6f);
-                    dirY = Mathf.Clamp(dirY, 0.7f, 1f);
+                    print(dirX + ", " + dirY);
+                    dirX = Mathf.Clamp(dirX, -1f, 1f);
+                    dirY = Mathf.Clamp(dirY, 0.2f, 1f);
                 }
                 else
                 {
-                    dirX = Mathf.Clamp(dirX, -0.6f, 0.6f);
-                    dirY = Mathf.Clamp(dirY, -0.7f, -1f);
+                    print(dirX + ", " + dirY);
+                    dirX = Mathf.Clamp(dirX, -1f, 1f);
+                    dirY = Mathf.Clamp(dirY, -0.2f, -1f);
                 }
                 
                 direction = new Vector3(dirX, 0.0f, -dirY);
@@ -63,11 +65,19 @@ public class GatlingGun : MonoBehaviour
                 transform.rotation = Quaternion.LookRotation(newDir);
             }
 
-            if (Input.GetAxisRaw("joystick " + playerNumber + " RTrigger") == 1 && ammo > 0 && canShoot)
+            if (Input.GetAxisRaw("joystick " + playerNumber + " RTrigger") == 1)
             {
-                ammo--;
-                canShoot = false;
-                Shoot();
+                GetComponent<Animator>().enabled = true;
+                if (ammo > 0 && canShoot)
+                {
+                    ammo--;
+                    canShoot = false;
+                    Shoot();
+                }
+            }
+            else
+            {
+                GetComponent<Animator>().enabled = false;
             }
         }
     }

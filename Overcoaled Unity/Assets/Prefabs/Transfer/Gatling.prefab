@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1952144665763913866}
   m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
-  m_LocalPosition: {x: 0, y: 0.48000002, z: 1.1900003}
+  m_LocalPosition: {x: 0, y: 0, z: 1.1900003}
   m_LocalScale: {x: 0.5, y: 0.5, z: 2.773}
   m_Children:
   - {fileID: 1952144666593568690}
@@ -88,6 +88,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1952144666393539112}
   - component: {fileID: 1952144666393539113}
+  - component: {fileID: 1853471497}
   m_Layer: 0
   m_Name: Gun Pivot
   m_TagString: Untagged
@@ -103,7 +104,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1952144666393539115}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: -0.53}
+  m_LocalPosition: {x: 0, y: 0.42, z: -0.53}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1952144665763913867}
@@ -131,6 +132,25 @@ MonoBehaviour:
   shotsPerCooldown: 100
   cooldownDuration: 10
   spawnLocation: {fileID: 1952144666593568690}
+--- !u!95 &1853471497
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1952144666393539115}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e8d6036109e0bec4eb76bd91b4fd59d1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1952144666593568701
 GameObject:
   m_ObjectHideFlags: 0
@@ -252,8 +272,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1, z: 1.5590014}
+  m_Center: {x: 0, y: 0, z: 0.27950066}
 --- !u!1 &4412678260006596921
 GameObject:
   m_ObjectHideFlags: 0
