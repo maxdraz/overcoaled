@@ -18,12 +18,7 @@ public class PlayerHealth : MonoBehaviour
         respawn = GameObject.Find("Respawn").transform;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    
     IEnumerator Respawn(float t)
     {
         transform.position = respawn.position;
