@@ -328,6 +328,16 @@ public class PlayerInteraction : MonoBehaviour
             }
 
         }
+
+        if (collision.gameObject.tag == "PlayerDown" && !isCarrying)
+        {
+            if (Input.GetButtonDown("joystick " + playerNumber + " X"))
+            {
+                collision.gameObject.GetComponent<PlayerHealth>().Revive();
+
+            }
+
+        }
     }
 
     private void OnTriggerExit(Collider other)
