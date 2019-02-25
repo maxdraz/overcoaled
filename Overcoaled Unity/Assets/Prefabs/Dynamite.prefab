@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 4771079246861217365}
   m_Layer: 0
   m_Name: Dynamite
-  m_TagString: Death
+  m_TagString: Dynamite
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
