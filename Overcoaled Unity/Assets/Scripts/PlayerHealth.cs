@@ -63,4 +63,11 @@ public class PlayerHealth : MonoBehaviour
             Invoke("KillPlayer", 2);
         }
     }
+
+    private void DownPlayer()
+    {
+        GetComponent<PlayerMove>().enabled = false;
+        GetComponent<PlayerInteraction>().Drop();
+        GetComponent<PlayerInteraction>().enabled = false;
+    }
 }
