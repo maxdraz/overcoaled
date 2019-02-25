@@ -19,6 +19,8 @@ TagManager:
   - Gatling Gun
   - Gatling Load
   - Enemy
+  - Dynamite
+  - PlayerDown
   layers:
   - Default
   - TransparentFX
