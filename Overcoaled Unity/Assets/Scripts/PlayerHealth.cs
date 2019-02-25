@@ -21,6 +21,8 @@ public class PlayerHealth : MonoBehaviour
     
     IEnumerator Respawn(float t)
     {
+        GetComponent<PlayerInteraction>().Drop();
+        transform.GetComponentInChildren<ParticleSystem>().Stop();
         transform.position = respawn.position;
         transform.rotation = respawn.rotation;
         health = maxHealth;
@@ -28,6 +30,8 @@ public class PlayerHealth : MonoBehaviour
         rb.isKinematic = true;
         move.enabled = false;
         yield return new WaitForSeconds(t);
+
+        transform.GetComponentInChildren<ParticleSystem>().Play();
         rb.isKinematic = false;
         move.enabled = true;
     }
