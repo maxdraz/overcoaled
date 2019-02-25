@@ -344,7 +344,6 @@ public class PlayerInteraction : MonoBehaviour
         GetComponent<PlayerMove>().enabled = false;
         GetComponent<PlayerShoot>().enabled = false;
 
-        gatlingGun.GetComponentInChildren<GatlingGun>().enabled = true;
         gatlingGun.GetComponentInChildren<GatlingGun>().SetPlayer(playerNumber);
     }
 
@@ -353,7 +352,7 @@ public class PlayerInteraction : MonoBehaviour
         GetComponent<PlayerMove>().enabled = true;
         GetComponent<PlayerShoot>().enabled = true;
 
-        gatlingGun.GetComponentInChildren<GatlingGun>().enabled = false;
+        gatlingGun.GetComponentInChildren<GatlingGun>().ExitGun();
     }
 
     void PickUpPlank()

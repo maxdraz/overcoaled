@@ -197,12 +197,12 @@ public class EnemyBehavior : MonoBehaviour
         }
     }
 
-
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.tag == "Bullet")
+        if (collision.gameObject.tag == "Bullet")
         {
             Destroy(gameObject);
         }
     }
+    
 }

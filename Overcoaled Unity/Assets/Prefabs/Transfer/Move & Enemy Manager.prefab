@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1418679670}
   - component: {fileID: 1418679669}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Moving Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -67,7 +67,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1348415263003903580}
-  - component: {fileID: 1348415263003903581}
   - component: {fileID: 1348415263003903582}
   - component: {fileID: 1348415263003903583}
   m_Layer: 0
@@ -92,19 +91,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1348415263003903581
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1348415263003903578}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c501dbc749be91b48a7e47a7c4f81a94, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemy: {fileID: 8152852712019485955, guid: 9166fc2e06102f74dbaec75e09a06b68, type: 3}
 --- !u!114 &1348415263003903582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,6 +112,7 @@ MonoBehaviour:
   offsetMultiplier: 2
   lerp: 0
   ground: {fileID: 0}
+  distanceUI: {fileID: 0}
 --- !u!114 &1348415263003903583
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,6 +141,7 @@ MonoBehaviour:
   enemy: {fileID: 8152852712019485955, guid: 9166fc2e06102f74dbaec75e09a06b68, type: 3}
   wallManager: {fileID: 0}
   passengerManager: {fileID: 0}
+  dynamiteSpawner: {fileID: 0}
   topLeftOfUpperSpawn: {x: -20, y: 10}
   bottomRighttOfUpperSpawn: {x: -10, y: 3}
   topLeftOfUpperSpawn2: {x: -10, y: 15}

@@ -20,7 +20,7 @@ public class SpawnDynamite : MonoBehaviour
         float x = Random.Range(aboveTrainTopLeft.x, aboveTrainBottomRight.x);
         float z = Random.Range(aboveTrainTopLeft.z, aboveTrainBottomRight.z);
         float y = aboveTrainTopLeft.y;
-        Instantiate(DynamiteQueue.Dequeue(), new Vector3(x, y, z), Quaternion.identity);
+        Instantiate(DynamiteQueue.Dequeue(), new Vector3(x, y, z), dynamite.transform.rotation);
     }
 
     
