@@ -5,7 +5,7 @@ using UnityEngine;
 public class ThrownObjectMove : MonoBehaviour
 {
     private Rigidbody rb;
-
+    public bool isOnPlayer;
     [SerializeField] private float level1Force;
     [SerializeField] private float level2Force;
     [SerializeField] private float level3Force;
@@ -26,23 +26,25 @@ public class ThrownObjectMove : MonoBehaviour
     private void OnEnable()
     {
         StartCoroutine(changePhysicsLayer());
+        grounded = false;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(gameObject.tag == "Player" && collision.gameObject.layer == groundLayer && !grounded)
+        if(isOnPlayer && collision.gameObject.layer == groundLayer && !grounded)
         {
             //ps
             grounded = true;
             GameObject ps = (GameObject)Instantiate(groundHitPS, transform.position, Quaternion.identity);
-
+            gameObject.transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
             gameObject.GetComponent<PlayerMove>().enabled = true;
             gameObject.layer = 0;
             gameObject.GetComponentInChildren<ParticleSystem>().Play();
             this.enabled = false;
+            print("called");
         }
 
-        if (collision.gameObject.layer == groundLayer && !grounded)
+        else if(collision.gameObject.layer == groundLayer && !grounded)
         {
             
             grounded = true;
