@@ -334,7 +334,7 @@ public class PlayerInteraction : MonoBehaviour
 
         if (collision.gameObject.tag == "Dynamite" && !isCarrying)
         {
-            
+            PickUpDynamite(collision);
 
         }
 
