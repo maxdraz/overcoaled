@@ -291,32 +291,32 @@ public class PlayerInteraction : MonoBehaviour
         // Picking stuff off ground
         if(collision.gameObject.tag == "Plank" && !isCarrying)
         {
-               if (Input.GetButtonDown("joystick " + playerNumber + " A"))
-                {
+              // if (Input.GetButtonDown("joystick " + playerNumber + " A"))
+               // {
                     PickUpPlank();
                 Destroy(collision.gameObject);
-                }
+               // }
 
         }
 
         if (collision.gameObject.tag == "Coal" && !isCarrying)
         {
-            if (Input.GetButtonDown("joystick " + playerNumber + " A"))
-            {
+           // if (Input.GetButtonDown("joystick " + playerNumber + " A"))
+            //{
                 PickUpCoal();
                 Destroy(collision.gameObject);
-            }
+            //}
 
         }
 
         if (collision.gameObject.tag == "Gun" && !isCarrying)
         {
-            if (Input.GetButtonDown("joystick " + playerNumber + " A"))
-            {
+            //if (Input.GetButtonDown("joystick " + playerNumber + " A"))
+           // {
                 PickUpGun();
                 ps.ammo = collision.gameObject.GetComponent<Gun>().ammoInGun;
                 Destroy(collision.gameObject);
-            }
+            //}
 
         }
 

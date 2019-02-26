@@ -23,14 +23,17 @@ public class PlayerHealth : MonoBehaviour
     {
         GetComponent<PlayerInteraction>().Drop();
         transform.GetComponentInChildren<ParticleSystem>().Stop();
+        transform.Find("Player Character").gameObject.SetActive(false);
         transform.position = respawn.position;
         transform.rotation = respawn.rotation;
         health = maxHealth;
+
 
         rb.isKinematic = true;
         move.enabled = false;
         yield return new WaitForSeconds(t);
 
+        transform.Find("Player Character").gameObject.SetActive(true);
         transform.GetComponentInChildren<ParticleSystem>().Play();
         rb.isKinematic = false;
         move.enabled = true;
@@ -55,6 +58,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void KillPlayer()
     {
+        print("touched death");
         StartCoroutine(Respawn(respawnCD));
     }
 
