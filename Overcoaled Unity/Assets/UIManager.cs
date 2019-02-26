@@ -21,18 +21,18 @@ public class UIManager : MonoBehaviour
 
             if (arrivalTime <= 120)
             {
-                timeText.text = "Arrived: Early + 300pts";
+                timeText.text = "Early + 300pts";
                 totalScore += 300;
             }
             else
             {
-                timeText.text = "Arrived: On Time + 100pts";
+                timeText.text = "On Time + 100pts";
                 totalScore += 100;
             }
 
-            passengersText.text = "Passengers Left: " + passengersLeft.ToString() + " x50pts";
+            passengersText.text = passengersLeft.ToString() + " x50pts";
             totalScore += (passengersLeft * 50);
-            totalScoreText.text = "Total Score: " + totalScore.ToString() + "pts";
+            totalScoreText.text = totalScore.ToString() + "pts";
 
             if (totalScore >= 100)
             {
