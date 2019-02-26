@@ -7,7 +7,7 @@ public class PlayerInteraction : MonoBehaviour
     public int playerNumber;
     [SerializeField] private int noPlayerCollisionLayer;
     [SerializeField] private bool isCarrying = false;
-    [SerializeField] private bool carryingPlank = false;
+    [SerializeField] public bool carryingPlank = false;
     [SerializeField] private bool carryingCoal = false;
     [SerializeField] private bool carryingGun = false;
     [SerializeField] private bool carryingDynamite = false;

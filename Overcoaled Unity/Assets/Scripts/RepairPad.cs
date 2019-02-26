@@ -25,7 +25,7 @@ public class RepairPad : MonoBehaviour
     [SerializeField]
     private float repairCDRemaining;
     private TextMesh[] texts;
-
+    [SerializeField] private SpriteRenderer aButton;
     private void Awake()
     {
 
@@ -63,6 +63,7 @@ public class RepairPad : MonoBehaviour
         {
             plankText.gameObject.SetActive(false);
             repairText.gameObject.SetActive(true);
+            aButton.enabled = false;
         }
                                                                        // ---^
         if (!CheckIfCanAdd())
@@ -137,9 +138,11 @@ public class RepairPad : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.tag == "Player" && plankCount == maxPlanks)
+        if (other.tag == "Player" && other.GetComponent<PlayerInteraction>().carryingPlank)
         {
-            transform.GetComponentInChildren<SpriteRenderer>().enabled = true;
+
+
+            aButton.enabled = true;
         }
 
     }
@@ -148,7 +151,7 @@ public class RepairPad : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            transform.GetComponentInChildren<SpriteRenderer>().enabled = false;
+            aButton.enabled = false;
         }
     }
 }
