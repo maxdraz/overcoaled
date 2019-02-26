@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class TravelManager : MonoBehaviour
 {
@@ -23,22 +24,53 @@ public class TravelManager : MonoBehaviour
     [SerializeField] private Renderer ground;
 
     [SerializeField] private Slider distanceUI;
+    [SerializeField] private TextMeshProUGUI timeRemaining;
+    [SerializeField] private TextMeshProUGUI distanceTravelled;
+
+    private bool gameOver = false;
     // Update is called once per frame
     void Update()
     {
         if (travelBegun)
         {
             timeSinceStart += Time.deltaTime;
+            int timer = (fullTimeLength - (int)timeSinceStart);
+            int minutes = timer / 60;
+            int seconds = timer % 60;
+            string secondsString;
+            if (seconds == 0)
+            {
+                secondsString  = "00";
+            }
+            else if (seconds < 10)
+            {
+                secondsString = "0" + (timer % 60).ToString();
+            }
+            else
+            {
+                secondsString = (timer % 60).ToString();
+            }
+            if (minutes == 0)
+            {
+                timeRemaining.color = Color.red;
+            }
+            if (!gameOver)
+            {
+                timeRemaining.text = minutes.ToString() + ":" + secondsString;
+            }
             travelDistance += currentSpeed * Time.deltaTime;
+            distanceTravelled.text = ((int)travelDistance).ToString() + "/" + fullTimeLength.ToString();
             OffSetGround();
             distanceUI.value = travelDistance / fullTravelLength;
-            if (travelDistance >= fullTravelLength)
+            if (travelDistance >= fullTravelLength && !gameOver)
             {
-                //End game
+                GameManager.GM.EndGame((int)timeSinceStart);
+                gameOver = true;
             }
-            else if (timeSinceStart >= fullTimeLength)
+            else if (timeSinceStart >= fullTimeLength && !gameOver)
             {
-                //Game over
+                GameManager.GM.EndGame((int)timeSinceStart);
+                gameOver = true;
             }
         }
     }

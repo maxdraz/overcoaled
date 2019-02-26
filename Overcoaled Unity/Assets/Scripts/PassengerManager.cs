@@ -33,6 +33,7 @@ public class PassengerManager : MonoBehaviour
     public void PassengerDead(GameObject passenger)
     {
         passengers.Remove(passenger);
+        GameManager.GM.passengerCount = passengers.Count;
     }
 
 

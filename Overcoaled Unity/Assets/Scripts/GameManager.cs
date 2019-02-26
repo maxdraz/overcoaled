@@ -10,13 +10,15 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int playerHealth = 0;
     [SerializeField] private float playerSpeed = 0;
     [SerializeField] private float playerSlowSpeed = 0;
-    [Tooltip("0 = player 1, etc")][SerializeField] private Vector3[] playerSpawnLocations;
+    [Tooltip("0 = player 1, etc")] [SerializeField] private Vector3[] playerSpawnLocations;
     [SerializeField] private GameObject playerCharacter;
     [Tooltip("0 = player 1, etc")] [SerializeField] private Color[] playerColours;
 
     [SerializeField] TravelManager travelManager;
 
-    public int passengerCount;
+     public int passengerCount;
+
+    [SerializeField] private UIManager uiManager;
 
     //Awake is always called before any Start functions
 
@@ -55,6 +57,11 @@ public class GameManager : MonoBehaviour
 
         //////////////move this
         travelManager.StartTimer();
+    }
+
+    public void EndGame(int timeLeft)
+    {
+        uiManager.SetUI(passengerCount, timeLeft);
     }
 
 }
