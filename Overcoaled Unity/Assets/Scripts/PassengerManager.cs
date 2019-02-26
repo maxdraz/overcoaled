@@ -36,7 +36,7 @@ public class PassengerManager : MonoBehaviour
     {
         passengers.Remove(passenger);
         GameManager.GM.passengerCount = passengers.Count;
-        passengersAmountUI.text = "x" + passengers.Count.ToString();
+        passengersAmountUI.text = "x" + passengers.Count.ToString() + "/8";
     }
 
 

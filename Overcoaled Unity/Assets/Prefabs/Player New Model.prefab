@@ -235,6 +235,7 @@ GameObject:
   - component: {fileID: 3397615331571177700}
   - component: {fileID: 2414134363004040661}
   - component: {fileID: 6527855656883120349}
+  - component: {fileID: 3746318829502970754}
   m_Layer: 0
   m_Name: Player New Model
   m_TagString: Player
@@ -416,6 +417,20 @@ MonoBehaviour:
   noPlayerCollisionLayer: 10
   groundHitPS: {fileID: 4242870348423495881, guid: 0efe82cf0044c894ab7f97346afe58a5,
     type: 3}
+--- !u!114 &3746318829502970754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4614903107362945743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 818e897a6fade49458a0088b85108fa2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hatColor: {r: 0, g: 0, b: 0, a: 0}
+  hat: {fileID: 2100002, guid: edb4ae7b6002942479ee7c64d4a67a6b, type: 3}
 --- !u!1 &5256565151949666226
 GameObject:
   m_ObjectHideFlags: 0
