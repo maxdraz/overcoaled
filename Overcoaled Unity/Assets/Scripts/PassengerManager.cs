@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PassengerManager : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class PassengerManager : MonoBehaviour
     [SerializeField] private int rowAmount;
     [SerializeField] private GameObject passenger;
     public List<GameObject> passengers = new List<GameObject>();
+    [SerializeField] private TextMeshProUGUI passengersAmountUI;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +36,7 @@ public class PassengerManager : MonoBehaviour
     {
         passengers.Remove(passenger);
         GameManager.GM.passengerCount = passengers.Count;
+        passengersAmountUI.text = "x" + passengers.Count.ToString();
     }
 
 

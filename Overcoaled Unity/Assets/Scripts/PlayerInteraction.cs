@@ -366,6 +366,7 @@ public class PlayerInteraction : MonoBehaviour
         GetComponent<PlayerShoot>().enabled = false;
         isCarrying = true;
         usingGatling = true;
+        GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
         gatlingGunInUse = gatlingGun;
         gatlingGun.GetComponentInChildren<GatlingGun>().SetPlayer(playerNumber);
     }
@@ -376,6 +377,8 @@ public class PlayerInteraction : MonoBehaviour
         GetComponent<PlayerShoot>().enabled = true;
         isCarrying = false;
         usingGatling = false;
+        GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+        GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
         pm.SetSpeed(pm.normalMoveSpeed);
         gatlingGun.GetComponentInChildren<GatlingGun>().ExitGun();
     }
@@ -457,6 +460,11 @@ public class PlayerInteraction : MonoBehaviour
             movementParticle.Play();
 
             anim.SetBool("pickup", false);
+        }
+
+        if (usingGatling)
+        {
+            ExitGatlingGun(gatlingGunInUse);
         }
     }
 
