@@ -60,14 +60,15 @@ public class TravelManager : MonoBehaviour
                 timeRemaining.text = minutes.ToString() + ":" + secondsString;
             }
 
-            if (!behindOnTimeBoost)
-            {
-                travelDistance += currentSpeed * Time.deltaTime;
-            }
-            else
+            if (behindOnTimeBoost && currentSpeed == 3)
             {
                 travelDistance += (currentSpeed + 1) * Time.deltaTime;
                 print("boosting");
+               
+            }
+            else
+            {
+                travelDistance += currentSpeed * Time.deltaTime;
             }
 
 
