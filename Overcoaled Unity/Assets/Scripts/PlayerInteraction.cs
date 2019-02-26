@@ -11,6 +11,7 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField] private bool carryingCoal = false;
     [SerializeField] private bool carryingGun = false;
     [SerializeField] private bool carryingDynamite = false;
+    [SerializeField] private bool carryingPassenger = false;
     [SerializeField] private bool usingGatling;
     [SerializeField] private bool carryingPlayer = false;
     private GameObject plankHolder;
@@ -18,6 +19,7 @@ public class PlayerInteraction : MonoBehaviour
     private GameObject gunHolder;
     private GameObject playerHolder;
     private GameObject playerCarriedGO;
+    private GameObject passengerGO;
     private GameObject dynamiteGO;
     private GameObject gatlingGunInUse;
 
@@ -349,6 +351,16 @@ public class PlayerInteraction : MonoBehaviour
             }
 
         }
+
+        if (collision.gameObject.tag == "Passenger" && !isCarrying)
+        {
+            if (Input.GetButtonDown("joystick " + playerNumber + " A"))
+             {
+            PickUpPassenger(collision);
+            
+            }
+
+        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -363,7 +375,7 @@ public class PlayerInteraction : MonoBehaviour
     void UseGatlingGun(GameObject gatlingGun)
     {
         GetComponent<PlayerMove>().enabled = false;
-        GetComponent<PlayerShoot>().enabled = false;
+       
         isCarrying = true;
         usingGatling = true;
         GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
@@ -374,7 +386,7 @@ public class PlayerInteraction : MonoBehaviour
     void ExitGatlingGun(GameObject gatlingGun)
     {
         GetComponent<PlayerMove>().enabled = true;
-        GetComponent<PlayerShoot>().enabled = true;
+        
         isCarrying = false;
         usingGatling = false;
         GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
@@ -438,10 +450,23 @@ public class PlayerInteraction : MonoBehaviour
         
     }
 
+    void PickUpPassenger(Collision collision)
+    {
+        passengerGO = collision.gameObject;
+        passengerGO.GetComponent<Rigidbody>().isKinematic = true;
+        passengerGO.transform.parent = playerHolder.transform;
+        passengerGO.transform.position = playerHolder.transform.position;
+        passengerGO.transform.rotation = playerHolder.transform.rotation;
+
+        isCarrying = true;
+        carryingPassenger = true;
+
+    }
+
     public void Drop()
     {
         // if carrying any of these items
-        if (carryingPlank || carryingCoal || carryingGun || carryingPlayer || carryingDynamite)
+        if (carryingPlank || carryingCoal || carryingGun || carryingPlayer || carryingDynamite || carryingPassenger)
         {
 
             carryingPlank = false;
@@ -450,6 +475,7 @@ public class PlayerInteraction : MonoBehaviour
             carryingCoal = false;
             carryingPlayer = false;
             carryingDynamite = false;
+            carryingPassenger = false;
             plankHolder.SetActive(false);
             coalHolder.SetActive(false);
             gunHolder.SetActive(false);
@@ -533,6 +559,17 @@ public class PlayerInteraction : MonoBehaviour
             Drop();
 
             playerCarriedGO = null;
+        }
+
+        if (carryingPassenger)
+        {
+            passengerGO.GetComponent<Rigidbody>().isKinematic = false;
+            passengerGO.transform.parent = null;
+            ThrownObjectMove move = passengerGO.GetComponent<ThrownObjectMove>();
+            move.enabled = true;
+            move.setForceLevel(forceLevel);
+            move.Move();
+            Drop();
         }
     }
 }

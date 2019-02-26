@@ -12,11 +12,12 @@ GameObject:
   - component: {fileID: 2623940870237476972}
   - component: {fileID: 6054465964833118615}
   - component: {fileID: 7416890928560325257}
-  - component: {fileID: 2445214287555425691}
   - component: {fileID: 3266277096276085287}
+  - component: {fileID: 2445214287555425691}
+  - component: {fileID: 7477448587703888195}
   m_Layer: 0
   m_Name: Passenger
-  m_TagString: Untagged
+  m_TagString: Passenger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -93,19 +94,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2445214287555425691
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1255000211439466166}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c1ebe08c5221ce45812fd96f89fad32, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  passengerManager: {fileID: 0}
 --- !u!54 &3266277096276085287
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -122,3 +110,38 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2445214287555425691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1255000211439466166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c1ebe08c5221ce45812fd96f89fad32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  passengerManager: {fileID: 0}
+--- !u!114 &7477448587703888195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1255000211439466166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98a651290e6f17644be42db5cf262ad5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isOnPlayer: 0
+  level1Force: 1
+  level2Force: 5
+  level3Force: 8.5
+  forceScale: 0
+  grounded: 0
+  groundLayer: 8
+  noPlayerCollisionLayer: 10
+  groundHitPS: {fileID: 4242870348423495881, guid: 0efe82cf0044c894ab7f97346afe58a5,
+    type: 3}
