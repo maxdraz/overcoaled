@@ -380,6 +380,7 @@ MonoBehaviour:
   carryingPlank: 0
   carryingCoal: 0
   carryingGun: 0
+  carryingDynamite: 0
   usingGatling: 0
   carryingPlayer: 0
   level1ThrowTime: 0.2
@@ -5609,7 +5610,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: fa46f7db9106340479271624fa475451, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.19600001
+      value: 0.196
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: fa46f7db9106340479271624fa475451, type: 3}
       propertyPath: m_LocalPosition.y
