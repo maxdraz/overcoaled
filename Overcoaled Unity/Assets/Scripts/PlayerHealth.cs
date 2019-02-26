@@ -61,11 +61,12 @@ public class PlayerHealth : MonoBehaviour
         StartCoroutine(Respawn(respawnCD));
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision col)
     {
-        if(other.gameObject.tag == "Death")
+        if(col.gameObject.tag == "Death")
         {
             anim.SetBool("down", true);
+            move.enabled = false;
             Invoke("KillPlayer", 2);
         }
     }
