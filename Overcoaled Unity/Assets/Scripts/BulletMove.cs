@@ -7,6 +7,7 @@ public class BulletMove : MonoBehaviour
 
     [SerializeField] private float bulletSpeed;
     [SerializeField] private GameObject bulletDeathParticle;
+    [SerializeField] private GameObject bloodParticle;
     [SerializeField] private bool isPlayerBullet;
     
     // Update is called once per frame
@@ -19,12 +20,14 @@ public class BulletMove : MonoBehaviour
     {
         if (isPlayerBullet && other.tag == "Enemy")
         {
+            GameObject ps = (GameObject)Instantiate(bloodParticle, gameObject.transform.position, Quaternion.identity);
             other.gameObject.transform.parent.GetComponent<EnemyBehavior>().TakeDamage();
             Destroy(gameObject);
         }
 
         if(!isPlayerBullet && other.tag == "Player")
         {
+            GameObject ps = (GameObject)Instantiate(bloodParticle, gameObject.transform.position, Quaternion.identity);
             other.gameObject.GetComponent<PlayerHealth>().TakeDamage();
             Destroy(gameObject);
         }
