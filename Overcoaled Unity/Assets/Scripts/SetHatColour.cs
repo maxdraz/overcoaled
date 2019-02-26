@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class SetHatColour : MonoBehaviour
 {
-    public Material hat;
+    public Renderer hat;
 }

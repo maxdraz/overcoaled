@@ -12,11 +12,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float playerSlowSpeed = 0;
     [Tooltip("0 = player 1, etc")] [SerializeField] private Vector3[] playerSpawnLocations;
     [SerializeField] private GameObject playerCharacter;
-    [Tooltip("0 = player 1, etc")] [SerializeField] private Color[] playerColours;
+    [Tooltip("0 = player 1, etc")] [SerializeField] private Material[] playerColours;
 
     [SerializeField] TravelManager travelManager;
     private MultipleTargetCamera cam;
-     public int passengerCount;
+    public int passengerCount;
+    private int playerDownAmount;
 
     [SerializeField] private UIManager uiManager;
 
@@ -54,7 +55,10 @@ public class GameManager : MonoBehaviour
         players[players.Count - 1].playerObject.GetComponent<PlayerMove>().normalMoveSpeed = playerSpeed;
         players[players.Count - 1].playerObject.GetComponent<PlayerShoot>().playerNumber = playerNum;
         players[players.Count - 1].playerObject.GetComponent<PlayerInteraction>().playerNumber = playerNum;
-        players[players.Count - 1].playerObject.GetComponent<SetHatColour>().hat.color = playerColours[players.Count - 1];
+        //players[players.Count - 1].playerObject.GetComponent<SetHatColour>().hat.color = Color.blue;
+        Material[] playerMaterials = players[players.Count - 1].playerObject.GetComponent<SetHatColour>().hat.materials;
+        playerMaterials[1] = playerColours[players.Count - 1];
+        players[players.Count - 1].playerObject.GetComponent<SetHatColour>().hat.materials = playerMaterials;
 
         cam.targets.Add(players[players.Count - 1].playerObject.transform);
         //////////////move this
@@ -64,6 +68,16 @@ public class GameManager : MonoBehaviour
     public void EndGame(int timeLeft)
     {
         uiManager.SetUI(passengerCount, timeLeft);
+    }
+
+    public void PlayerDown(int downOrUp)
+    {
+        playerDownAmount += downOrUp;
+
+        if (playerDownAmount >= players.Count)
+        {
+            uiManager.GameOver();
+        }
     }
 
 }

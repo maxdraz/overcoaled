@@ -1440,6 +1440,7 @@ GameObject:
   - component: {fileID: 534669905}
   - component: {fileID: 534669904}
   - component: {fileID: 534669903}
+  - component: {fileID: 534669906}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1511,6 +1512,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 49.415, y: 0, z: 0}
+--- !u!114 &534669906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 534669902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be34267f44473af4d9bec0359d9a4b29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targets: []
+  offset: {x: -0.07, y: 8.13, z: -7.97}
+  smoothTime: 0.5
+  minZoom: 9
+  maxZoom: 6
+  zoomLimiter: 10
 --- !u!1 &538640684
 GameObject:
   m_ObjectHideFlags: 0
@@ -2403,7 +2422,7 @@ MonoBehaviour:
   m_material: {fileID: 0}
   m_sharedMaterial: {fileID: 0}
   m_isDefaultMaterial: 0
-  m_padding: 1.517
+  m_padding: 0
   m_canvasRenderer: {fileID: 725936173}
   m_TextComponent: {fileID: 570515885}
   m_materialReferenceIndex: 1
@@ -2546,7 +2565,7 @@ MonoBehaviour:
   m_material: {fileID: 0}
   m_sharedMaterial: {fileID: 0}
   m_isDefaultMaterial: 0
-  m_padding: 1.517
+  m_padding: 0
   m_canvasRenderer: {fileID: 761504678}
   m_TextComponent: {fileID: 1624243770}
   m_materialReferenceIndex: 1
@@ -3196,7 +3215,7 @@ MonoBehaviour:
   m_material: {fileID: 0}
   m_sharedMaterial: {fileID: 0}
   m_isDefaultMaterial: 0
-  m_padding: 1.517
+  m_padding: 0
   m_canvasRenderer: {fileID: 941620580}
   m_TextComponent: {fileID: 1907868910}
   m_materialReferenceIndex: 1
@@ -5792,7 +5811,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: x8
+  m_text: x8/8
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8d96e8ca2add9d64db2070cd2edc2fe1, type: 2}
   m_sharedMaterial: {fileID: 21669286516085196, guid: 8d96e8ca2add9d64db2070cd2edc2fe1,
@@ -5862,10 +5881,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: -105.65155, w: 0}
   m_textInfo:
     textComponent: {fileID: 1907868910}
-    characterCount: 2
+    characterCount: 4
     spriteCount: 0
     spaceCount: 0
-    wordCount: 1
+    wordCount: 2
     linkCount: 0
     lineCount: 1
     pageCount: 1
@@ -6818,6 +6837,41 @@ PrefabInstance:
       propertyPath: uiManager
       value: 
       objectReference: {fileID: 484127400}
+    - target: {fileID: 8603679328106671958, guid: 98319f8a6cf62434aa1df54c54dd1079,
+        type: 3}
+      propertyPath: playerColours.Array.data[0].r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8603679328106671958, guid: 98319f8a6cf62434aa1df54c54dd1079,
+        type: 3}
+      propertyPath: playerColours.Array.data[0].g
+      value: 0.9502456
+      objectReference: {fileID: 0}
+    - target: {fileID: 8603679328106671958, guid: 98319f8a6cf62434aa1df54c54dd1079,
+        type: 3}
+      propertyPath: playerColours.Array.data[0].b
+      value: 0.41960788
+      objectReference: {fileID: 0}
+    - target: {fileID: 8603679328106671958, guid: 98319f8a6cf62434aa1df54c54dd1079,
+        type: 3}
+      propertyPath: playerColours.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d4dd7866e0b75f478bad54bfc9acfea, type: 2}
+    - target: {fileID: 8603679328106671958, guid: 98319f8a6cf62434aa1df54c54dd1079,
+        type: 3}
+      propertyPath: playerColours.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: c381ce78152d66c40bb227abcc78fd17, type: 2}
+    - target: {fileID: 8603679328106671958, guid: 98319f8a6cf62434aa1df54c54dd1079,
+        type: 3}
+      propertyPath: playerColours.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7aad7a9964082104fb7436a0a6157eed, type: 2}
+    - target: {fileID: 8603679328106671958, guid: 98319f8a6cf62434aa1df54c54dd1079,
+        type: 3}
+      propertyPath: playerColours.Array.data[3]
+      value: 
+      objectReference: {fileID: 2100000, guid: 399a19cc9eeecaa4f835430e2aef988a, type: 2}
     - target: {fileID: 8603679328106671953, guid: 98319f8a6cf62434aa1df54c54dd1079,
         type: 3}
       propertyPath: m_LocalPosition.x

@@ -382,6 +382,7 @@ MonoBehaviour:
   carryingCoal: 0
   carryingGun: 0
   carryingDynamite: 0
+  carryingPassenger: 0
   usingGatling: 0
   carryingPlayer: 0
   level1ThrowTime: 0.2
@@ -429,8 +430,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 818e897a6fade49458a0088b85108fa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hatColor: {r: 0, g: 0, b: 0, a: 0}
-  hat: {fileID: 2100002, guid: edb4ae7b6002942479ee7c64d4a67a6b, type: 3}
+  hat: {fileID: 2196081254236156482}
 --- !u!1 &5256565151949666226
 GameObject:
   m_ObjectHideFlags: 0
@@ -5832,6 +5832,12 @@ PrefabInstance:
 --- !u!4 &2196081254234255522 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: edb4ae7b6002942479ee7c64d4a67a6b,
+    type: 3}
+  m_PrefabInstance: {fileID: 2196081254233860642}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &2196081254236156482 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2300000, guid: edb4ae7b6002942479ee7c64d4a67a6b,
     type: 3}
   m_PrefabInstance: {fileID: 2196081254233860642}
   m_PrefabAsset: {fileID: 0}

@@ -5,8 +5,13 @@ using TMPro;
 
 public class UIManager : MonoBehaviour
 {
-    [SerializeField] private GameObject winScreen, loseScreen, star1, star2, star3;
+    [SerializeField] private GameObject winScreen, loseScreen, gameOverScreen, star1, star2, star3;
     [SerializeField] private TextMeshProUGUI timeText, passengersText, totalScoreText;
+
+    public void GameOver()
+    {
+        gameOverScreen.SetActive(true);
+    }
 
     public void SetUI(int passengersLeft, int arrivalTime)
     {

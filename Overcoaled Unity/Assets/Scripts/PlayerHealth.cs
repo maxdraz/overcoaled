@@ -76,6 +76,7 @@ public class PlayerHealth : MonoBehaviour
     {
         anim.SetBool("down", true);
         gameObject.tag = "PlayerDown";
+        GameManager.GM.PlayerDown(-1);
         GetComponent<PlayerMove>().enabled = false;
         GetComponent<PlayerInteraction>().Drop();
         GetComponent<PlayerInteraction>().enabled = false;
@@ -85,6 +86,7 @@ public class PlayerHealth : MonoBehaviour
     {
         anim.SetBool("down", false);
         gameObject.tag = "Player";
+        GameManager.GM.PlayerDown(1);
         health = maxHealth;
         GetComponent<PlayerMove>().enabled = true;
         GetComponent<PlayerInteraction>().enabled = true;
