@@ -66,6 +66,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if(col.gameObject.tag == "Death")
         {
+            StartCoroutine(SlowTime());
             anim.SetBool("down", true);
             move.enabled = false;
             Invoke("KillPlayer", 2);
@@ -74,6 +75,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void DownPlayer()
     {
+        StartCoroutine(SlowTime());
         anim.SetBool("down", true);
         gameObject.tag = "PlayerDown";
         GameManager.GM.PlayerDown(1);
@@ -90,5 +92,14 @@ public class PlayerHealth : MonoBehaviour
         health = maxHealth;
         GetComponent<PlayerMove>().enabled = true;
         GetComponent<PlayerInteraction>().enabled = true;
+    }
+
+    IEnumerator SlowTime()
+    {
+        Time.timeScale = 0.2f;
+
+        yield return new WaitForSeconds(0.05f);
+
+        Time.timeScale = 1f;
     }
 }
