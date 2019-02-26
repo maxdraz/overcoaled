@@ -88,7 +88,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1952144666393539112}
   - component: {fileID: 1952144666393539113}
-  - component: {fileID: 1853471497}
   m_Layer: 0
   m_Name: Gun Pivot
   m_TagString: Untagged
@@ -132,25 +131,6 @@ MonoBehaviour:
   shotsPerCooldown: 100
   cooldownDuration: 10
   spawnLocation: {fileID: 1952144666593568690}
---- !u!95 &1853471497
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1952144666393539115}
-  m_Enabled: 0
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: e8d6036109e0bec4eb76bd91b4fd59d1, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1952144666593568701
 GameObject:
   m_ObjectHideFlags: 0
