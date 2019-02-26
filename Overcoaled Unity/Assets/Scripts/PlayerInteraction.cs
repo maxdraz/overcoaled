@@ -358,6 +358,9 @@ public class PlayerInteraction : MonoBehaviour
              {
             PickUpPassenger(collision);
             
+            } else if(collision.gameObject.GetComponent<ThrownObjectMove>().grounded == false)
+            {
+                PickUpPassenger(collision);
             }
 
         }
@@ -567,6 +570,7 @@ public class PlayerInteraction : MonoBehaviour
             passengerGO.transform.parent = null;
             ThrownObjectMove move = passengerGO.GetComponent<ThrownObjectMove>();
             move.enabled = true;
+            move.grounded = false;
             move.setForceLevel(forceLevel);
             move.Move();
             Drop();

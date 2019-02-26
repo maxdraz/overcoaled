@@ -29,7 +29,7 @@ public class PlayerHealth : MonoBehaviour
         transform.position = respawn.position;
         transform.rotation = respawn.rotation;
         health = maxHealth;
-
+        gameObject.GetComponent<Collider>().enabled = false;
 
         rb.isKinematic = true;
         move.enabled = false;
@@ -37,6 +37,7 @@ public class PlayerHealth : MonoBehaviour
 
         transform.Find("Player Character").gameObject.SetActive(true);
         transform.GetComponentInChildren<ParticleSystem>().Play();
+        gameObject.GetComponent<Collider>().enabled = true;
         rb.isKinematic = false;
         move.enabled = true;
         health = maxHealth;
