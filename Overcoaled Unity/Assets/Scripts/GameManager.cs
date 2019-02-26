@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     [Tooltip("0 = player 1, etc")] [SerializeField] private Color[] playerColours;
 
     [SerializeField] TravelManager travelManager;
-
+    private MultipleTargetCamera cam;
      public int passengerCount;
 
     [SerializeField] private UIManager uiManager;
@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
+        cam = GameObject.FindObjectOfType<MultipleTargetCamera>();
+
         //Check if instance already exists
         if (GM == null)
         {
@@ -53,8 +55,7 @@ public class GameManager : MonoBehaviour
         players[players.Count - 1].playerObject.GetComponent<PlayerShoot>().playerNumber = playerNum;
         players[players.Count - 1].playerObject.GetComponent<PlayerInteraction>().playerNumber = playerNum;
 
-
-
+        cam.targets.Add(players[players.Count - 1].playerObject.transform);
         //////////////move this
         travelManager.StartTimer();
     }

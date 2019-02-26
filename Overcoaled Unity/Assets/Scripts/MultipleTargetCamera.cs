@@ -3,12 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-
+[RequireComponent(typeof(Camera))]
 public class MultipleTargetCamera : MonoBehaviour
 {
 
     public List<Transform> targets;
     public Vector3 offset;
+    public float smoothTime = 0.5f;
+
+    public float minZoom;
+    public float maxZoom;
+
+    public float zoomLimiter = 12f;
+
+    private Vector3 velocity;
+    private Camera cam;
+
+    private void Start()
+    {
+        cam = GetComponent<Camera>();
+    }
 
     private void LateUpdate()
     {
@@ -16,22 +30,39 @@ public class MultipleTargetCamera : MonoBehaviour
         {
             return;
         }
-        Vector3 centerPoint = GetCenterPoint();
 
-        Vector3 newPosition = centerPoint + offset;
-
-        transform.position = newPosition;
+        Move();
+        Zoom();
     }
 
     private void Move()
     {
-        if (targets.Count == 1)
+
+        Vector3 centerPoint = GetCenterPoint();
+
+        Vector3 newPosition = centerPoint + offset;
+
+        transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref velocity, smoothTime);
+
+    }
+
+    void Zoom()
+    {
+        print("being called");
+        float newZoom = Mathf.Lerp(maxZoom, minZoom, GetGreatestDistance() / zoomLimiter);
+        cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, newZoom, Time.deltaTime);
+        print(newZoom);
+    }
+
+    float GetGreatestDistance()
+    {
+        var bounds = new Bounds(targets[0].position, Vector3.zero);
+        for(int i = 0; i <targets.Count; i++)
         {
-            return targets[0].position;
+            bounds.Encapsulate(targets[i].position);
         }
 
-
-        Move();
+        return bounds.size.x; 
     }
 
     Vector3 GetCenterPoint()
