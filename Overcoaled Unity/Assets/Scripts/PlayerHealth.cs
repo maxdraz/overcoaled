@@ -40,6 +40,7 @@ public class PlayerHealth : MonoBehaviour
         rb.isKinematic = false;
         move.enabled = true;
         health = maxHealth;
+        anim.SetBool("down", false);
     }
 
     
@@ -60,10 +61,12 @@ public class PlayerHealth : MonoBehaviour
         StartCoroutine(Respawn(respawnCD));
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision col)
     {
-        if(collision.gameObject.tag == "Death")
+        if(col.gameObject.tag == "Death")
         {
+            anim.SetBool("down", true);
+            move.enabled = false;
             Invoke("KillPlayer", 2);
         }
     }
