@@ -10,12 +10,14 @@ public class PlayerHealth : MonoBehaviour
      public Transform respawn;
     Rigidbody rb;
     PlayerMove move;
+    Animator anim;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         move = GetComponent<PlayerMove>();
         respawn = GameObject.Find("Respawn").transform;
+        anim = GetComponent<Animator>();
     }
 
     
@@ -72,6 +74,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void DownPlayer()
     {
+        anim.SetBool("down", true);
         gameObject.tag = "PlayerDown";
         GetComponent<PlayerMove>().enabled = false;
         GetComponent<PlayerInteraction>().Drop();
@@ -80,6 +83,7 @@ public class PlayerHealth : MonoBehaviour
 
     public void RevivePlayer()
     {
+        anim.SetBool("down", false);
         gameObject.tag = "Player";
         SetHealth(maxHealth);
         GetComponent<PlayerMove>().enabled = true;
