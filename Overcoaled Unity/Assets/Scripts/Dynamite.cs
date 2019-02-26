@@ -13,7 +13,13 @@ public class Dynamite : MonoBehaviour
 
         if (timer <= 0)
         {
-            transform.parent = null;
+            if(transform.parent != null)
+            {
+                transform.root.GetComponent<PlayerInteraction>().Drop();
+                transform.parent = null;
+            }
+            
+            GetComponent<Rigidbody>().isKinematic = false;
             gameObject.tag = "Death";
             GetComponent<Animator>().enabled = true;
             

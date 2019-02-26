@@ -127,6 +127,8 @@ MonoBehaviour:
   bulletSpeed: 5
   bulletDeathParticle: {fileID: 1712736848808381798, guid: 8f993ca8e182e174981d5512017f6f09,
     type: 3}
+  bloodParticle: {fileID: 8407506432281106853, guid: a7088df81dda0b74682a35c67173a062,
+    type: 3}
   isPlayerBullet: 0
 --- !u!114 &69180094913645813
 MonoBehaviour:
