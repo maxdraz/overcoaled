@@ -404,6 +404,7 @@ public class PlayerInteraction : MonoBehaviour
     void PickUpDynamite(Collision collision)
     {
         dynamiteGO = collision.gameObject;
+        dynamiteGO.GetComponent<Rigidbody>().isKinematic = true;
         dynamiteGO.transform.parent = playerHolder.transform;
         dynamiteGO.transform.position = playerHolder.transform.position;
         dynamiteGO.transform.rotation = playerHolder.transform.rotation;
@@ -487,7 +488,8 @@ public class PlayerInteraction : MonoBehaviour
         }
         if (carryingDynamite)
         {
-           
+            dynamiteGO.GetComponent<Rigidbody>().isKinematic = false;
+            dynamiteGO.transform.parent = null;
             ThrownObjectMove move = dynamiteGO.GetComponent<ThrownObjectMove>();
             move.enabled = true;
             move.setForceLevel(forceLevel);
