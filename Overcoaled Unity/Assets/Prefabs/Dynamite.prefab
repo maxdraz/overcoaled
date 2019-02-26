@@ -146,20 +146,21 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2470292765063854089}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 98a651290e6f17644be42db5cf262ad5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isOnPlayer: 0
-  level1Force: 0
-  level2Force: 0
-  level3Force: 0
-  forceScale: 8
+  level1Force: 1
+  level2Force: 5
+  level3Force: 8.5
+  forceScale: 0
   grounded: 0
-  groundLayer: 0
-  noPlayerCollisionLayer: 0
-  groundHitPS: {fileID: 0}
+  groundLayer: 8
+  noPlayerCollisionLayer: 10
+  groundHitPS: {fileID: 4242870348423495881, guid: 0efe82cf0044c894ab7f97346afe58a5,
+    type: 3}
 --- !u!95 &4771079246861217365
 Animator:
   serializedVersion: 3
