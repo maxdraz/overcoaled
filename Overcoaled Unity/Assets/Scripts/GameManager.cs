@@ -54,6 +54,7 @@ public class GameManager : MonoBehaviour
         players[players.Count - 1].playerObject.GetComponent<PlayerMove>().normalMoveSpeed = playerSpeed;
         players[players.Count - 1].playerObject.GetComponent<PlayerShoot>().playerNumber = playerNum;
         players[players.Count - 1].playerObject.GetComponent<PlayerInteraction>().playerNumber = playerNum;
+        players[players.Count - 1].playerObject.GetComponent<SetHatColour>().hat.color = playerColours[players.Count - 1];
 
         cam.targets.Add(players[players.Count - 1].playerObject.transform);
         //////////////move this
