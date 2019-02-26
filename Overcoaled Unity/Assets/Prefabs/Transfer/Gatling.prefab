@@ -126,7 +126,7 @@ MonoBehaviour:
   shootDelayTime: 0.1
   rotateSpeed: 2
   bullet: {fileID: 3271550354798330490, guid: 396d237efd6dc334192f439ee534d724, type: 3}
-  ammo: 200
+  ammo: 100
   ammoPerLoad: 10
   shotsPerCooldown: 100
   cooldownDuration: 10
