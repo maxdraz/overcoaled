@@ -10,6 +10,7 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField] private bool carryingPlank = false;
     [SerializeField] private bool carryingCoal = false;
     [SerializeField] private bool carryingGun = false;
+    [SerializeField] private bool carryingDynamite = false;
     [SerializeField] private bool usingGatling;
     [SerializeField] private bool carryingPlayer = false;
     private GameObject plankHolder;
@@ -17,6 +18,7 @@ public class PlayerInteraction : MonoBehaviour
     private GameObject gunHolder;
     private GameObject playerHolder;
     private GameObject playerCarriedGO;
+    private GameObject dynamiteGO;
     private GameObject gatlingGunInUse;
 
     private PlayerMove pm;
@@ -330,6 +332,12 @@ public class PlayerInteraction : MonoBehaviour
 
         }
 
+        if (collision.gameObject.tag == "Dynamite" && !isCarrying)
+        {
+            
+
+        }
+
         if (collision.gameObject.tag == "PlayerDown" && !isCarrying)
         {
             if (Input.GetButtonDown("joystick " + playerNumber + " X"))
@@ -393,6 +401,18 @@ public class PlayerInteraction : MonoBehaviour
         ps.enabled = true;
     }
 
+    void PickUpDynamite(Collision collision)
+    {
+        dynamiteGO = collision.gameObject;
+        dynamiteGO.transform.parent = playerHolder.transform;
+        dynamiteGO.transform.position = playerHolder.transform.position;
+        dynamiteGO.transform.rotation = playerHolder.transform.rotation;
+
+        isCarrying = true;
+        carryingDynamite = true;
+       
+    }
+
     void PickUpPlayer(Collision col)
     {
         playerCarriedGO = col.gameObject;
@@ -423,6 +443,7 @@ public class PlayerInteraction : MonoBehaviour
             carryingGun = false;
             carryingCoal = false;
             carryingPlayer = false;
+            carryingDynamite = false;
             plankHolder.SetActive(false);
             coalHolder.SetActive(false);
             gunHolder.SetActive(false);
@@ -463,6 +484,15 @@ public class PlayerInteraction : MonoBehaviour
             move.Move();
             Drop();
 
+        }
+        if (carryingDynamite)
+        {
+           
+            ThrownObjectMove move = dynamiteGO.GetComponent<ThrownObjectMove>();
+            move.enabled = true;
+            move.setForceLevel(forceLevel);
+            move.Move();
+            Drop();
         }
 
         if (carryingPlayer)
