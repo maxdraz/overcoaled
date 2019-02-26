@@ -32,13 +32,7 @@ public class ThrownObjectMove : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "Enemy")
-        {
-            collision.gameObject.GetComponent<EnemyBehavior>().TakeDamage();
-            GameObject ps = (GameObject)Instantiate(bloodParticle, gameObject.transform.position, Quaternion.identity);
-
-            Destroy(gameObject);
-        }
+        
 
         if(isOnPlayer && collision.gameObject.layer == groundLayer && !grounded)
         {
@@ -61,6 +55,18 @@ public class ThrownObjectMove : MonoBehaviour
         }
 
         
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Enemy")
+        {
+            print("collided");
+            other.transform.parent.GetComponent<EnemyBehavior>().TakeDamage();
+            GameObject ps = (GameObject)Instantiate(bloodParticle, gameObject.transform.position, Quaternion.identity);
+            print("should have destroyed");
+            Destroy(gameObject);
+        }
     }
 
     public void Move()
