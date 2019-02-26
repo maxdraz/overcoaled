@@ -182,6 +182,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98a651290e6f17644be42db5cf262ad5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isOnPlayer: 0
   level1Force: 1
   level2Force: 5
   level3Force: 8.5
@@ -190,6 +191,8 @@ MonoBehaviour:
   groundLayer: 8
   noPlayerCollisionLayer: 10
   groundHitPS: {fileID: 4242870348423495881, guid: 0efe82cf0044c894ab7f97346afe58a5,
+    type: 3}
+  bloodParticle: {fileID: 8407506432281106853, guid: a7088df81dda0b74682a35c67173a062,
     type: 3}
 --- !u!114 &9179539128389839884
 MonoBehaviour:

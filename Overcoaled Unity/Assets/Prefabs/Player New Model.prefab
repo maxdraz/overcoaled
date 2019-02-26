@@ -381,6 +381,7 @@ MonoBehaviour:
   carryingCoal: 0
   carryingGun: 0
   carryingDynamite: 0
+  carryingPassenger: 0
   usingGatling: 0
   carryingPlayer: 0
   level1ThrowTime: 0.2
@@ -416,6 +417,7 @@ MonoBehaviour:
   noPlayerCollisionLayer: 10
   groundHitPS: {fileID: 4242870348423495881, guid: 0efe82cf0044c894ab7f97346afe58a5,
     type: 3}
+  bloodParticle: {fileID: 0}
 --- !u!1 &5256565151949666226
 GameObject:
   m_ObjectHideFlags: 0
@@ -442,7 +444,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5256565151949666226}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -0, y: -1.81, z: -0.01}
+  m_LocalPosition: {x: -0, y: -1.72, z: -0.01}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4089362571806735507}
@@ -467,7 +469,7 @@ ParticleSystem:
   playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
-  useRigidbodyForVelocity: 1
+  useRigidbodyForVelocity: 0
   startDelay:
     serializedVersion: 2
     minMaxState: 0

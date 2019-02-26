@@ -145,3 +145,5 @@ MonoBehaviour:
   noPlayerCollisionLayer: 10
   groundHitPS: {fileID: 4242870348423495881, guid: 0efe82cf0044c894ab7f97346afe58a5,
     type: 3}
+  bloodParticle: {fileID: 8407506432281106853, guid: a7088df81dda0b74682a35c67173a062,
+    type: 3}

@@ -14,6 +14,7 @@ public class ThrownObjectMove : MonoBehaviour
     public int groundLayer;
     public int noPlayerCollisionLayer;
     public GameObject groundHitPS;
+    [SerializeField] private GameObject bloodParticle;
 
     // Start is called before the first frame update
     void Awake()
@@ -31,6 +32,14 @@ public class ThrownObjectMove : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if(collision.gameObject.tag == "Enemy")
+        {
+            collision.gameObject.GetComponent<EnemyBehavior>().TakeDamage();
+            GameObject ps = (GameObject)Instantiate(bloodParticle, gameObject.transform.position, Quaternion.identity);
+
+            Destroy(gameObject);
+        }
+
         if(isOnPlayer && collision.gameObject.layer == groundLayer && !grounded)
         {
             //ps
@@ -50,6 +59,8 @@ public class ThrownObjectMove : MonoBehaviour
             grounded = true;
             GameObject ps = (GameObject)Instantiate(groundHitPS, transform.position, Quaternion.identity);
         }
+
+        
     }
 
     public void Move()
@@ -87,4 +98,6 @@ public class ThrownObjectMove : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         gameObject.layer = 0;
     }
+
+    
 }
