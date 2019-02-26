@@ -436,7 +436,7 @@ public class PlayerInteraction : MonoBehaviour
     public void Drop()
     {
         // if carrying any of these items
-        if (carryingPlank || carryingCoal || carryingGun || carryingPlayer)
+        if (carryingPlank || carryingCoal || carryingGun || carryingPlayer || carryingDynamite)
         {
 
             carryingPlank = false;
