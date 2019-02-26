@@ -67,4 +67,20 @@ public class Furnace : MonoBehaviour
         }
         else return true;
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "Player")
+        {
+            transform.GetComponentInChildren<SpriteRenderer>().enabled = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            transform.GetComponentInChildren<SpriteRenderer>().enabled = false;
+        }
+    }
 }

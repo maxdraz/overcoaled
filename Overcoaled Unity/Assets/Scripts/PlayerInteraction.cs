@@ -455,6 +455,8 @@ public class PlayerInteraction : MonoBehaviour
             pm.SetSpeed(pm.normalMoveSpeed);
             ps.enabled = false;
             movementParticle.Play();
+
+            anim.SetBool("pickup", false);
         }
     }
 
