@@ -134,4 +134,21 @@ public class RepairPad : MonoBehaviour
             Repair();
         }
     }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.tag == "Player" && plankCount == maxPlanks)
+        {
+            transform.GetComponentInChildren<SpriteRenderer>().enabled = true;
+        }
+
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            transform.GetComponentInChildren<SpriteRenderer>().enabled = false;
+        }
+    }
 }

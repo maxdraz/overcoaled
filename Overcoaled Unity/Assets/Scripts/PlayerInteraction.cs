@@ -43,6 +43,7 @@ public class PlayerInteraction : MonoBehaviour
     private Transform throwChargesHolder;
 
     ThrownObjectMove myPlayerThrow;
+    Animator anim;
    
 
     private void Awake()
@@ -52,6 +53,7 @@ public class PlayerInteraction : MonoBehaviour
         gunHolder = transform.Find("Gun").gameObject;
         movementParticle = transform.GetComponentInChildren<ParticleSystem>();
         throwChargesHolder = transform.Find("ThrowCharges");
+        anim = GetComponent<Animator>();
 
         playerHolder = transform.Find("PlayerHolder").gameObject;
         
@@ -73,7 +75,7 @@ public class PlayerInteraction : MonoBehaviour
         if (isCarrying)
         {
             //slow player move speed (reset in Drop())
-            
+            anim.SetBool("pickup", true);
 
             //disable shooting
             if (!carryingGun)
@@ -453,11 +455,16 @@ public class PlayerInteraction : MonoBehaviour
             pm.SetSpeed(pm.normalMoveSpeed);
             ps.enabled = false;
             movementParticle.Play();
+
+            anim.SetBool("pickup", false);
         }
     }
 
     void Throw(int forceLevel)
     {
+        anim.SetBool("pickup", false);
+        anim.SetBool("throw", true);
+
         if (carryingPlank)
         {
 

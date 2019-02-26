@@ -10,6 +10,8 @@ public class Furnace : MonoBehaviour
     [SerializeField] private float burnCD = 3f;
     [SerializeField] private float burnCDRemaining;
     [SerializeField] private TravelManager travelManager;
+    public Sprite[] sprites;
+    public List <SpriteRenderer> coalIcons;
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +19,8 @@ public class Furnace : MonoBehaviour
         coalText = transform.GetComponentInChildren<TextMesh>();
         coalText.text = "Coal: " + coalCount.ToString() + "/" +  maxCoal.ToString();
         burnCDRemaining = burnCD;
+        
+       
     }
 
     // Update is called once per frame
@@ -32,6 +36,7 @@ public class Furnace : MonoBehaviour
                 travelManager.AddDistance(coalCount);
                 coalText.text = "Coal: " + coalCount.ToString() + "/" + maxCoal.ToString();
                 burnCDRemaining = burnCD;
+                coalIcons[coalCount].sprite = sprites[0];
             }
         }
     }
@@ -47,6 +52,10 @@ public class Furnace : MonoBehaviour
             coalCount += amount;
             travelManager.AddDistance(coalCount);
             coalText.text = "Coal: " + coalCount.ToString() + "/" + maxCoal.ToString();
+
+            coalIcons[coalCount - 1].sprite = sprites[1];
+
+
         }
     }
 
@@ -57,5 +66,21 @@ public class Furnace : MonoBehaviour
             return false;
         }
         else return true;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "Player")
+        {
+            transform.GetComponentInChildren<SpriteRenderer>().enabled = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            transform.GetComponentInChildren<SpriteRenderer>().enabled = false;
+        }
     }
 }
