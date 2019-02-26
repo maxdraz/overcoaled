@@ -63,8 +63,10 @@ public class GameManager : MonoBehaviour
 
         cam.targets.Add(players[players.Count - 1].playerObject.transform);
         //////////////move this
-        travelManager.StartTimer();
+
     }
+
+    
 
     public void EndGame(int timeLeft)
     {

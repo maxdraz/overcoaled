@@ -28,6 +28,7 @@ public class TravelManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI distanceTravelled;
 
     private bool gameOver = false;
+    private bool behindOnTimeBoost;
     // Update is called once per frame
     void Update()
     {
@@ -40,7 +41,7 @@ public class TravelManager : MonoBehaviour
             string secondsString;
             if (seconds == 0)
             {
-                secondsString  = "00";
+                secondsString = "00";
             }
             else if (seconds < 10)
             {
@@ -58,8 +59,22 @@ public class TravelManager : MonoBehaviour
             {
                 timeRemaining.text = minutes.ToString() + ":" + secondsString;
             }
-            travelDistance += currentSpeed * Time.deltaTime;
-            distanceTravelled.text = ((int)travelDistance).ToString() + "/" + fullTimeLength.ToString();
+
+            if (!behindOnTimeBoost)
+            {
+                travelDistance += currentSpeed * Time.deltaTime;
+            }
+            else
+            {
+                travelDistance += (currentSpeed + 1) * Time.deltaTime;
+                print("boosting");
+            }
+
+
+            distanceTravelled.text = ((int)travelDistance).ToString() + "/" + fullTravelLength.ToString();
+            ExpectedArrivalTime();
+
+
             OffSetGround();
             distanceUI.value = travelDistance / fullTravelLength;
             if (travelDistance >= fullTravelLength && !gameOver)
@@ -82,6 +97,10 @@ public class TravelManager : MonoBehaviour
 
     public void AddDistance(int speed)
     {
+        if (!travelBegun)
+        {
+            StartTimer();
+        }
         currentSpeed = speed;
         offsetSpeed = offset;
 
@@ -100,5 +119,22 @@ public class TravelManager : MonoBehaviour
 
         totalOffset -= offset * Time.deltaTime * offsetMultiplier;
         ground.material.SetTextureOffset("_MainTex", new Vector2(totalOffset, 0));
+    }
+
+    private void ExpectedArrivalTime()
+    {
+        float average = travelDistance / timeSinceStart;
+
+        float expectedTimeInSeconds = ((fullTravelLength - travelDistance) / average);
+    
+
+        if ((fullTimeLength - timeSinceStart) < expectedTimeInSeconds)
+        {
+            behindOnTimeBoost = true;
+        }
+        else
+        {
+            behindOnTimeBoost = false;
+        }
     }
 }
