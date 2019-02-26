@@ -418,6 +418,7 @@ MonoBehaviour:
   noPlayerCollisionLayer: 10
   groundHitPS: {fileID: 4242870348423495881, guid: 0efe82cf0044c894ab7f97346afe58a5,
     type: 3}
+  bloodParticle: {fileID: 0}
 --- !u!114 &3746318829502970754
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -482,7 +483,7 @@ ParticleSystem:
   playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
-  useRigidbodyForVelocity: 1
+  useRigidbodyForVelocity: 0
   startDelay:
     serializedVersion: 2
     minMaxState: 0

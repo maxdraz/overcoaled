@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] TravelManager travelManager;
     private MultipleTargetCamera cam;
     public int passengerCount;
-    private int playerDownAmount;
+    public int playerDownAmount;
 
     [SerializeField] private UIManager uiManager;
 
@@ -55,6 +55,7 @@ public class GameManager : MonoBehaviour
         players[players.Count - 1].playerObject.GetComponent<PlayerMove>().normalMoveSpeed = playerSpeed;
         players[players.Count - 1].playerObject.GetComponent<PlayerShoot>().playerNumber = playerNum;
         players[players.Count - 1].playerObject.GetComponent<PlayerInteraction>().playerNumber = playerNum;
+        players[players.Count - 1].playerObject.GetComponent<PlayerHealth>().maxHealth = playerHealth;
         //players[players.Count - 1].playerObject.GetComponent<SetHatColour>().hat.color = Color.blue;
         Material[] playerMaterials = players[players.Count - 1].playerObject.GetComponent<SetHatColour>().hat.materials;
         playerMaterials[1] = playerColours[players.Count - 1];

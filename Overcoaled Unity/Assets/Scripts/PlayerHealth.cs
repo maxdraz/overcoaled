@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    [SerializeField] private float health;
+    [SerializeField] public float health;
     [SerializeField] private float respawnCD;
-    private float maxHealth;
+    public float maxHealth;
      public Transform respawn;
     Rigidbody rb;
     PlayerMove move;
@@ -42,11 +42,7 @@ public class PlayerHealth : MonoBehaviour
         health = maxHealth;
     }
 
-    public void SetHealth(float h)
-    {
-        health = h;
-        maxHealth = h;
-    }
+    
 
     public void TakeDamage()
     {
@@ -76,7 +72,7 @@ public class PlayerHealth : MonoBehaviour
     {
         anim.SetBool("down", true);
         gameObject.tag = "PlayerDown";
-        GameManager.GM.PlayerDown(-1);
+        GameManager.GM.PlayerDown(1);
         GetComponent<PlayerMove>().enabled = false;
         GetComponent<PlayerInteraction>().Drop();
         GetComponent<PlayerInteraction>().enabled = false;
@@ -86,7 +82,7 @@ public class PlayerHealth : MonoBehaviour
     {
         anim.SetBool("down", false);
         gameObject.tag = "Player";
-        GameManager.GM.PlayerDown(1);
+        GameManager.GM.PlayerDown(-1);
         health = maxHealth;
         GetComponent<PlayerMove>().enabled = true;
         GetComponent<PlayerInteraction>().enabled = true;
