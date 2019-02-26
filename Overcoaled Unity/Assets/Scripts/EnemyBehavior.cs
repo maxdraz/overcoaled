@@ -144,17 +144,54 @@ public class EnemyBehavior : MonoBehaviour
             }
 
 
-            if (target == carriage.back)
+            //if (target == carriage.back)
+            //{
+            //    if (passengerManager.passengers.Count > 0)
+            //    {
+            //        int passengerNumber = Random.Range(0, passengerManager.passengers.Count);
+            //        if (passengerManager.passengers[passengerNumber])
+            //        {
+            //            shootTarget = passengerManager.passengers[passengerNumber].transform;
+            //        }
+            //    }
+            //}
+
+            bool cargoPriority = false;
+            foreach (GameObject passenger in passengerManager.passengers)
             {
-                if (passengerManager.passengers.Count > 0)
+                if (passenger)
                 {
-                    int passengerNumber = Random.Range(0, passengerManager.passengers.Count);
-                    if (passengerManager.passengers[passengerNumber])
+                    if (passenger.transform.position.x < targetDistanceMax(target)
+                        && passenger.transform.position.x > targetDistanceMin(target))
                     {
-                        shootTarget = passengerManager.passengers[passengerNumber].transform;
+
+                        if (shootTarget != null)
+                        {
+                            if (cargoPriority)
+                            {
+                                if (Vector3.Distance(passenger.transform.position, transform.position)
+                                    < Vector3.Distance(shootTarget.position, transform.position))
+                                {
+                                    shootTarget = passenger.transform;
+                                    cargoPriority = true;
+                                }
+                            }
+                            else
+                            {
+                                shootTarget = passenger.transform;
+                                cargoPriority = true;
+                            }
+                        }
+                        else
+                        {
+                            shootTarget = passenger.transform;
+                            cargoPriority = true;
+                        }
                     }
                 }
             }
+
+
 
             bool playerPriority = false;
             foreach (Player player in players)

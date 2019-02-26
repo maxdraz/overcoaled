@@ -17,6 +17,16 @@ public class GatlingGun : MonoBehaviour
     [SerializeField] private float cooldownDuration;
     [SerializeField] private Transform spawnLocation;
     private bool canShoot = true;
+    private bool coolingDown = false;
+
+    private Color selfColor;
+    private Renderer renderer;
+
+    private void Start()
+    {
+        renderer = GetComponentInChildren<Renderer>();
+        selfColor = renderer.material.color;
+    }
 
     public void SetPlayer(int playerNum)
     {
@@ -56,7 +66,7 @@ public class GatlingGun : MonoBehaviour
                     dirX = Mathf.Clamp(dirX, -1f, 1f);
                     dirY = Mathf.Clamp(dirY, -0.2f, -1f);
                 }
-                
+
                 direction = new Vector3(dirX, 0.0f, -dirY);
 
                 float step = rotateSpeed * Time.deltaTime;
@@ -71,6 +81,9 @@ public class GatlingGun : MonoBehaviour
                 if (ammo > 0 && canShoot)
                 {
                     ammo--;
+                    float ammoPercent = (100.0f - ammo) / 100.0f;
+                    print(ammoPercent);
+                    renderer.material.color = Color.Lerp(selfColor, Color.red, ammoPercent);
                     canShoot = false;
                     Shoot();
                 }
@@ -78,6 +91,12 @@ public class GatlingGun : MonoBehaviour
             else
             {
                 GetComponent<Animator>().enabled = false;
+            }
+
+            if (ammo == 0 && !coolingDown)
+            {
+                Invoke("CoolDown", cooldownDuration);
+                coolingDown = true;
             }
         }
     }
@@ -93,6 +112,13 @@ public class GatlingGun : MonoBehaviour
     private void shotDelay()
     {
         canShoot = true;
+    }
+
+    private void CoolDown()
+    {
+        ammo = 100;
+        renderer.material.color = Color.Lerp(selfColor, Color.red, (100 - ammo) / 100);
+        coolingDown = false;
     }
 
     public void LoadAmmo()
