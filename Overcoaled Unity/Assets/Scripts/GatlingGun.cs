@@ -119,7 +119,7 @@ public class GatlingGun : MonoBehaviour
 
     private void CoolDown()
     {
-        ammo = 100;
+        ammo = 50;
         renderer.material.color = Color.Lerp(selfColor, Color.red, (100 - ammo) / 100);
         coolingDown = false;
     }

@@ -38,7 +38,7 @@ public class BulletMove : MonoBehaviour
             if(other.gameObject.GetComponent<Wall>())
             other.gameObject.GetComponent<Wall>().TakeDamage(2);
         }
-        if (other.gameObject.tag == "Wall")
+        if (other.gameObject.tag == "Wall" || other.gameObject.tag == "MidWall")
         {
             print("collided with bullet");
             //GameObject ps = (GameObject)Instantiate(bulletDeathParticle, collision.GetContact(0).point, Quaternion.identity);            
