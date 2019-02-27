@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using EZCameraShake;
 
 public class PlayerShoot : MonoBehaviour
 {
@@ -31,7 +32,7 @@ public class PlayerShoot : MonoBehaviour
 
     private void Shoot()
     {
-
+        CameraShaker.Instance.ShakeOnce(1f, 1f, 0.1f, 1f);
         GameObject projectile = Instantiate(bullet, spawnLocation.position, spawnLocation.rotation);
         
         Invoke("shotDelay", shootDelayTime);

@@ -10,7 +10,7 @@ public class ThrownObjectMove : MonoBehaviour
     [SerializeField] private float level2Force;
     [SerializeField] private float level3Force;
     public float forceScale = 8f;
-    [SerializeField] private bool grounded = false;
+    public bool grounded = false;
     public int groundLayer;
     public int noPlayerCollisionLayer;
     public GameObject groundHitPS;

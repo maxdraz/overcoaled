@@ -11,6 +11,7 @@ public class PlayerHealth : MonoBehaviour
     Rigidbody rb;
     PlayerMove move;
     Animator anim;
+    [SerializeField] private GameObject reviveText;
 
     private void Start()
     {
@@ -18,18 +19,20 @@ public class PlayerHealth : MonoBehaviour
         move = GetComponent<PlayerMove>();
         respawn = GameObject.Find("Respawn").transform;
         anim = GetComponent<Animator>();
+        
     }
 
     
     IEnumerator Respawn(float t)
     {
+        reviveText.SetActive(false);
         GetComponent<PlayerInteraction>().Drop();
         transform.GetComponentInChildren<ParticleSystem>().Stop();
         transform.Find("Player Character").gameObject.SetActive(false);
         transform.position = respawn.position;
         transform.rotation = respawn.rotation;
         health = maxHealth;
-
+        gameObject.GetComponent<Collider>().enabled = false;
 
         rb.isKinematic = true;
         move.enabled = false;
@@ -37,6 +40,7 @@ public class PlayerHealth : MonoBehaviour
 
         transform.Find("Player Character").gameObject.SetActive(true);
         transform.GetComponentInChildren<ParticleSystem>().Play();
+        gameObject.GetComponent<Collider>().enabled = true;
         rb.isKinematic = false;
         move.enabled = true;
         health = maxHealth;
@@ -65,6 +69,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if(col.gameObject.tag == "Death")
         {
+            StartCoroutine(SlowTime());
             anim.SetBool("down", true);
             move.enabled = false;
             Invoke("KillPlayer", 2);
@@ -73,6 +78,8 @@ public class PlayerHealth : MonoBehaviour
 
     private void DownPlayer()
     {
+        reviveText.SetActive(true);
+        StartCoroutine(SlowTime());
         anim.SetBool("down", true);
         gameObject.tag = "PlayerDown";
         GameManager.GM.PlayerDown(1);
@@ -83,11 +90,21 @@ public class PlayerHealth : MonoBehaviour
 
     public void RevivePlayer()
     {
+        reviveText.SetActive(false);
         anim.SetBool("down", false);
         gameObject.tag = "Player";
         GameManager.GM.PlayerDown(-1);
         health = maxHealth;
         GetComponent<PlayerMove>().enabled = true;
         GetComponent<PlayerInteraction>().enabled = true;
+    }
+
+    IEnumerator SlowTime()
+    {
+        Time.timeScale = 0.2f;
+
+        yield return new WaitForSeconds(0.05f);
+
+        Time.timeScale = 1f;
     }
 }

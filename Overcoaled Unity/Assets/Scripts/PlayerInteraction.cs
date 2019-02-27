@@ -7,7 +7,7 @@ public class PlayerInteraction : MonoBehaviour
     public int playerNumber;
     [SerializeField] private int noPlayerCollisionLayer;
     [SerializeField] private bool isCarrying = false;
-    [SerializeField] private bool carryingPlank = false;
+    [SerializeField] public bool carryingPlank = false;
     [SerializeField] private bool carryingCoal = false;
     [SerializeField] private bool carryingGun = false;
     [SerializeField] private bool carryingDynamite = false;
@@ -281,9 +281,11 @@ public class PlayerInteraction : MonoBehaviour
         {
             //display button sprite
             //other.transform.GetComponentInChildren<SpriteRenderer>().enabled = true;
+            other.GetComponentInChildren<GatlingGun>().aButton.enabled = true;
 
             if (Input.GetButtonDown("joystick " + playerNumber + " A"))
             {
+                other.GetComponentInChildren<GatlingGun>().aButton.enabled = false;
                 UseGatlingGun(other.gameObject);
                 //other.transform.GetComponentInChildren<SpriteRenderer>().enabled = false;
             }
@@ -358,6 +360,9 @@ public class PlayerInteraction : MonoBehaviour
              {
             PickUpPassenger(collision);
             
+            } else if(collision.gameObject.GetComponent<ThrownObjectMove>().grounded == false)
+            {
+                PickUpPassenger(collision);
             }
 
         }
@@ -369,6 +374,11 @@ public class PlayerInteraction : MonoBehaviour
         {
             //turn off button sprite
             other.transform.GetComponentInChildren<SpriteRenderer>().enabled = false;
+        }
+
+        if(other.tag == "Gatling Gun")
+        {
+            other.GetComponentInChildren<GatlingGun>().aButton.enabled = false;
         }
     }
 
@@ -567,6 +577,7 @@ public class PlayerInteraction : MonoBehaviour
             passengerGO.transform.parent = null;
             ThrownObjectMove move = passengerGO.GetComponent<ThrownObjectMove>();
             move.enabled = true;
+            move.grounded = false;
             move.setForceLevel(forceLevel);
             move.Move();
             Drop();

@@ -19,11 +19,14 @@ public class GatlingGun : MonoBehaviour
     private bool canShoot = true;
     private bool coolingDown = false;
 
+    public SpriteRenderer aButton;
+
     private Color selfColor;
     private Renderer renderer;
 
     private void Start()
     {
+        
         renderer = GetComponentInChildren<Renderer>();
         selfColor = renderer.material.color;
     }
@@ -125,4 +128,6 @@ public class GatlingGun : MonoBehaviour
     {
         ammo += ammoPerLoad;
     }
+
+    
 }

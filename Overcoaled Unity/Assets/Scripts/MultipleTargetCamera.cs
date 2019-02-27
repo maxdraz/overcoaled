@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-[RequireComponent(typeof(Camera))]
+
 public class MultipleTargetCamera : MonoBehaviour
 {
 
@@ -21,7 +21,7 @@ public class MultipleTargetCamera : MonoBehaviour
 
     private void Start()
     {
-        cam = GetComponent<Camera>();
+        cam = GetComponentInChildren<Camera>();
     }
 
     private void LateUpdate()
