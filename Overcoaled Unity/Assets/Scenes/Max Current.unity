@@ -5685,6 +5685,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1952144666393539113, guid: f6de97b768f1b4342ae099eb5c335186,
+        type: 3}
+      propertyPath: cooldownDuration
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 1952144665763913867, guid: f6de97b768f1b4342ae099eb5c335186,
         type: 3}
       propertyPath: m_LocalRotation.x
@@ -5714,11 +5719,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1952144666393539113, guid: f6de97b768f1b4342ae099eb5c335186,
-        type: 3}
-      propertyPath: cooldownDuration
-      value: 60
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f6de97b768f1b4342ae099eb5c335186, type: 3}
@@ -7005,6 +7005,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Furnace
       objectReference: {fileID: 0}
+    - target: {fileID: 7910391475681641022, guid: ec0fcd16e63b7a848849387a6d87fcb7,
+        type: 3}
+      propertyPath: travelManager
+      value: 
+      objectReference: {fileID: 2080446614}
     - target: {fileID: 3904674442833344971, guid: ec0fcd16e63b7a848849387a6d87fcb7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7060,11 +7065,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7910391475681641022, guid: ec0fcd16e63b7a848849387a6d87fcb7,
-        type: 3}
-      propertyPath: travelManager
-      value: 
-      objectReference: {fileID: 2080446614}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec0fcd16e63b7a848849387a6d87fcb7, type: 3}
 --- !u!1001 &5380344134302882265
@@ -7305,6 +7305,11 @@ PrefabInstance:
     - target: {fileID: 8603679328106671958, guid: 98319f8a6cf62434aa1df54c54dd1079,
         type: 3}
       propertyPath: playerSpawnLocations.Array.data[2].z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8603679328106671958, guid: 98319f8a6cf62434aa1df54c54dd1079,
+        type: 3}
+      propertyPath: playerSpawnLocations.Array.data[0].z
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8603679328106671953, guid: 98319f8a6cf62434aa1df54c54dd1079,
