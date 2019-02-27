@@ -4086,7 +4086,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 57bfb20eedde72645a5bfce9e91e9107, type: 3}
       propertyPath: m_TagString
-      value: Wall
+      value: MidWall
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 57bfb20eedde72645a5bfce9e91e9107, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4234,7 +4234,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: c475126ce44840f42973951aae04f584, type: 3}
       propertyPath: m_TagString
-      value: Wall
+      value: MidWall
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c475126ce44840f42973951aae04f584, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6699,7 +6699,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 57bfb20eedde72645a5bfce9e91e9107, type: 3}
       propertyPath: m_TagString
-      value: Wall
+      value: MidWall
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 57bfb20eedde72645a5bfce9e91e9107, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8124,7 +8124,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 57bfb20eedde72645a5bfce9e91e9107, type: 3}
       propertyPath: m_TagString
-      value: Wall
+      value: MidWall
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 57bfb20eedde72645a5bfce9e91e9107, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9977,7 +9977,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 7b9d935305ff289459f67a6606655267, type: 3}
       propertyPath: m_TagString
-      value: Wall
+      value: MidWall
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 7b9d935305ff289459f67a6606655267, type: 3}
       propertyPath: m_LocalPosition.x
@@ -10124,7 +10124,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: b53818fb8aabd0e4f900d5d466ed2667, type: 3}
       propertyPath: m_TagString
-      value: Wall
+      value: MidWall
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b53818fb8aabd0e4f900d5d466ed2667, type: 3}
       propertyPath: m_LocalPosition.x

@@ -22,6 +22,7 @@ TagManager:
   - Dynamite
   - PlayerDown
   - Passenger
+  - MidWall
   layers:
   - Default
   - TransparentFX

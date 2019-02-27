@@ -127,11 +127,12 @@ MonoBehaviour:
   shootDelayTime: 0.1
   rotateSpeed: 2
   bullet: {fileID: 3271550354798330490, guid: 396d237efd6dc334192f439ee534d724, type: 3}
-  ammo: 100
+  ammo: 50
   ammoPerLoad: 10
-  shotsPerCooldown: 100
+  shotsPerCooldown: 50
   cooldownDuration: 60
   spawnLocation: {fileID: 1952144666593568690}
+  aButton: {fileID: 0}
 --- !u!95 &1181912719
 Animator:
   serializedVersion: 3
