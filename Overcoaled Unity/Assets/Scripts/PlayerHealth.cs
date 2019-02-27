@@ -69,6 +69,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if(col.gameObject.tag == "Death")
         {
+            GetComponent<PlayerInteraction>().Drop();
             StartCoroutine(SlowTime());
             anim.SetBool("down", true);
             move.enabled = false;
