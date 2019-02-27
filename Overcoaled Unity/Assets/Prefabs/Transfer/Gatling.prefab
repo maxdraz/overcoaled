@@ -88,7 +88,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1952144666393539112}
   - component: {fileID: 1952144666393539113}
-  - component: {fileID: 1181912719}
   m_Layer: 0
   m_Name: Gun Pivot
   m_TagString: Untagged
@@ -130,31 +129,9 @@ MonoBehaviour:
   ammo: 100
   ammoPerLoad: 10
   shotsPerCooldown: 100
-  cooldownDuration: 60
+  cooldownDuration: 10
   spawnLocation: {fileID: 1952144666593568690}
-<<<<<<< HEAD
---- !u!95 &1181912719
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1952144666393539115}
-  m_Enabled: 0
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 9931939f71f67d9428015913d68d64ad, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
-=======
   aButton: {fileID: 5502671829802403752}
->>>>>>> 129ec38f922f45e9db828c23f737d163ee1faa43
 --- !u!1 &1952144666593568701
 GameObject:
   m_ObjectHideFlags: 0
@@ -216,11 +193,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1.302, z: 0.67789}
   m_Children:
   - {fileID: 1952144666393539112}
-<<<<<<< HEAD
-=======
   - {fileID: 726879290788148813}
   - {fileID: 1655891328157633066}
->>>>>>> 129ec38f922f45e9db828c23f737d163ee1faa43
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -282,8 +256,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1.5590014}
   m_Center: {x: 0, y: 0, z: 0.27950066}
-<<<<<<< HEAD
-=======
 --- !u!1 &4412678260006596921
 GameObject:
   m_ObjectHideFlags: 0
@@ -483,4 +455,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   updateEachFrame: 1
->>>>>>> 129ec38f922f45e9db828c23f737d163ee1faa43
