@@ -363,7 +363,7 @@ MonoBehaviour:
   spawnLocation: {fileID: 8561340712790392553}
   playerNumber: 0
   ammo: 0
-  maxAmmo: 15
+  maxAmmo: 5
   shootDelayTime: 0.5
 --- !u!114 &2414134363004040661
 MonoBehaviour:

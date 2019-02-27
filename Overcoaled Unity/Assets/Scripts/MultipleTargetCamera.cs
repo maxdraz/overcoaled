@@ -31,6 +31,9 @@ public class MultipleTargetCamera : MonoBehaviour
             return;
         }
 
+        
+        
+
         Move();
         Zoom();
     }
@@ -81,5 +84,16 @@ public class MultipleTargetCamera : MonoBehaviour
     public void AddTarget(Transform myTrans)
     {
         targets.Add(myTrans);
+    }
+
+    public void RemoveTarget(Transform myTrans)
+    {
+        foreach(Transform target in targets)
+        {
+            if(target == myTrans)
+            {
+                targets.Remove(target);
+            }
+        }
     }
 }

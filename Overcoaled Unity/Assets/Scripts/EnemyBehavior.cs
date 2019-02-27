@@ -27,6 +27,18 @@ public class EnemyBehavior : MonoBehaviour
 
     private int enemyHealth = 3;
 
+    private MultipleTargetCamera cam;
+
+    private void Awake()
+    {
+        cam = GameObject.FindObjectOfType<MultipleTargetCamera>();
+    }
+
+    private void OnEnable()
+    {
+        cam.AddTarget(transform);
+    }
+
     public void SetDestination(float setX, float setY, float setZ)
     {
         destination = new Vector3(setX, setY, setZ);
@@ -248,7 +260,9 @@ public class EnemyBehavior : MonoBehaviour
         enemyHealth -= 1;
         if (enemyHealth <= 0)
         {
+            
             Destroy(gameObject);
+            cam.RemoveTarget(transform);
         }
     }
     
