@@ -346,6 +346,7 @@ MonoBehaviour:
   respawnCD: 3
   maxHealth: 0
   respawn: {fileID: 0}
+  reviveText: {fileID: 0}
 --- !u!114 &3397615331571177700
 MonoBehaviour:
   m_ObjectHideFlags: 0
