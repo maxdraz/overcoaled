@@ -61,7 +61,7 @@ public class GameManager : MonoBehaviour
         playerMaterials[1] = playerColours[players.Count - 1];
         players[players.Count - 1].playerObject.GetComponent<SetHatColour>().hat.materials = playerMaterials;
 
-        cam.targets.Add(players[players.Count - 1].playerObject.transform);
+        cam.AddTarget(players[players.Count - 1].playerObject.transform);
         //////////////move this
 
     }
