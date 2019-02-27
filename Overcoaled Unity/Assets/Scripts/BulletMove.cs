@@ -35,6 +35,7 @@ public class BulletMove : MonoBehaviour
 
         if (gameObject.tag == "Enemy Bullet" && other.gameObject.tag == "Wall")
         {
+            if(other.gameObject.GetComponent<Wall>())
             other.gameObject.GetComponent<Wall>().TakeDamage(2);
         }
         if (other.gameObject.tag == "Wall")
