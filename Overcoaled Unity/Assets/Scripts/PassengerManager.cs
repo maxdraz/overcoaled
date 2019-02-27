@@ -13,7 +13,7 @@ public class PassengerManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI passengersAmountUI;
     // Start is called before the first frame update
     void Start()
-    {
+    {/*
         Vector3 topLeftPassenger = transform.position;
         topLeftPassenger.y = passengerY;
         for (int a = 0; a < rowAmount; a++)
@@ -27,6 +27,11 @@ public class PassengerManager : MonoBehaviour
                 passengers[passengers.Count - 1].GetComponent<Passenger>().passengerManager = this;
             }
             topLeftPassenger.x = transform.position.x;
+        }*/
+
+        foreach(GameObject passenger in passengers)
+        {
+            passenger.GetComponent<Passenger>().passengerManager = this;
         }
 
         GameManager.GM.passengerCount = passengers.Count;
