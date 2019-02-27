@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RepairPad : MonoBehaviour
 {
+    public GameObject wallObj;
     private TextMesh plankText;
     private TextMesh repairText;
     public enum Item { far, farWindow, near, nearWindow}
@@ -98,26 +99,30 @@ public class RepairPad : MonoBehaviour
             repairCDRemaining -= Time.deltaTime;
             if (repairCDRemaining <= 0)
             {
+
+                wallObj.SetActive(true);
+                Destroy(gameObject);
+
                 // We've built the wall!
-                if (wallType == Item.far)
-                {
-                    GameObject wallGO = (GameObject)Instantiate(wallFarPrefab, transform.position + wallSpawnOffset, transform.rotation);
-                    Destroy(gameObject);
-                }
-                else if(wallType == Item.near)
-                {
-                    GameObject wallGO = (GameObject)Instantiate(wallNearPrefab, transform.position + wallSpawnOffset, transform.rotation);
-                    Destroy(gameObject);
-                } else if(wallType == Item.farWindow)
-                {
-                    GameObject wallGO = (GameObject)Instantiate(wallFarWindowPrefab, transform.position + wallSpawnOffset, transform.rotation);
-                    Destroy(gameObject);
-                }
-                else if (wallType == Item.nearWindow)
-                {
-                    GameObject wallGO = (GameObject)Instantiate(wallNearWindowPrefab, transform.position + wallSpawnOffset, transform.rotation);
-                    Destroy(gameObject);
-                }
+                //if (wallType == Item.far)
+                //{
+                //    GameObject wallGO = (GameObject)Instantiate(wallFarPrefab, transform.position + wallSpawnOffset, transform.rotation);
+                //    Destroy(gameObject);
+                //}
+                //else if(wallType == Item.near)
+                //{
+                //    GameObject wallGO = (GameObject)Instantiate(wallNearPrefab, transform.position + wallSpawnOffset, transform.rotation);
+                //    Destroy(gameObject);
+                //} else if(wallType == Item.farWindow)
+                //{
+                //    GameObject wallGO = (GameObject)Instantiate(wallFarWindowPrefab, transform.position + wallSpawnOffset, transform.rotation);
+                //    Destroy(gameObject);
+                //}
+                //else if (wallType == Item.nearWindow)
+                //{
+                //    GameObject wallGO = (GameObject)Instantiate(wallNearWindowPrefab, transform.position + wallSpawnOffset, transform.rotation);
+                //    Destroy(gameObject);
+                //}
             }
         }
         else return;

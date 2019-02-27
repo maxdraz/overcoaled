@@ -29,8 +29,10 @@ public class Wall : MonoBehaviour
         if (health <= 0)
         {
             GameObject repairPadGO = (GameObject)Instantiate(repairPadPrefab, transform.position + repairPadOffset, transform.rotation);
-            repairPadGO.GetComponent<RepairPad>().wallType =(RepairPad.Item) typeOfWall;
-            Destroy(gameObject);
+            //repairPadGO.GetComponent<RepairPad>().wallType =(RepairPad.Item) typeOfWall;
+            repairPadGO.GetComponent<RepairPad>().wallObj = gameObject;
+            //Destroy(gameObject);
+            gameObject.SetActive(false);
         }
 
 
