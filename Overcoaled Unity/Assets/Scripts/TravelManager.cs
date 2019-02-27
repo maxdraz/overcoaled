@@ -29,6 +29,18 @@ public class TravelManager : MonoBehaviour
 
     private bool gameOver = false;
     private bool behindOnTimeBoost;
+
+    public List<GameObject> rails;
+    private Queue<GameObject> railsQueue;
+    [SerializeField] private float railsSpeed;
+    [SerializeField] private ParticleSystem smoke;
+
+    private void Start()
+    {
+        railsQueue = new Queue<GameObject>(rails);
+        print(railsQueue.Peek());
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -77,6 +89,8 @@ public class TravelManager : MonoBehaviour
 
 
             OffSetGround();
+            MoveRails();
+            MakeSmoke();
             distanceUI.value = travelDistance / fullTravelLength;
             if (travelDistance >= fullTravelLength && !gameOver)
             {
@@ -120,6 +134,30 @@ public class TravelManager : MonoBehaviour
 
         totalOffset -= offset * Time.deltaTime * offsetMultiplier;
         ground.material.SetTextureOffset("_MainTex", new Vector2(totalOffset, 0));
+    }
+
+    private void MoveRails()
+    {
+        foreach (GameObject rail in railsQueue)
+        {
+            rail.transform.Translate(Vector3.left * offset * Time.deltaTime * railsSpeed);
+
+        }
+
+        if (railsQueue.Peek().transform.position.x <= -95)
+        {
+            Vector3 newPos = railsQueue.Peek().transform.position;
+            newPos.x = 80;
+            GameObject rail = railsQueue.Dequeue();
+            rail.transform.position = newPos;
+            railsQueue.Enqueue(rail);
+        }
+    }
+
+    private void MakeSmoke()
+    {
+        var emission = smoke.emission;
+        emission.rateOverTime = currentSpeed * 8;
     }
 
     private void ExpectedArrivalTime()
