@@ -118,6 +118,7 @@ public class TravelManager : MonoBehaviour
 
     public void StartTimer()
     {
+        AudioManager.SharedInstance.PlayClip(0, 0.5f, true);
         travelBegun = true;
     }
 

@@ -28,13 +28,22 @@ public class PlayerShoot : MonoBehaviour
             canShoot = false;
             Shoot();
         }
+
+        if(Input.GetAxisRaw("joystick " + playerNumber + " RTrigger") == 1 && ammo <= 0 && canShoot)
+        {
+            canShoot = false;
+            AudioManager.SharedInstance.PlayClip(2, 0.5f);
+            Invoke("shotDelay", shootDelayTime);
+        }
     }
 
     private void Shoot()
     {
         CameraShaker.Instance.ShakeOnce(1f, 1f, 0.1f, 1f);
         GameObject projectile = Instantiate(bullet, spawnLocation.position, spawnLocation.rotation);
-        
+
+        AudioManager.SharedInstance.PlayClip(1, 0.5f);
+
         Invoke("shotDelay", shootDelayTime);
     }
 

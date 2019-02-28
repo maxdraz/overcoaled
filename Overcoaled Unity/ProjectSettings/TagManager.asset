@@ -23,6 +23,7 @@ TagManager:
   - PlayerDown
   - Passenger
   - MidWall
+  - AudioObject
   layers:
   - Default
   - TransparentFX

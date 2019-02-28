@@ -35,9 +35,9 @@ public class AudioManager : MonoBehaviour {
             //populate audio source
             audioObject.GetComponent<AudioSource>().clip = audioClips[clipIndex];
             audioObject.GetComponent<AudioSource>().Play();
-
+            audioObject.GetComponent<SetInactiveAfterTime>().enabled = true;
             //Destroy after done playing
-           // StartCoroutine(audioObject.GetComponent<Destroy>().DestroySelf(audioClips[clipIndex].length));
+            // StartCoroutine(audioObject.GetComponent<Destroy>().DestroySelf(audioClips[clipIndex].length));
         }
     }
 
@@ -62,8 +62,10 @@ public class AudioManager : MonoBehaviour {
             audioObject.GetComponent<AudioSource>().Play();
             audioObject.GetComponent<AudioSource>().volume = volume;
 
+            audioObject.GetComponent<SetInactiveAfterTime>().enabled = true;
+
             //Destroy after done playing
-          //  StartCoroutine(audioObject.GetComponent<Destroy>().DestroySelf(audioClips[clipIndex].length));
+            //  StartCoroutine(audioObject.GetComponent<Destroy>().DestroySelf(audioClips[clipIndex].length));
         }
     }
 
@@ -89,6 +91,8 @@ public class AudioManager : MonoBehaviour {
             audioObject.GetComponent<AudioSource>().volume = volume;
 
             audioObject.GetComponent<AudioSource>().Play();
+
+            audioObject.GetComponent<SetInactiveAfterTime>().enabled = false;
 
             //Destroy after done playing
             if (!loop)
