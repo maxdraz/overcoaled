@@ -467,6 +467,7 @@ public class PlayerInteraction : MonoBehaviour
         passengerGO.transform.parent = playerHolder.transform;
         passengerGO.transform.position = playerHolder.transform.position;
         passengerGO.transform.rotation = playerHolder.transform.rotation;
+        passengerGO.GetComponent<ThrownObjectMove>().enabled = false;
 
         isCarrying = true;
         carryingPassenger = true;

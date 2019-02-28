@@ -30,6 +30,15 @@ public class ThrownObjectMove : MonoBehaviour
         grounded = false;
     }
 
+    private void Update()
+    {
+        if(gameObject.tag == "Passenger" && grounded)
+        {
+            
+            this.enabled = false;
+        }
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         
