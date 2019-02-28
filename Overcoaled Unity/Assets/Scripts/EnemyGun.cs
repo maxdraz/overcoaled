@@ -7,6 +7,7 @@ public class EnemyGun : MonoBehaviour
     [HideInInspector] public float shootDelay;
     [HideInInspector] public float rotateSpeed;
     [HideInInspector] public GameObject bullet;
+    [SerializeField] private Transform spawnPos;
     private bool canShoot = true;
     
 
@@ -34,7 +35,7 @@ public class EnemyGun : MonoBehaviour
     {
         canShoot = true;
 
-        Instantiate(bullet, transform.GetChild(0).transform.GetChild(0).transform.position, transform.rotation);
+        Instantiate(bullet, spawnPos.position, transform.rotation);
     }
 
 

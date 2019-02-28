@@ -260,9 +260,9 @@ public class EnemyBehavior : MonoBehaviour
         enemyHealth -= 1;
         if (enemyHealth <= 0)
         {
-            
-            Destroy(gameObject);
             cam.RemoveTarget(transform);
+            Destroy(gameObject);
+            
         }
     }
     

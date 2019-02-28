@@ -35,6 +35,11 @@ public class TravelManager : MonoBehaviour
     [SerializeField] private float railsSpeed;
     [SerializeField] private ParticleSystem smoke;
 
+    [SerializeField] private GameObject cactus, rock;
+    [SerializeField] private Transform[] backgroundObjectSpawnPosition;
+    private Queue<GameObject> backgroundObjectsQueue = new Queue<GameObject>();
+    private int backgroundObjectMadeForDistance;
+
     private void Start()
     {
         railsQueue = new Queue<GameObject>(rails);
@@ -91,6 +96,12 @@ public class TravelManager : MonoBehaviour
             OffSetGround();
             MoveRails();
             MakeSmoke();
+            if (travelDistance > backgroundObjectMadeForDistance + 5)
+            {
+                backgroundObjectMadeForDistance = (int)travelDistance;
+                MakeBackgroundObjects();
+            }
+            MoveBackgroundObjects();
             distanceUI.value = travelDistance / fullTravelLength;
             if (travelDistance >= fullTravelLength && !gameOver)
             {
@@ -157,7 +168,38 @@ public class TravelManager : MonoBehaviour
     private void MakeSmoke()
     {
         var emission = smoke.emission;
-        emission.rateOverTime = currentSpeed * 8;
+        emission.rateOverTime = currentSpeed * 10;
+    }
+
+    private void MakeBackgroundObjects()
+    {
+        int backgroundObject = Random.Range(0, 2);
+        int randomPosition = Random.Range(0, backgroundObjectSpawnPosition.Length);
+        if (backgroundObject == 0)
+        {
+            backgroundObjectsQueue.Enqueue(Instantiate(cactus, backgroundObjectSpawnPosition[randomPosition].position, Quaternion.Euler(-90, 0.0f, Random.Range(0.0f, 360.0f))));
+        }
+        else
+        {
+            backgroundObjectsQueue.Enqueue(Instantiate(rock, backgroundObjectSpawnPosition[randomPosition].position, Quaternion.Euler(-90, 0.0f, Random.Range(0.0f, 360.0f))));
+        }
+    }
+
+    private void MoveBackgroundObjects()
+    {
+        if (backgroundObjectsQueue.Count > 0)
+        {
+            foreach (GameObject bgObject in backgroundObjectsQueue)
+            {
+                bgObject.transform.Translate(Vector3.left * offset * Time.deltaTime * railsSpeed, Space.World);
+
+            }
+
+            if (railsQueue.Peek().transform.position.x <= -95)
+            {
+                Destroy(railsQueue.Dequeue());
+            }
+        }
     }
 
     private void ExpectedArrivalTime()

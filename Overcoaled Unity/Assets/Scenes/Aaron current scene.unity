@@ -356,6 +356,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wagon Front Base
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 9f038db81cd95494a9114ca349303286, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9f038db81cd95494a9114ca349303286, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.9594574
@@ -645,6 +649,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6695709850758627114, guid: 29745f094eb48f64b8d65a121ddaa2e5,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6695709850758627115, guid: 29745f094eb48f64b8d65a121ddaa2e5,
+        type: 3}
+      propertyPath: orthographic size
+      value: 14.32
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 29745f094eb48f64b8d65a121ddaa2e5, type: 3}
@@ -4027,6 +4041,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: f5cb52e60e612ff4581f3c7f84431bd0, type: 3}
       propertyPath: m_Name
       value: Wagon Middle Base (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: f5cb52e60e612ff4581f3c7f84431bd0, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: f5cb52e60e612ff4581f3c7f84431bd0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -13392,6 +13410,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wagon Back Base
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: ba46d1c12099ed04dbe9e48af8561fb3, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ba46d1c12099ed04dbe9e48af8561fb3, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.0805426
@@ -16423,11 +16445,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1348415263003903582, guid: 873d708596090a448a462e1d899538db,
         type: 3}
-      propertyPath: rails.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1348415263003903582, guid: 873d708596090a448a462e1d899538db,
-        type: 3}
       propertyPath: ground
       value: 
       objectReference: {fileID: 128898744}
@@ -16436,11 +16453,6 @@ PrefabInstance:
       propertyPath: distanceUI
       value: 
       objectReference: {fileID: 1330682416}
-    - target: {fileID: 1348415263003903582, guid: 873d708596090a448a462e1d899538db,
-        type: 3}
-      propertyPath: fullTravelLength
-      value: 200
-      objectReference: {fileID: 0}
     - target: {fileID: 1348415263003903582, guid: 873d708596090a448a462e1d899538db,
         type: 3}
       propertyPath: timeRemaining
@@ -16478,19 +16490,9 @@ PrefabInstance:
       objectReference: {fileID: 1824936389}
     - target: {fileID: 1348415263003903582, guid: 873d708596090a448a462e1d899538db,
         type: 3}
-      propertyPath: railsSpeed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1348415263003903582, guid: 873d708596090a448a462e1d899538db,
-        type: 3}
       propertyPath: smoke
       value: 
       objectReference: {fileID: 1374360775}
-    - target: {fileID: 1348415263003903583, guid: 873d708596090a448a462e1d899538db,
-        type: 3}
-      propertyPath: enemyWaves.Array.size
-      value: 6
-      objectReference: {fileID: 0}
     - target: {fileID: 1348415263003903583, guid: 873d708596090a448a462e1d899538db,
         type: 3}
       propertyPath: wallManager
@@ -16506,66 +16508,6 @@ PrefabInstance:
       propertyPath: dynamiteSpawner
       value: 
       objectReference: {fileID: 976188350}
-    - target: {fileID: 1348415263003903583, guid: 873d708596090a448a462e1d899538db,
-        type: 3}
-      propertyPath: enemyWaves.Array.data[1].enterDistance
-      value: 65
-      objectReference: {fileID: 0}
-    - target: {fileID: 1348415263003903583, guid: 873d708596090a448a462e1d899538db,
-        type: 3}
-      propertyPath: enemyWaves.Array.data[1].amount
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1348415263003903583, guid: 873d708596090a448a462e1d899538db,
-        type: 3}
-      propertyPath: enemyWaves.Array.data[2].enterDistance
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 1348415263003903583, guid: 873d708596090a448a462e1d899538db,
-        type: 3}
-      propertyPath: enemyWaves.Array.data[2].amount
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1348415263003903583, guid: 873d708596090a448a462e1d899538db,
-        type: 3}
-      propertyPath: enemyWaves.Array.data[0].enterDistance
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 1348415263003903583, guid: 873d708596090a448a462e1d899538db,
-        type: 3}
-      propertyPath: enemyWaves.Array.data[0].amount
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1348415263003903583, guid: 873d708596090a448a462e1d899538db,
-        type: 3}
-      propertyPath: enemyWaves.Array.data[3].enterDistance
-      value: 150
-      objectReference: {fileID: 0}
-    - target: {fileID: 1348415263003903583, guid: 873d708596090a448a462e1d899538db,
-        type: 3}
-      propertyPath: enemyWaves.Array.data[3].amount
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1348415263003903583, guid: 873d708596090a448a462e1d899538db,
-        type: 3}
-      propertyPath: enemyWaves.Array.data[4].enterDistance
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 1348415263003903583, guid: 873d708596090a448a462e1d899538db,
-        type: 3}
-      propertyPath: enemyWaves.Array.data[5].enterDistance
-      value: 250
-      objectReference: {fileID: 0}
-    - target: {fileID: 1348415263003903583, guid: 873d708596090a448a462e1d899538db,
-        type: 3}
-      propertyPath: enemyWaves.Array.data[4].amount
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 1348415263003903583, guid: 873d708596090a448a462e1d899538db,
-        type: 3}
-      propertyPath: enemyWaves.Array.data[5].amount
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 1348415263003903580, guid: 873d708596090a448a462e1d899538db,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -16621,9 +16563,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1418679670, guid: 873d708596090a448a462e1d899538db, type: 3}
-      propertyPath: m_Size.x
-      value: 110.21
+    - target: {fileID: 1724431576, guid: 873d708596090a448a462e1d899538db, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 4.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 456900941, guid: 873d708596090a448a462e1d899538db, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 7.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 188037483, guid: 873d708596090a448a462e1d899538db, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.81
+      objectReference: {fileID: 0}
+    - target: {fileID: 17864133, guid: 873d708596090a448a462e1d899538db, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -5.67
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 873d708596090a448a462e1d899538db, type: 3}
