@@ -37,6 +37,11 @@ public class ThrownObjectMove : MonoBehaviour
             
             this.enabled = false;
         }
+        if (gameObject.tag == "Dynamite" && grounded)
+        {
+
+            this.enabled = false;
+        }
     }
 
     private void OnCollisionEnter(Collision collision)

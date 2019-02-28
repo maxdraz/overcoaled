@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 597482861355308003}
   m_LocalRotation: {x: -0.17364825, y: 0, z: 0, w: 0.9848078}
-  m_LocalPosition: {x: 0, y: 0.35, z: 1.106}
+  m_LocalPosition: {x: 0, y: -0.426, z: 1.106}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4089362571806735507}
@@ -5768,14 +5768,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4548652451185551778}
     m_Modifications:
-    - target: {fileID: 100000, guid: 79a316a122e811047a6884c5f04d5f1d, type: 3}
-      propertyPath: m_Name
-      value: Revolver
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 79a316a122e811047a6884c5f04d5f1d, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 79a316a122e811047a6884c5f04d5f1d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -5830,6 +5822,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 79a316a122e811047a6884c5f04d5f1d, type: 3}
       propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 79a316a122e811047a6884c5f04d5f1d, type: 3}
+      propertyPath: m_Name
+      value: Revolver
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 79a316a122e811047a6884c5f04d5f1d, type: 3}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -5928,6 +5928,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3329445811273087756}
     m_Modifications:
+    - target: {fileID: 100000, guid: 8d76de0b78241b0429017bc05e3587ba, type: 3}
+      propertyPath: m_Name
+      value: Coal (1)
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8d76de0b78241b0429017bc05e3587ba, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -5983,10 +5987,6 @@ PrefabInstance:
     - target: {fileID: 400000, guid: 8d76de0b78241b0429017bc05e3587ba, type: 3}
       propertyPath: m_LocalScale.z
       value: 17.095638
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 8d76de0b78241b0429017bc05e3587ba, type: 3}
-      propertyPath: m_Name
-      value: Coal (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d76de0b78241b0429017bc05e3587ba, type: 3}

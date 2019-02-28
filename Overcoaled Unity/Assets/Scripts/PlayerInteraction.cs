@@ -433,6 +433,7 @@ public class PlayerInteraction : MonoBehaviour
     void PickUpDynamite(Collision collision)
     {
         dynamiteGO = collision.gameObject;
+        dynamiteGO.layer = noPlayerCollisionLayer;
         dynamiteGO.GetComponent<Rigidbody>().isKinematic = true;
         dynamiteGO.transform.parent = playerHolder.transform;
         dynamiteGO.transform.position = playerHolder.transform.position;
@@ -465,6 +466,7 @@ public class PlayerInteraction : MonoBehaviour
     void PickUpPassenger(Collision collision)
     {
         passengerGO = collision.gameObject;
+        passengerGO.layer = noPlayerCollisionLayer;
         passengerGO.GetComponent<Rigidbody>().isKinematic = true;
         passengerGO.transform.parent = playerHolder.transform;
         passengerGO.transform.position = playerHolder.transform.position;

@@ -5,22 +5,33 @@ using UnityEngine;
 public class Dynamite : MonoBehaviour
 {
     [SerializeField] private float timer;
+    private float maxtimer;
     [SerializeField] private GameObject explosion;
     private bool exploded;
 
+    private void OnEnable()
+    {
+        maxtimer = timer;
+      
+    }
 
     private void Update()
     {
         timer -= Time.deltaTime;
 
+        
+
         if (timer <= 0 && !exploded)
         {
+
             exploded = true;
             if (transform.parent != null)
             {
                 transform.root.GetComponent<PlayerInteraction>().Drop();
                 transform.parent = null;
             }
+
+            AudioManager.SharedInstance.PlayClip(23,0.25f);
 
             GetComponent<Rigidbody>().isKinematic = false;
             gameObject.tag = "Death";

@@ -25,9 +25,11 @@ public class AudioManager : MonoBehaviour {
         //if an audioObject is available to use
         if (audioObject != null)
         {
+
             //create a new gobj with an audio source and a destroy script
             audioObject.transform.name =audioClips[clipIndex].name;
-            
+            ObjectPooler.SharedInstance.activeObjects.Add(audioObject);
+
 
             //set the audioObject to active
             audioObject.SetActive(true);
@@ -52,6 +54,7 @@ public class AudioManager : MonoBehaviour {
         {
             //create a new gobj with an audio source and a destroy script
             audioObject.transform.name = audioClips[clipIndex].name;
+            ObjectPooler.SharedInstance.activeObjects.Add(audioObject);
 
 
             //set the audioObject to active
@@ -78,10 +81,11 @@ public class AudioManager : MonoBehaviour {
         //if an audioObject is available to use
         if (audioObject != null)
         {
+          
             //create a new gobj with an audio source and a destroy script
             audioObject.transform.name = audioClips[clipIndex].name;
 
-
+            ObjectPooler.SharedInstance.activeObjects.Add(audioObject);
             //set the audioObject to active
             audioObject.SetActive(true);
 
@@ -111,6 +115,7 @@ public class AudioManager : MonoBehaviour {
         //if an audioObject is available to use
         if (audioObject != null)
         {
+            ObjectPooler.SharedInstance.activeObjects.Add(audioObject);
             //create a new gobj with an audio source and a destroy script
             audioObject.transform.name = audioClips[clipIndex].name;
 

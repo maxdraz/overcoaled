@@ -16,6 +16,7 @@ public class ObjectPooler : MonoBehaviour {
     public static ObjectPooler SharedInstance;
     [Space(15)]
     public List<GameObject> pooledObjects;
+    public List<GameObject> activeObjects;
     public List<ObjectPoolItem> itemsToPool;
 
     private void Awake()
@@ -59,6 +60,21 @@ public class ObjectPooler : MonoBehaviour {
                     pooledObjects.Add(obj);
                     return obj;
                 }
+            }
+        }
+        return null;
+    }
+
+    public GameObject GetActiveObject(string name)
+    {
+        for (int i = 0; i < activeObjects.Count; i++)
+        {
+            if (activeObjects[i].activeInHierarchy && activeObjects[i].name == name)
+            {
+                GameObject desiredObject = activeObjects[i];
+                activeObjects.Remove(activeObjects[i]);
+                return desiredObject;
+                
             }
         }
         return null;
