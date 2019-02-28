@@ -26,6 +26,8 @@ public class Furnace : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+
         if(coalCount > 0)
         {
             burnCDRemaining -= Time.deltaTime;
