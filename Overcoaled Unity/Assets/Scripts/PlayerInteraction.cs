@@ -507,6 +507,7 @@ public class PlayerInteraction : MonoBehaviour
 
     void Throw(int forceLevel)
     {
+        AudioManager.SharedInstance.PlayClip(3, 1f);
         anim.SetBool("pickup", false);
         anim.SetBool("throw", true);
 

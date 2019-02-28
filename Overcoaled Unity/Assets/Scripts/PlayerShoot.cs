@@ -42,7 +42,7 @@ public class PlayerShoot : MonoBehaviour
         CameraShaker.Instance.ShakeOnce(1f, 1f, 0.1f, 1f);
         GameObject projectile = Instantiate(bullet, spawnLocation.position, spawnLocation.rotation);
 
-        AudioManager.SharedInstance.PlayClip(1, 0.5f);
+        AudioManager.SharedInstance.PlayClip(1, 1f);
 
         Invoke("shotDelay", shootDelayTime);
     }
