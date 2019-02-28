@@ -438,6 +438,7 @@ public class PlayerInteraction : MonoBehaviour
         dynamiteGO.transform.parent = playerHolder.transform;
         dynamiteGO.transform.position = playerHolder.transform.position;
         dynamiteGO.transform.rotation = playerHolder.transform.rotation;
+        dynamiteGO.GetComponent<ThrownObjectMove>().enabled = false;
 
         isCarrying = true;
         carryingDynamite = true;
