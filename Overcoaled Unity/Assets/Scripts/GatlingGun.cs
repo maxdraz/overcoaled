@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using EZCameraShake;
 
 public class GatlingGun : MonoBehaviour
 {
@@ -111,7 +112,8 @@ public class GatlingGun : MonoBehaviour
 
     private void Shoot()
     {
-
+        AudioManager.SharedInstance.PlayClip(4, 0.5f);
+        CameraShaker.Instance.ShakeOnce(2, 2, 0.1f, 1);
         GameObject projectile = Instantiate(bullet, spawnLocation.position, spawnLocation.rotation);
 
         Invoke("shotDelay", shootDelayTime);

@@ -28,6 +28,11 @@ public class EnemyBehavior : MonoBehaviour
     private int enemyHealth = 3;
 
     private MultipleTargetCamera cam;
+    private int[] randomSounds = new int[] { 5, 6, 7, 8, 9 };
+
+
+
+
 
     private void Awake()
     {
@@ -37,6 +42,9 @@ public class EnemyBehavior : MonoBehaviour
     private void OnEnable()
     {
         cam.AddTarget(transform);
+
+        StartCoroutine(PlayRandomSound());
+       
     }
 
     public void SetDestination(float setX, float setY, float setZ)
@@ -263,6 +271,16 @@ public class EnemyBehavior : MonoBehaviour
             cam.RemoveTarget(transform);
             Destroy(gameObject);
             
+        }
+    }
+
+    IEnumerator PlayRandomSound()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(Random.Range(4f, 10f));
+
+            AudioManager.SharedInstance.PlayClip(randomSounds[Random.Range(0, randomSounds.Length - 1)]);
         }
     }
     

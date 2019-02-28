@@ -46,6 +46,8 @@ public class PlayerInteraction : MonoBehaviour
 
     ThrownObjectMove myPlayerThrow;
     Animator anim;
+
+    private int[] throwSounds = new int[] { 3, 10, 11, 12, 13};
    
 
     private void Awake()
@@ -507,7 +509,7 @@ public class PlayerInteraction : MonoBehaviour
 
     void Throw(int forceLevel)
     {
-        AudioManager.SharedInstance.PlayClip(3, 1f);
+        AudioManager.SharedInstance.PlayClip(throwSounds[Random.Range(0, throwSounds.Length - 1)], 1f);
         anim.SetBool("pickup", false);
         anim.SetBool("throw", true);
 
@@ -585,4 +587,6 @@ public class PlayerInteraction : MonoBehaviour
             Drop();
         }
     }
+
+  
 }
