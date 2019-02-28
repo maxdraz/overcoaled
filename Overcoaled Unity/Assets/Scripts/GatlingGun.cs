@@ -12,6 +12,7 @@ public class GatlingGun : MonoBehaviour
     [SerializeField] private float rotateSpeed;
     [SerializeField] private GameObject bullet;
     [SerializeField] private int ammo;
+    private float maxAmmo;
     [SerializeField] private int ammoPerLoad;
     [SerializeField] private int shotsPerCooldown;
     [SerializeField] private float cooldownDuration;
@@ -22,13 +23,13 @@ public class GatlingGun : MonoBehaviour
     public SpriteRenderer aButton;
 
     private Color selfColor;
-    private Renderer renderer;
+    private Renderer[] renderer;
 
     private void Start()
     {
-        
-        renderer = GetComponentInChildren<Renderer>();
-        selfColor = renderer.material.color;
+        maxAmmo = ammo;
+        renderer = GetComponentsInChildren<Renderer>();
+        selfColor = renderer[0].material.color;
     }
 
     public void SetPlayer(int playerNum)
@@ -42,6 +43,7 @@ public class GatlingGun : MonoBehaviour
 
     public void ExitGun()
     {
+        GetComponent<Animator>().enabled = false;
         inUse = false;
     }
 
@@ -59,13 +61,13 @@ public class GatlingGun : MonoBehaviour
 
                 if (southFacing)
                 {
-                    print(dirX + ", " + dirY);
+
                     dirX = Mathf.Clamp(dirX, -1f, 1f);
                     dirY = Mathf.Clamp(dirY, 0.2f, 1f);
                 }
                 else
                 {
-                    print(dirX + ", " + dirY);
+
                     dirX = Mathf.Clamp(dirX, -1f, 1f);
                     dirY = Mathf.Clamp(dirY, -0.2f, -1f);
                 }
@@ -84,9 +86,12 @@ public class GatlingGun : MonoBehaviour
                 if (ammo > 0 && canShoot)
                 {
                     ammo--;
-                    float ammoPercent = (100.0f - ammo) / 100.0f;
+                    float ammoPercent = (maxAmmo - ammo) / maxAmmo;
                     print(ammoPercent);
-                    renderer.material.color = Color.Lerp(selfColor, Color.red, ammoPercent);
+                    foreach (Renderer body in renderer)
+                    {
+                        body.material.color = Color.Lerp(selfColor, Color.red, ammoPercent);
+                    }
                     canShoot = false;
                     Shoot();
                 }
@@ -119,8 +124,11 @@ public class GatlingGun : MonoBehaviour
 
     private void CoolDown()
     {
-        ammo = 50;
-        renderer.material.color = Color.Lerp(selfColor, Color.red, (100 - ammo) / 100);
+        ammo = (int)maxAmmo;
+        foreach (Renderer body in renderer)
+        {
+            body.material.color = Color.Lerp(selfColor, Color.red, (maxAmmo - ammo) / maxAmmo);
+        }
         coolingDown = false;
     }
 
