@@ -43,7 +43,7 @@ public class TravelManager : MonoBehaviour
     private void Start()
     {
         railsQueue = new Queue<GameObject>(rails);
-        print(railsQueue.Peek());
+
     }
 
     // Update is called once per frame

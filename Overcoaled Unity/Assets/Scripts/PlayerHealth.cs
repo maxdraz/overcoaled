@@ -12,6 +12,8 @@ public class PlayerHealth : MonoBehaviour
     PlayerMove move;
     Animator anim;
     [SerializeField] private GameObject reviveText;
+    private int[] hurtSounds = new int[] { 16, 17, 18, 19};
+
 
     private void Start()
     {
@@ -51,6 +53,7 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage()
     {
+        AudioManager.SharedInstance.PlayClip(hurtSounds[Random.Range(0, hurtSounds.Length - 1)], 1);
         health -= 1;
         if (health <= 0)
         {
@@ -61,7 +64,8 @@ public class PlayerHealth : MonoBehaviour
 
     private void KillPlayer()
     {
-        print("touched death");
+        
+
         StartCoroutine(Respawn(respawnCD));
     }
 
@@ -69,6 +73,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if(col.gameObject.tag == "Death")
         {
+            AudioManager.SharedInstance.PlayClip(15, 1);
             StartCoroutine(SlowTime());
             anim.SetBool("down", true);
             move.enabled = false;

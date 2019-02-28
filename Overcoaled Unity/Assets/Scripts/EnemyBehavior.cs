@@ -263,14 +263,16 @@ public class EnemyBehavior : MonoBehaviour
         }
     }
 
-    public void TakeDamage()
+    public void TakeDamage(int damage)
     {
-        enemyHealth -= 1;
+        AudioManager.SharedInstance.PlayClip(14,1);
+        enemyHealth -= damage;
         if (enemyHealth <= 0)
         {
-            cam.RemoveTarget(transform);
+           
             Destroy(gameObject);
-            
+            cam.RemoveTarget(transform);
+
         }
     }
 

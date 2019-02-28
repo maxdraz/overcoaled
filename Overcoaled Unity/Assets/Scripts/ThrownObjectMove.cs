@@ -53,7 +53,7 @@ public class ThrownObjectMove : MonoBehaviour
             gameObject.layer = 0;
             gameObject.GetComponentInChildren<ParticleSystem>().Play();
             this.enabled = false;
-            print("called");
+
         }
 
         else if(collision.gameObject.layer == groundLayer && !grounded)
@@ -70,7 +70,7 @@ public class ThrownObjectMove : MonoBehaviour
     {
         if (other.tag == "Enemy")
         {
-            print("collided");
+           
             other.transform.parent.GetComponent<EnemyBehavior>().TakeDamage(1);
             GameObject ps = (GameObject)Instantiate(bloodParticle, gameObject.transform.position, Quaternion.identity);
             print("should have destroyed");
