@@ -71,7 +71,7 @@ public class ThrownObjectMove : MonoBehaviour
         if (other.tag == "Enemy")
         {
             print("collided");
-            other.transform.parent.GetComponent<EnemyBehavior>().TakeDamage();
+            other.transform.parent.GetComponent<EnemyBehavior>().TakeDamage(1);
             GameObject ps = (GameObject)Instantiate(bloodParticle, gameObject.transform.position, Quaternion.identity);
             print("should have destroyed");
             Destroy(gameObject);

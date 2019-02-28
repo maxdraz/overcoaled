@@ -21,7 +21,7 @@ public class BulletMove : MonoBehaviour
         if (isPlayerBullet && other.tag == "Enemy")
         {
             GameObject ps = (GameObject)Instantiate(bloodParticle, gameObject.transform.position, Quaternion.identity);
-            other.gameObject.transform.parent.GetComponent<EnemyBehavior>().TakeDamage();
+            other.gameObject.transform.parent.GetComponent<EnemyBehavior>().TakeDamage(1);
             Destroy(gameObject);
         }
 
