@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8603679328106671953}
   - component: {fileID: 8603679328106671958}
   - component: {fileID: 8603679328106671959}
+  - component: {fileID: 8213216261397941051}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -49,18 +50,21 @@ MonoBehaviour:
   playerSpeed: 6
   playerSlowSpeed: 3
   playerSpawnLocations:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {x: 1.13942245e-10, y: 0, z: 0}
+  - {x: 0, y: 3.0638972e+25, z: 0}
+  - {x: 4.6e-44, y: 0, z: 1.13942245e-10}
+  - {x: 0, y: 1.1394247e-10, z: 0}
   playerCharacter: {fileID: 4614903107362945743, guid: d7f8a248fef42b043948588a93da6238,
     type: 3}
   playerColours:
-  - {r: 0.4198113, g: 0.6774122, b: 1, a: 1}
-  - {r: 1, g: 0.28773582, b: 0.28773582, a: 1}
-  - {r: 0, g: 0, b: 0, a: 0}
-  - {r: 0, g: 0, b: 0, a: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   travelManager: {fileID: 0}
+  passengerCount: 0
+  playerDownAmount: 0
+  uiManager: {fileID: 0}
 --- !u!114 &8603679328106671959
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73,3 +77,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acce2d57e85f44842983c006f8d5c413, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8213216261397941051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8603679328106671956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e4ee7b33e6694a47a0d7cb316bae65c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pooledObjects: []
+  itemsToPool:
+  - shouldExpand: 1
+    objectToPool: {fileID: 6023883491954239912, guid: 6cfadbcc54641d845b765060ffa55a9f,
+      type: 3}
+    amountToPool: 10
