@@ -125,7 +125,7 @@ SphereCollider:
   m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.00001
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: -2, z: 3}
 --- !u!114 &2470292765063854092
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,6 +139,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: 10
+  explosion: {fileID: 6885248459572355872, guid: a10fadcfb47500a48ad939893eafc4f0,
+    type: 3}
 --- !u!114 &6564824692103522271
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -193,7 +195,6 @@ GameObject:
   - component: {fileID: 2728026397674185258}
   - component: {fileID: 921056807847753681}
   - component: {fileID: 1420068734858701779}
-  - component: {fileID: 6872769758086568300}
   m_Layer: 0
   m_Name: Cube (1)
   m_TagString: Untagged
@@ -260,16 +261,3 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &6872769758086568300
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5744910863220618018}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
