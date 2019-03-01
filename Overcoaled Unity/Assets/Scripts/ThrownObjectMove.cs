@@ -75,11 +75,17 @@ public class ThrownObjectMove : MonoBehaviour
     {
         if (other.tag == "Enemy")
         {
-           
-            other.transform.parent.GetComponent<EnemyBehavior>().TakeDamage(1);
-            GameObject ps = (GameObject)Instantiate(bloodParticle, gameObject.transform.position, Quaternion.identity);
-            print("should have destroyed");
-            Destroy(gameObject);
+            if (gameObject.tag == "Dynamite")
+            {
+                GetComponent<Dynamite>().Explode();
+            }
+            else
+            {
+                other.transform.parent.GetComponent<EnemyBehavior>().TakeDamage(1);
+                GameObject ps = (GameObject)Instantiate(bloodParticle, gameObject.transform.position, Quaternion.identity);
+                print("should have destroyed");
+                Destroy(gameObject);
+            }
         }
     }
 
