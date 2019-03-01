@@ -95,7 +95,7 @@ public class RepairPad : MonoBehaviour
         
         if (plankCount == maxPlanks)
         {
-            print(repairCDRemaining);
+
             repairCDRemaining -= Time.deltaTime;
             if (repairCDRemaining <= 0)
             {

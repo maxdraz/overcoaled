@@ -40,7 +40,7 @@ public class BulletMove : MonoBehaviour
         }
         if (other.gameObject.tag == "Wall" || other.gameObject.tag == "MidWall")
         {
-            print("collided with bullet");
+
             //GameObject ps = (GameObject)Instantiate(bulletDeathParticle, collision.GetContact(0).point, Quaternion.identity);            
 
             GameObject ps = (GameObject)Instantiate(bulletDeathParticle, gameObject.transform.position, Quaternion.identity);

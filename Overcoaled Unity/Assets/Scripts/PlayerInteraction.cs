@@ -164,7 +164,7 @@ public class PlayerInteraction : MonoBehaviour
 
                 if (Input.GetButtonUp("joystick " + playerNumber + " X"))
                 {
-                    print("let go after " + throwTimer);
+
 
                     if(throwTimer >= level3ThrowTime)
                     {
