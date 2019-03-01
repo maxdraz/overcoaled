@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Furnace : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class Furnace : MonoBehaviour
     [SerializeField] private float burnCDRemaining;
     [SerializeField] private TravelManager travelManager;
     public Sprite[] sprites;
-    public List <SpriteRenderer> coalIcons;
+    public List <Image> coalIcons;
 
     // Start is called before the first frame update
     void Start()
