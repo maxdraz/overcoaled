@@ -283,11 +283,11 @@ public class PlayerInteraction : MonoBehaviour
         {
             //display button sprite
             //other.transform.GetComponentInChildren<SpriteRenderer>().enabled = true;
-            //other.GetComponentInChildren<GatlingGun>().aButton.enabled = true;
+            other.GetComponentInChildren<GatlingGun>().aButton.enabled = true;
 
             if (Input.GetButtonDown("joystick " + playerNumber + " A"))
             {
-                //other.GetComponentInChildren<GatlingGun>().aButton.enabled = false;
+                other.GetComponentInChildren<GatlingGun>().aButton.enabled = false;
                 UseGatlingGun(other.gameObject);
                 //other.transform.GetComponentInChildren<SpriteRenderer>().enabled = false;
             }
@@ -380,7 +380,7 @@ public class PlayerInteraction : MonoBehaviour
 
         if(other.tag == "Gatling Gun")
         {
-           // other.GetComponentInChildren<GatlingGun>().aButton.enabled = false;
+            other.GetComponentInChildren<GatlingGun>().aButton.enabled = false;
         }
     }
 
