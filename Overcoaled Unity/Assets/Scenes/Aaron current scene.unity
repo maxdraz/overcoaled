@@ -17727,6 +17727,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 68e4931933c8b9a44b0e38f73f262e15,
         type: 3}
+    - target: {fileID: 7910391475681641022, guid: ec0fcd16e63b7a848849387a6d87fcb7,
+        type: 3}
+      propertyPath: coalIcons.Array.data[0]
+      value: 
+      objectReference: {fileID: 921311347}
+    - target: {fileID: 7910391475681641022, guid: ec0fcd16e63b7a848849387a6d87fcb7,
+        type: 3}
+      propertyPath: coalIcons.Array.data[1]
+      value: 
+      objectReference: {fileID: 15922260}
+    - target: {fileID: 7910391475681641022, guid: ec0fcd16e63b7a848849387a6d87fcb7,
+        type: 3}
+      propertyPath: coalIcons.Array.data[2]
+      value: 
+      objectReference: {fileID: 1905586847}
     - target: {fileID: 3904674442833344971, guid: ec0fcd16e63b7a848849387a6d87fcb7,
         type: 3}
       propertyPath: m_LocalPosition.x
