@@ -27,7 +27,7 @@ public class PlayerHealth : MonoBehaviour
     
     IEnumerator Respawn(float t)
     {
-      //  reviveText.SetActive(false);
+        reviveText.SetActive(false);
         GetComponent<PlayerInteraction>().Drop();
         transform.GetComponentInChildren<ParticleSystem>().Stop();
         transform.Find("Player Character").gameObject.SetActive(false);
@@ -83,7 +83,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void DownPlayer()
     {
-       // reviveText.SetActive(true);
+        reviveText.SetActive(true);
         StartCoroutine(SlowTime());
         anim.SetBool("down", true);
         gameObject.tag = "PlayerDown";
@@ -95,7 +95,7 @@ public class PlayerHealth : MonoBehaviour
 
     public void RevivePlayer()
     {
-       // reviveText.SetActive(false);
+        reviveText.SetActive(false);
         anim.SetBool("down", false);
         gameObject.tag = "Player";
         GameManager.GM.PlayerDown(-1);
