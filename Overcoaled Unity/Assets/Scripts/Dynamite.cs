@@ -31,27 +31,39 @@ public class Dynamite : MonoBehaviour
                 transform.parent = null;
             }
 
-            AudioManager.SharedInstance.PlayClip(23,0.25f);
-
-            GetComponent<Rigidbody>().isKinematic = false;
-            gameObject.tag = "Death";
-            GetComponent<Animator>().enabled = true;
-            GameObject explosionObject = Instantiate(explosion, transform.position, Quaternion.identity);
-            Destroy(explosionObject, 1);
-            Destroy(gameObject, 1);
+            Explode();
         }
+    }
+
+    public void Explode()
+    {
+        AudioManager.SharedInstance.PlayClip(23, 0.25f);
+
+        GetComponent<Rigidbody>().isKinematic = false;
+        gameObject.tag = "Death";
+        GetComponent<Animator>().enabled = true;
+        GameObject explosionObject = Instantiate(explosion, transform.position, Quaternion.identity);
+        Destroy(explosionObject, 1);
+        Destroy(gameObject, 1);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (gameObject.tag == "Death" && collision.gameObject.tag == "Wall")
         {
+
             if (collision.gameObject.GetComponent<Wall>())
                 collision.gameObject.GetComponent<Wall>().TakeDamage(4);
         }
         if (gameObject.tag == "Death" && collision.gameObject.tag == "Enemy")
         {
+            
             collision.gameObject.transform.parent.GetComponent<EnemyBehavior>().TakeDamage(3);
+        }
+
+        if(collision.gameObject.tag == "Death")
+        {
+            Explode();
         }
     }
 }
