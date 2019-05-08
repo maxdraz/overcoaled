@@ -22,17 +22,7 @@ public class TutorialHandler : MonoBehaviour
         lastPage = pageCount - 1;
         currentPage = 0;
 
-        for(int i =0; i<tutorialPages.Count; i++)
-        {
-            if (i < 1)
-            {
-                tutorialPages[i].SetActive(true);
-            }
-            else
-            {
-                tutorialPages[i].SetActive(false);
-            }
-        }
+        StartTutorial();
 
     }
 
@@ -41,20 +31,31 @@ public class TutorialHandler : MonoBehaviour
         //if forward button pressed
         foreach(string button in positiveButtons)
         {
-            if (Input.GetButtonDown(button))
+            //if not on last page
+            if (currentPage == lastPage && Input.GetKeyDown(KeyCode.X))
             {
-                //go to next tutorial page
+                ExitTutorial();
+            }
+            else if(currentPage < lastPage && Input.GetKeyDown(KeyCode.X))// if on last page
+            {
                 GoToNextPage();
-
             }
         }
 
         //Back button pressed
         foreach (string button in negativeButtons)
         {
-            if (Input.GetButtonDown(button))
+            if (currentPage > 0)
             {
-                //go to previous tutorial page
+                if (Input.GetKeyDown(KeyCode.Z))
+                {
+                    //go to previous tutorial page
+                    GoToPreviousPage();
+                }
+            }
+            else
+            {
+                return;
             }
         }
 
@@ -67,6 +68,36 @@ public class TutorialHandler : MonoBehaviour
         tutorialPages[currentPage - 1].SetActive(false);
     }
 
+    void GoToPreviousPage()
+    {
+        currentPage -= 1;
+        tutorialPages[currentPage].SetActive(true);
+        tutorialPages[currentPage + 1].SetActive(false);
+    }
+
+    void StartTutorial()
+    {        
+        Time.timeScale = 0;
+        currentPage = 0;
+        for (int i = 0; i < tutorialPages.Count; i++)
+        {
+            if (i < 1)
+            {
+                tutorialPages[i].SetActive(true);
+            }
+            else
+            {
+                tutorialPages[i].SetActive(false);
+            }
+        }
+    }
+
+    void ExitTutorial()
+    {
+        tutorialPages[currentPage].SetActive(false);
+        Time.timeScale = 1;
+        currentPage = 0;
+    }
 
 
 
