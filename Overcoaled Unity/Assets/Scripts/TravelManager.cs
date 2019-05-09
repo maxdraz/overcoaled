@@ -172,7 +172,7 @@ public class TravelManager : MonoBehaviour
     private void MakeSmoke()
     {
         var emission = smoke.emission;
-        emission.rateOverTime = currentSpeed * 10;
+        emission.rateOverTime = currentSpeed * 50;
     }
 
     private void MakeBackgroundObjects()
