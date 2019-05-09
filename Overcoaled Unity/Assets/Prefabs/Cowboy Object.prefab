@@ -220,9 +220,9 @@ ParticleSystem:
         m_RotationOrder: 4
     startColor:
       serializedVersion: 2
-      minMaxState: 0
-      minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 1}
+      minMaxState: 2
+      minColor: {r: 1, g: 0.7410638, b: 0.19339621, a: 1}
+      maxColor: {r: 1, g: 0.7978777, b: 0.2028302, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -284,7 +284,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 4
+      scalar: 2
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -442,7 +442,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startRotationX:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 0
       minScalar: 0
       maxCurve:
@@ -495,7 +495,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startRotationY:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 0
       minScalar: 0
       maxCurve:
@@ -548,8 +548,8 @@ ParticleSystem:
         m_RotationOrder: 4
     startRotation:
       serializedVersion: 2
-      minMaxState: 0
-      scalar: 0
+      minMaxState: 3
+      scalar: 6.283185
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -4672,7 +4672,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0c543ccca87e4344e9a65c8fdeb376e0, type: 2}
+  - {fileID: 2100000, guid: 8053118c1e856f7469f5bc5f49d9e7f9, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -5083,9 +5083,9 @@ ParticleSystem:
         m_RotationOrder: 4
     startColor:
       serializedVersion: 2
-      minMaxState: 0
-      minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 1}
+      minMaxState: 2
+      minColor: {r: 1, g: 0.7410638, b: 0.19339621, a: 1}
+      maxColor: {r: 1, g: 0.7978777, b: 0.2028302, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -5147,7 +5147,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 4
+      scalar: 2
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -5305,7 +5305,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startRotationX:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 0
       minScalar: 0
       maxCurve:
@@ -5358,7 +5358,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startRotationY:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 0
       minScalar: 0
       maxCurve:
@@ -5411,8 +5411,8 @@ ParticleSystem:
         m_RotationOrder: 4
     startRotation:
       serializedVersion: 2
-      minMaxState: 0
-      scalar: 0
+      minMaxState: 3
+      scalar: 6.283185
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -9535,7 +9535,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0c543ccca87e4344e9a65c8fdeb376e0, type: 2}
+  - {fileID: 2100000, guid: 8053118c1e856f7469f5bc5f49d9e7f9, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -9891,6 +9891,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 567956147631221092}
     m_Modifications:
+    - target: {fileID: 100000, guid: 79a316a122e811047a6884c5f04d5f1d, type: 3}
+      propertyPath: m_Name
+      value: Revolver
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 79a316a122e811047a6884c5f04d5f1d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.12
@@ -9946,10 +9950,6 @@ PrefabInstance:
     - target: {fileID: 400000, guid: 79a316a122e811047a6884c5f04d5f1d, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 79a316a122e811047a6884c5f04d5f1d, type: 3}
-      propertyPath: m_Name
-      value: Revolver
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 79a316a122e811047a6884c5f04d5f1d, type: 3}
