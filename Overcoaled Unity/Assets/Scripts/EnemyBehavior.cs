@@ -282,7 +282,7 @@ public class EnemyBehavior : MonoBehaviour
         {
             yield return new WaitForSeconds(Random.Range(4f, 10f));
 
-            AudioManager.SharedInstance.PlayClip(randomSounds[Random.Range(0, randomSounds.Length - 1)]);
+            AudioManager.SharedInstance.PlayClip(randomSounds[Random.Range(0, randomSounds.Length - 1)],0.5f);
         }
     }
     
