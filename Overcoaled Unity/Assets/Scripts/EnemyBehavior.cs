@@ -265,7 +265,7 @@ public class EnemyBehavior : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        AudioManager.SharedInstance.PlayClip(14,1);
+        AudioManager.SharedInstance.PlayClip(14,0.5f);
         enemyHealth -= damage;
         if (enemyHealth <= 0)
         {

@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 public class TutorialHandler : MonoBehaviour
 {
-   
+    public bool toggledOn;
+
     public List<string> positiveButtons;
     public List<string> negativeButtons;
 
@@ -28,34 +30,42 @@ public class TutorialHandler : MonoBehaviour
 
     private void Update()
     {
-        //if forward button pressed
-        foreach(string button in positiveButtons)
+        if (Input.GetKeyDown(KeyCode.R))
         {
-            //if not on last page
-            if (currentPage == lastPage && Input.GetKeyDown(KeyCode.X))
-            {
-                ExitTutorial();
-            }
-            else if(currentPage < lastPage && Input.GetKeyDown(KeyCode.X))// if on last page
-            {
-                GoToNextPage();
-            }
+            SceneManager.LoadScene(0);
         }
 
-        //Back button pressed
-        foreach (string button in negativeButtons)
+        if (toggledOn)
         {
-            if (currentPage > 0)
+            //if forward button pressed
+            foreach (string button in positiveButtons)
             {
-                if (Input.GetKeyDown(KeyCode.Z))
+                //if not on last page
+                if (currentPage == lastPage && Input.GetButtonDown(button))
                 {
-                    //go to previous tutorial page
-                    GoToPreviousPage();
+                    ExitTutorial();
+                }
+                else if (currentPage < lastPage && Input.GetButtonDown(button))// if on last page
+                {
+                    GoToNextPage();
                 }
             }
-            else
+
+            //Back button pressed
+            foreach (string button in negativeButtons)
             {
-                return;
+                if (currentPage > 0)
+                {
+                    if (Input.GetButtonDown(button))
+                    {
+                        //go to previous tutorial page
+                        GoToPreviousPage();
+                    }
+                }
+                else
+                {
+                    return;
+                }
             }
         }
 
@@ -76,7 +86,8 @@ public class TutorialHandler : MonoBehaviour
     }
 
     void StartTutorial()
-    {        
+    {
+        toggledOn = true;
         Time.timeScale = 0;
         currentPage = 0;
         for (int i = 0; i < tutorialPages.Count; i++)
@@ -94,6 +105,7 @@ public class TutorialHandler : MonoBehaviour
 
     void ExitTutorial()
     {
+        toggledOn = false;
         tutorialPages[currentPage].SetActive(false);
         Time.timeScale = 1;
         currentPage = 0;

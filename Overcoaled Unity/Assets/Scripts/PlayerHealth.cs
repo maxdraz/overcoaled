@@ -53,7 +53,7 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage()
     {
-        AudioManager.SharedInstance.PlayClip(hurtSounds[Random.Range(0, hurtSounds.Length - 1)], 1);
+        AudioManager.SharedInstance.PlayClip(hurtSounds[Random.Range(0, hurtSounds.Length - 1)], 0.5f);
         health -= 1;
         if (health <= 0)
         {
